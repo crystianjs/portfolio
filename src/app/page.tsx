@@ -25,7 +25,10 @@ import {
   Zap,
   MessageSquare,
   UserCheck,
-  X
+  X,
+  Clock,
+  Filter,
+  Check
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -76,6 +79,11 @@ export default function Portfolio() {
     { src: "/projetoiale_mobile/oracao.jpeg", title: "Orações Mobile", desc: "Mural de orações interativo adaptado para interação em dispositivos móveis." },
   ];
 
+  const dashboardPrints = [
+    { src: "/projetodashboard/monitoramento_logs.png", title: "Monitoramento em Tempo Real", desc: "Visão geral das últimas 24h contabilizando logs na fila e tabela dinâmica de movimentação de dados com status e horários." },
+    { src: "/projetodashboard/ultimos_logs.png", title: "Gerenciamento e Fila de Registros", desc: "Cards detalhados por ID de paciente e pedido, permitindo alternar status (Em verificação / Resolvido) e ações de exclusão com segurança." }
+  ];
+
   const [currentSlide, setCurrentSlide] = useState(0);
 
   useEffect(() => {
@@ -91,6 +99,13 @@ export default function Portfolio() {
 
   const prevSlide = () => {
     setCurrentSlide((prev) => (prev - 1 + formaturaImages.length) % formaturaImages.length);
+  };
+
+  const scrollToSection = (id: string) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
   };
 
   return (
@@ -180,14 +195,39 @@ export default function Portfolio() {
 
           {currentTab === 'projetos' && (
             <motion.div key="projetos" initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -15 }} transition={{ duration: 0.3 }}>
-              <div className="mb-12">
+              <div className="mb-8">
                 <div className="text-[#1569EF] font-mono text-xs uppercase tracking-widest mb-2 font-bold">// Portfólio de Soluções</div>
                 <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">Sessões Detalhadas de Projetos</h2>
-                <p className="text-slate-600 mt-2">Documentação visual completa das telas Desktop e Mobile em sessões organizadas. Clique em qualquer imagem para ampliar.</p>
+                <p className="text-slate-600 mt-2">Documentação visual completa das telas Desktop e Mobile. Clique em qualquer imagem para ampliar.</p>
+              </div>
+
+              {/* BOTÕES DE FILTRO / ATALHO RÁPIDO */}
+              <div className="bg-slate-100 p-4 rounded-2xl border border-slate-200 mb-12 flex flex-wrap items-center gap-3">
+                <div className="flex items-center gap-2 text-slate-700 text-sm font-bold mr-2">
+                  <Filter className="w-4 h-4 text-[#1569EF]" /> Ir Direto para:
+                </div>
+                <button 
+                  onClick={() => scrollToSection('projeto-hub')}
+                  className="px-4 py-2 bg-white text-slate-800 hover:bg-[#1569EF] hover:text-white rounded-xl text-xs font-semibold transition-all border border-slate-200 shadow-sm"
+                >
+                  Hub Operacional
+                </button>
+                <button 
+                  onClick={() => scrollToSection('projeto-dashboard')}
+                  className="px-4 py-2 bg-white text-slate-800 hover:bg-[#1569EF] hover:text-white rounded-xl text-xs font-semibold transition-all border border-slate-200 shadow-sm flex items-center gap-1.5"
+                >
+                  Monitoramento de Logs <span className="w-2 h-2 rounded-full bg-amber-500 inline-block animate-pulse"></span>
+                </button>
+                <button 
+                  onClick={() => scrollToSection('projeto-iale')}
+                  className="px-4 py-2 bg-white text-slate-800 hover:bg-[#1569EF] hover:text-white rounded-xl text-xs font-semibold transition-all border border-slate-200 shadow-sm"
+                >
+                  IALE - Comunidade
+                </button>
               </div>
 
               {/* PROJETO 1: HUB OPERACIONAL / ANALIZA ATA */}
-              <div className="bg-slate-900 text-white rounded-3xl p-8 sm:p-12 shadow-2xl border border-slate-800 mb-16 relative overflow-hidden">
+              <div id="projeto-hub" className="bg-slate-900 text-white rounded-3xl p-8 sm:p-12 shadow-2xl border border-slate-800 mb-16 relative overflow-hidden scroll-mt-28">
                 <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 mb-8 border-b border-slate-800 pb-8">
                   <div>
                     <span className="text-xs font-mono text-red-400 bg-red-950/60 border border-red-500/30 px-3 py-1 rounded-full font-bold inline-block mb-3">Sistema de Missão Crítica</span>
@@ -244,8 +284,48 @@ export default function Portfolio() {
                 )}
               </div>
 
-              {/* PROJETO 2: IALE COMUNIDADE */}
-              <div className="bg-slate-900 text-white rounded-3xl p-8 sm:p-12 shadow-2xl border border-slate-800 relative overflow-hidden">
+              {/* PROJETO 2: DASHBOARD DE MONITORAMENTO DE LOGS */}
+              <div id="projeto-dashboard" className="bg-slate-900 text-white rounded-3xl p-8 sm:p-12 shadow-2xl border border-slate-800 mb-16 relative overflow-hidden scroll-mt-28">
+                <div className="absolute right-0 top-0 w-96 h-96 bg-amber-600/10 rounded-full blur-3xl pointer-events-none"></div>
+
+                <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 mb-8 border-b border-slate-800 pb-8">
+                  <div>
+                    <span className="text-xs font-mono text-amber-400 bg-amber-950/60 border border-amber-500/30 px-3 py-1 rounded-full font-bold inline-block mb-3">Automação e Monitoramento Corporativo</span>
+                    <h3 className="text-3xl font-black tracking-tight">Dashboard de Monitoramento de Logs (Fila)</h3>
+                    <p className="text-slate-400 text-base mt-2 max-w-3xl leading-relaxed">
+                      Painel corporativo em tempo real para rastreamento de filas, status de integração de pacientes e gerenciamento de registros sensíveis de pedidos.
+                    </p>
+                  </div>
+                  <div className="flex items-center gap-2 bg-amber-500/20 text-amber-300 border border-amber-500/30 px-4 py-2 rounded-xl text-xs font-mono font-bold shrink-0">
+                    <Clock className="w-4 h-4 animate-spin" /> Projeto em Andamento
+                  </div>
+                </div>
+
+                <div className="space-y-8">
+                  {dashboardPrints.map((item, idx) => (
+                    <div key={idx} className="grid lg:grid-cols-12 gap-8 items-center bg-slate-950/60 p-6 sm:p-8 rounded-3xl border border-slate-800">
+                      <div className="lg:col-span-5 space-y-3">
+                        <span className="text-xs font-mono text-amber-400 bg-amber-950/60 border border-amber-500/30 px-3 py-1 rounded-full font-bold inline-block">Módulo de Logs</span>
+                        <h4 className="text-xl font-bold text-white">{item.title}</h4>
+                        <p className="text-slate-300 text-sm leading-relaxed">{item.desc}</p>
+                      </div>
+                      <div className="lg:col-span-7 bg-slate-900 rounded-2xl overflow-hidden border border-slate-800 shadow-xl cursor-pointer" onClick={() => setSelectedImage(item.src)}>
+                        <img src={item.src} alt={item.title} className="w-full h-auto object-cover hover:scale-105 transition-transform duration-300" title="Clique para ampliar" />
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="mt-8 pt-6 border-t border-slate-800 flex items-center justify-between flex-wrap gap-4">
+                  <span className="text-xs font-mono text-slate-400">// Status atual da entrega corporativa</span>
+                  <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-500/10 text-amber-400 border border-amber-500/20 text-xs font-mono font-bold">
+                    <span className="w-2 h-2 rounded-full bg-amber-400 animate-ping"></span> Projeto em andamento
+                  </span>
+                </div>
+              </div>
+
+              {/* PROJETO 3: IALE COMUNIDADE */}
+              <div id="projeto-iale" className="bg-slate-900 text-white rounded-3xl p-8 sm:p-12 shadow-2xl border border-slate-800 relative overflow-hidden scroll-mt-28">
                 <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 mb-8 border-b border-slate-800 pb-8">
                   <div>
                     <span className="text-xs font-mono text-cyan-300 bg-cyan-950/60 border border-cyan-500/30 px-3 py-1 rounded-full font-bold inline-block mb-3">Ecossistema Corporativo e Igreja</span>
@@ -337,12 +417,11 @@ export default function Portfolio() {
             <motion.div key="curriculo" initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -15 }} transition={{ duration: 0.3 }}>
               <div className="mb-12">
                 <div className="text-[#1569EF] font-mono text-xs uppercase tracking-widest mb-2 font-bold">// Perfil Profissional e Conquistas</div>
-                <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">Currículo Profissional</h2>
+                <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">Currículo e Formatura</h2>
                 <p className="text-slate-600 mt-2">Analista de TI e Dados | Formado em Análise e Desenvolvimento de Sistemas (ADS) pela Unicesumar.</p>
               </div>
 
               <div className="bg-gradient-to-br from-slate-900 to-blue-950 text-white rounded-3xl p-8 sm:p-10 shadow-xl mb-12 relative overflow-hidden">
-                <div className="absolute right-0 top-0 w-80 h-80 bg-[#1569EF]/20 rounded-full blur-3xl pointer-events-none"></div>
                 <div className="flex items-center gap-3 mb-6">
                   <div className="p-2.5 rounded-xl bg-[#1569EF]/30 text-cyan-300 border border-[#1569EF]/40">
                     <GraduationCap className="w-6 h-6" />
@@ -439,6 +518,71 @@ export default function Portfolio() {
                     </div>
                     <p className="text-slate-600 text-sm leading-relaxed">
                       Monitoramento proativo e sustentação das plataformas médicas hospitalares, gerenciamento de servidores corporativos via ferramentas RMM/RDP, além do gerenciamento de firewalls e do ambiente Office 365.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* SEÇÃO DE EXPERIÊNCIAS PRÁTICAS E CASOS DE USO REAIS (POWER AUTOMATE, PYTHON, POSTMAN, GIT/GITHUB) */}
+              <div className="mb-12">
+                <div className="text-[#1569EF] font-mono text-xs uppercase tracking-widest mb-2 font-bold">// Casos de Uso Reais</div>
+                <h3 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">Experiência Prática com Ferramentas</h3>
+                <p className="text-slate-600 text-sm mt-1">Aplicações diárias e resoluções de problemas em ambiente corporativo.</p>
+              </div>
+
+              <div className="space-y-8 mb-12">
+                {/* 1. Power Automate */}
+                <div className="grid lg:grid-cols-12 gap-8 items-center bg-slate-50 border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-sm">
+                  <div className="lg:col-span-5 space-y-3">
+                    <span className="text-xs font-mono text-[#1569EF] bg-[#1569EF]/10 px-3 py-1 rounded-full font-bold">Automação Corporativa</span>
+                    <h4 className="text-xl font-bold text-slate-900">Power Automate na Prática</h4>
+                    <p className="text-slate-600 text-sm leading-relaxed">
+                      O Power Automate é uma ferramenta sensacional, utilizada frequentemente no meu dia a dia de trabalho. Não aprendi em estudo de caso, foi na prática, em uma necessidade da empresa na tratativa de alguns fluxos repetitivos em problemas de grande escala.
+                    </p>
+                  </div>
+                  <div className="lg:col-span-7 bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-md flex justify-center p-4 cursor-pointer" onClick={() => setSelectedImage("/projeto/power_automate.png")}>
+                    <img src="/projeto/power_automate.png" alt="Power Automate" className="max-h-[280px] w-auto object-contain hover:scale-105 transition-transform duration-300 rounded-xl" title="Clique para ampliar" />
+                  </div>
+                </div>
+
+                {/* 2. Python */}
+                <div className="grid lg:grid-cols-12 gap-8 items-center bg-slate-50 border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-sm">
+                  <div className="lg:col-span-7 lg:order-1 order-2 bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-md flex justify-center p-4 cursor-pointer" onClick={() => setSelectedImage("/projeto/python.png")}>
+                    <img src="/projeto/python.png" alt="Python" className="max-h-[280px] w-auto object-contain hover:scale-105 transition-transform duration-300 rounded-xl" title="Clique para ampliar" />
+                  </div>
+                  <div className="lg:col-span-5 lg:order-2 order-1 space-y-3">
+                    <span className="text-xs font-mono text-[#1569EF] bg-[#1569EF]/10 px-3 py-1 rounded-full font-bold">Automação e Scripts</span>
+                    <h4 className="text-xl font-bold text-slate-900">Python e IA Generativa</h4>
+                    <p className="text-slate-600 text-sm leading-relaxed">
+                      Juntamente com a IA, o Python me proporcionou automações mais precisas e validadas. Entendo a semântica da linguagem e ela tem me ajudado a remover fluxos repetitivos do meu caminho. Atualmente, em um processo de baixar um informe em HTML, convertê-lo perfeitamente em PDF e enviá-lo aos setores, preciso apenas jogar esse HTML em um diretório mapeado na máquina local: o script processa com a biblioteca <code>pyhtml2pdf</code> e já realiza o disparo para os responsáveis. Isto é tecnologia.
+                    </p>
+                  </div>
+                </div>
+
+                {/* 3. Postman */}
+                <div className="grid lg:grid-cols-12 gap-8 items-center bg-slate-50 border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-sm">
+                  <div className="lg:col-span-5 space-y-3">
+                    <span className="text-xs font-mono text-[#1569EF] bg-[#1569EF]/10 px-3 py-1 rounded-full font-bold">Testes de API</span>
+                    <h4 className="text-xl font-bold text-slate-900">Postman em Ambiente de Produção</h4>
+                    <p className="text-slate-600 text-sm leading-relaxed">
+                      Com um conhecimento bem simplório em Postman, me adaptei muito bem em estruturar payloads, testar requisições via POST e GET unificadamente com trechos de código, seguindo em constante evolução na ferramenta.
+                    </p>
+                  </div>
+                  <div className="lg:col-span-7 bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-md flex justify-center p-4 cursor-pointer" onClick={() => setSelectedImage("/projeto/postman.png")}>
+                    <img src="/projeto/postman.png" alt="Postman" className="max-h-[280px] w-auto object-contain hover:scale-105 transition-transform duration-300 rounded-xl" title="Clique para ampliar" />
+                  </div>
+                </div>
+
+                {/* 4. Git e GitHub */}
+                <div className="grid lg:grid-cols-12 gap-8 items-center bg-slate-50 border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-sm">
+                  <div className="lg:col-span-7 lg:order-1 order-2 bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-md flex justify-center p-4 cursor-pointer" onClick={() => setSelectedImage("/projeto/git_github.png")}>
+                    <img src="/projeto/git_github.png" alt="Git e GitHub" className="max-h-[280px] w-auto object-contain hover:scale-105 transition-transform duration-300 rounded-xl" title="Clique para ampliar" />
+                  </div>
+                  <div className="lg:col-span-5 lg:order-2 order-1 space-y-3">
+                    <span className="text-xs font-mono text-[#1569EF] bg-[#1569EF]/10 px-3 py-1 rounded-full font-bold">Versionamento e CI/CD</span>
+                    <h4 className="text-xl font-bold text-slate-900">Git e GitHub no Dia a Dia</h4>
+                    <p className="text-slate-600 text-sm leading-relaxed">
+                      Utilizo com uma frequência anormal estas duas ferramentas para todos os meus projetos pessoais e corporativos, garantindo versionamento seguro e conexão contínua com plataformas de hospedagem em nuvem.
                     </p>
                   </div>
                 </div>

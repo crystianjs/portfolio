@@ -606,7 +606,7 @@ export default function Portfolio() {
           
           <div className="flex items-center gap-3">
             {/* Ícone personalizado do rodapé (/public/icone_progromacao.jpg) */}
-            <div className="w-10 h-10 rounded-xl overflow-hidden bg-slate-800 border border-slate-700 flex items-center justify-center shrink-0 shadow-md">
+            <div className="w-10 h-10 rounded-xl overflow-hidden bg-slate-800 flex items-center justify-center shrink-0 shadow-md">
               <img 
                 src="/icone_progromacao.jpg" 
                 alt="Ícone Programação" 

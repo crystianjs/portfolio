@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { 
   Github, 
   Linkedin, 
@@ -15,13 +15,45 @@ import {
   Code2,
   Terminal,
   ArrowRight,
-  Briefcase
+  Briefcase,
+  GraduationCap,
+  ChevronLeft,
+  ChevronRight,
+  Cpu,
+  Server,
+  Zap
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 export default function Portfolio() {
-  const [currentTab, setCurrentTab] = useState<'home' | 'projetos' | 'funcionalidades' | 'stack'>('home');
+  const [currentTab, setCurrentTab] = useState<'home' | 'projetos' | 'funcionalidades' | 'stack' | 'curriculo'>('home');
   const [activeProject, setActiveProject] = useState(0);
+
+  // Lista ajustada com os nomes exatos das suas fotos na pasta public/
+  const formaturaImages = [
+    { src: "/formatura(1).jpeg", caption: "Formação em ADS - Unicesumar" },
+    { src: "/formatura(2).jpeg", caption: "Momento da Colação de Grau" },
+    { src: "/formatura(3).jpeg", caption: "Conquista e Dedicação à TI" },
+    { src: "/formatura(4).jpeg", caption: "Celebração e Marco Profissional" },
+  ];
+
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  // Auto-play intuitivo do carrossel a cada 4 segundos
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % formaturaImages.length);
+    }, 4000);
+    return () => clearInterval(timer);
+  }, [formaturaImages.length]);
+
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % formaturaImages.length);
+  };
+
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev - 1 + formaturaImages.length) % formaturaImages.length);
+  };
 
   const projects = [
     {
@@ -57,38 +89,41 @@ export default function Portfolio() {
   return (
     <div className="min-h-screen bg-white text-slate-900 font-sans antialiased selection:bg-[#1569EF]/20 selection:text-[#1569EF]">
       
-      {/* --- NAVBAR SUPERIOR (Centralizada, Sem Logo e Sem Avatar) --- */}
+      {/* --- NAVBAR SUPERIOR (Centralizada) --- */}
       <header className="fixed top-0 w-full z-50 bg-white/95 backdrop-blur-md border-b border-slate-100 shadow-sm">
         <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-center">
-
-          {/* Menu Centralizado */}
-          <nav className="flex items-center gap-1 bg-slate-100/80 p-1.5 rounded-2xl border border-slate-200/60">
+          <nav className="flex items-center gap-1 bg-slate-100/80 p-1.5 rounded-2xl border border-slate-200/60 overflow-x-auto max-w-full">
             <button 
               onClick={() => setCurrentTab('home')}
-              className={`px-5 py-2 rounded-xl text-sm font-semibold transition-all ${currentTab === 'home' ? 'bg-[#1569EF] text-white shadow-md shadow-blue-500/20' : 'text-slate-600 hover:text-slate-900'}`}
+              className={`px-4 sm:px-5 py-2 rounded-xl text-sm font-semibold transition-all whitespace-nowrap ${currentTab === 'home' ? 'bg-[#1569EF] text-white shadow-md shadow-blue-500/20' : 'text-slate-600 hover:text-slate-900'}`}
             >
               Início
             </button>
             <button 
               onClick={() => setCurrentTab('projetos')}
-              className={`px-5 py-2 rounded-xl text-sm font-semibold transition-all ${currentTab === 'projetos' ? 'bg-[#1569EF] text-white shadow-md shadow-blue-500/20' : 'text-slate-600 hover:text-slate-900'}`}
+              className={`px-4 sm:px-5 py-2 rounded-xl text-sm font-semibold transition-all whitespace-nowrap ${currentTab === 'projetos' ? 'bg-[#1569EF] text-white shadow-md shadow-blue-500/20' : 'text-slate-600 hover:text-slate-900'}`}
             >
               Projetos & Prints
             </button>
             <button 
               onClick={() => setCurrentTab('funcionalidades')}
-              className={`px-5 py-2 rounded-xl text-sm font-semibold transition-all ${currentTab === 'funcionalidades' ? 'bg-[#1569EF] text-white shadow-md shadow-blue-500/20' : 'text-slate-600 hover:text-slate-900'}`}
+              className={`px-4 sm:px-5 py-2 rounded-xl text-sm font-semibold transition-all whitespace-nowrap ${currentTab === 'funcionalidades' ? 'bg-[#1569EF] text-white shadow-md shadow-blue-500/20' : 'text-slate-600 hover:text-slate-900'}`}
             >
               Apresentação
             </button>
             <button 
               onClick={() => setCurrentTab('stack')}
-              className={`px-5 py-2 rounded-xl text-sm font-semibold transition-all ${currentTab === 'stack' ? 'bg-[#1569EF] text-white shadow-md shadow-blue-500/20' : 'text-slate-600 hover:text-slate-900'}`}
+              className={`px-4 sm:px-5 py-2 rounded-xl text-sm font-semibold transition-all whitespace-nowrap ${currentTab === 'stack' ? 'bg-[#1569EF] text-white shadow-md shadow-blue-500/20' : 'text-slate-600 hover:text-slate-900'}`}
             >
               Stack Tech
             </button>
+            <button 
+              onClick={() => setCurrentTab('curriculo')}
+              className={`px-4 sm:px-5 py-2 rounded-xl text-sm font-semibold transition-all whitespace-nowrap ${currentTab === 'curriculo' ? 'bg-[#1569EF] text-white shadow-md shadow-blue-500/20' : 'text-slate-600 hover:text-slate-900'}`}
+            >
+              Currículo & Formatura
+            </button>
           </nav>
-
         </div>
       </header>
 
@@ -140,12 +175,10 @@ export default function Portfolio() {
                   </div>
                 </div>
 
-                {/* Bloco da Foto com Efeito Hover (Trazendo para frente / Zoom suave) */}
+                {/* Bloco da Foto com Efeito Hover */}
                 <div className="lg:col-span-5 flex justify-center lg:justify-end z-10 mt-10 lg:mt-0">
                   <div className="relative w-72 h-80 sm:w-80 sm:h-96 rounded-3xl overflow-hidden shadow-2xl group cursor-pointer">
-                    {/* Brilho sutil de fundo no hover */}
                     <div className="absolute inset-0 bg-blue-400/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10 pointer-events-none"></div>
-                    
                     <img 
                       src="/avatar-fullstack.jpg" 
                       alt="Foto Profissional Crystian FullStack" 
@@ -304,6 +337,199 @@ export default function Portfolio() {
                   <h3 className="text-lg font-bold text-slate-900 mb-3">DevOps & Deploy</h3>
                   <p className="text-sm text-slate-600 font-mono">Vercel Cloud • Git CI/CD • Segurança</p>
                 </div>
+              </div>
+            </motion.div>
+          )}
+
+          {/* ABA: CURRÍCULO & CARROSSEL DE FORMATURA */}
+          {currentTab === 'curriculo' && (
+            <motion.div 
+              key="curriculo"
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -15 }}
+              transition={{ duration: 0.3 }}
+            >
+              <div className="mb-12">
+                <div className="text-[#1569EF] font-mono text-xs uppercase tracking-widest mb-2 font-bold">// Perfil Profissional & Conquistas</div>
+                <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">Currículo & Formatura</h2>
+                <p className="text-slate-600 mt-2">Analista de TI e Dados | Formado em Análise e Desenvolvimento de Sistemas (ADS) pela Unicesumar.</p>
+              </div>
+
+              {/* Seção em Grid: Resumo Profissional + Carrossel Intuitivo de Formatura */}
+              <div className="grid lg:grid-cols-12 gap-8 mb-12 items-stretch">
+                
+                {/* Resumo Profissional (Esquerda) */}
+                <div className="lg:col-span-7 bg-gradient-to-br from-slate-900 to-blue-950 text-white rounded-3xl p-8 sm:p-10 shadow-xl flex flex-col justify-between relative overflow-hidden">
+                  <div className="absolute right-0 top-0 w-80 h-80 bg-[#1569EF]/20 rounded-full blur-3xl pointer-events-none"></div>
+                  <div>
+                    <div className="flex items-center gap-3 mb-6">
+                      <div className="p-2.5 rounded-xl bg-[#1569EF]/30 text-cyan-300 border border-[#1569EF]/40">
+                        <GraduationCap className="w-6 h-6" />
+                      </div>
+                      <h3 className="text-2xl font-bold">Graduação & Trajetória</h3>
+                    </div>
+                    <p className="text-slate-300 text-base sm:text-lg leading-relaxed font-light mb-6">
+                      Sou Analista de TI e Dados formado em ADS pela Faculdade Unicesumar, com atuação focada em engenharia de dados, automação, sustentação de sistemas de missão crítica e integração entre bancos de dados e planilhas no setor de Saúde e Diagnósticos Laboratoriais (operações Brasil/Espanha).
+                    </p>
+                    <p className="text-slate-300 text-sm leading-relaxed font-light">
+                      No dia a dia, utilizo um excelente relacionamento interpessoal para colaborar com o time na resolução rápida de problemas, aplicando a metodologia Kanban para manter o fluxo de entregas ágil e organizado.
+                    </p>
+                  </div>
+                </div>
+
+                {/* Carrossel Intuitivo de Formatura (Direita) */}
+                <div className="lg:col-span-5 bg-slate-900 rounded-3xl overflow-hidden shadow-xl border border-slate-200 relative flex flex-col justify-between group">
+                  <div className="relative w-full h-72 sm:h-80 bg-slate-950 overflow-hidden flex items-center justify-center">
+                    
+                    {/* Imagens do Carrossel */}
+                    {formaturaImages.map((img, idx) => (
+                      <div 
+                        key={idx}
+                        className={`absolute inset-0 transition-opacity duration-700 ease-in-out ${idx === currentSlide ? 'opacity-100 scale-100' : 'opacity-0 scale-105 pointer-events-none'}`}
+                      >
+                        <img 
+                          src={img.src} 
+                          alt={img.caption}
+                          className="w-full h-full object-cover"
+                          onError={(e) => {
+                            e.currentTarget.style.display = 'none';
+                          }}
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent opacity-80"></div>
+                        <div className="absolute bottom-4 left-4 right-4 text-center z-10">
+                          <span className="text-xs font-mono bg-[#1569EF]/80 text-white px-3 py-1 rounded-full backdrop-blur-md">
+                            {img.caption}
+                          </span>
+                        </div>
+                      </div>
+                    ))}
+
+                    {/* Botões de Navegação Manual Intuitivos */}
+                    <button 
+                      onClick={prevSlide}
+                      className="absolute left-3 top-1/2 -translate-y-1/2 p-2 rounded-full bg-black/50 text-white hover:bg-[#1569EF] transition-all backdrop-blur-sm z-20"
+                      aria-label="Foto anterior"
+                    >
+                      <ChevronLeft className="w-5 h-5" />
+                    </button>
+                    <button 
+                      onClick={nextSlide}
+                      className="absolute right-3 top-1/2 -translate-y-1/2 p-2 rounded-full bg-black/50 text-white hover:bg-[#1569EF] transition-all backdrop-blur-sm z-20"
+                      aria-label="Próxima foto"
+                    >
+                      <ChevronRight className="w-5 h-5" />
+                    </button>
+                  </div>
+
+                  {/* Indicadores de Pontos (Dots) */}
+                  <div className="p-4 bg-slate-900 flex justify-center gap-2 items-center border-t border-slate-800">
+                    {formaturaImages.map((_, idx) => (
+                      <button 
+                        key={idx}
+                        onClick={() => setCurrentSlide(idx)}
+                        className={`h-2 rounded-full transition-all ${idx === currentSlide ? 'w-8 bg-[#1569EF]' : 'w-2 bg-slate-700 hover:bg-slate-500'}`}
+                        aria-label={`Ir para slide ${idx + 1}`}
+                      />
+                    ))}
+                  </div>
+                </div>
+
+              </div>
+
+              {/* Grid de Competências e Especialidades */}
+              <div className="grid md:grid-cols-2 gap-8 mb-12">
+                
+                {/* Projetos & Automações */}
+                <div className="bg-slate-50 border border-slate-200 rounded-3xl p-8 shadow-sm flex flex-col justify-between">
+                  <div>
+                    <div className="flex items-center gap-3 mb-4">
+                      <div className="p-2.5 rounded-xl bg-[#1569EF]/10 text-[#1569EF]">
+                        <Zap className="w-5 h-5" />
+                      </div>
+                      <h4 className="text-xl font-bold text-slate-900">Projetos & Automações</h4>
+                    </div>
+                    <p className="text-slate-600 text-sm leading-relaxed">
+                      Especialidade em transformar rotinas manuais repetitivas em workflows automatizados. Diversos projetos em produção, automações ativas e em andamento utilizando <strong>N8N</strong>, <strong>Power Automate</strong>, scripts em <strong>Python</strong> e requisições via <strong>Postman</strong>, além de Front-End com HTML e CSS para interfaces amigáveis.
+                    </p>
+                  </div>
+                </div>
+
+                {/* Data Integration (SQL & Excel) */}
+                <div className="bg-slate-50 border border-slate-200 rounded-3xl p-8 shadow-sm flex flex-col justify-between">
+                  <div>
+                    <div className="flex items-center gap-3 mb-4">
+                      <div className="p-2.5 rounded-xl bg-[#1569EF]/10 text-[#1569EF]">
+                        <Database className="w-5 h-5" />
+                      </div>
+                      <h4 className="text-xl font-bold text-slate-900">Data Integration (SQL ↔ Excel)</h4>
+                    </div>
+                    <p className="text-slate-600 text-sm leading-relaxed">
+                      Responsável pela movimentação, carga, tratamento e manipulação de grandes volumes de informações, realizando a exportação pesada de dados entre banco relacional, ferramentas de BI e Excel de forma performática para garantir melhoria de processos e SLA rápida.
+                    </p>
+                  </div>
+                </div>
+
+                {/* Advanced Querying (PostgreSQL) */}
+                <div className="bg-slate-50 border border-slate-200 rounded-3xl p-8 shadow-sm flex flex-col justify-between">
+                  <div>
+                    <div className="flex items-center gap-3 mb-4">
+                      <div className="p-2.5 rounded-xl bg-[#1569EF]/10 text-[#1569EF]">
+                        <Terminal className="w-5 h-5" />
+                      </div>
+                      <h4 className="text-xl font-bold text-slate-900">Advanced Querying (PostgreSQL / PgAdmin)</h4>
+                    </div>
+                    <p className="text-slate-600 text-sm leading-relaxed">
+                      Criação, otimização e manutenção diária de consultas SQL complexas utilizando múltiplos relacionamentos (INNER JOIN e LEFT JOIN), agregações e filtros avançados no sistema <strong>LIS (Laboratory Information System)</strong>, garantindo consultas rápidas e extração correta de dados analíticos de saúde.
+                    </p>
+                  </div>
+                </div>
+
+                {/* Tratamento Avançado em Excel */}
+                <div className="bg-slate-50 border border-slate-200 rounded-3xl p-8 shadow-sm flex flex-col justify-between">
+                  <div>
+                    <div className="flex items-center gap-3 mb-4">
+                      <div className="p-2.5 rounded-xl bg-[#1569EF]/10 text-[#1569EF]">
+                        <Layout className="w-5 h-5" />
+                      </div>
+                      <h4 className="text-xl font-bold text-slate-900">Tratamento Avançado em Excel</h4>
+                    </div>
+                    <p className="text-slate-600 text-sm leading-relaxed">
+                      Manipulação e cruzamento de bases de dados complexas de exames e atendimentos através de fórmulas estruturadas (<strong>PROCV</strong> e <strong>ÍNDICE/CORRESP</strong>), garantindo validação, integridade e correta estruturação das informações antes de disponibilizá-las para os sistemas ou áreas solicitantes.
+                    </p>
+                  </div>
+                </div>
+
+                {/* Automação com IA Generativa */}
+                <div className="bg-slate-50 border border-slate-200 rounded-3xl p-8 shadow-sm flex flex-col justify-between">
+                  <div>
+                    <div className="flex items-center gap-3 mb-4">
+                      <div className="p-2.5 rounded-xl bg-[#1569EF]/10 text-[#1569EF]">
+                        <Cpu className="w-5 h-5" />
+                      </div>
+                      <h4 className="text-xl font-bold text-slate-900">Automação com IA Generativa</h4>
+                    </div>
+                    <p className="text-slate-600 text-sm leading-relaxed">
+                      Implementação de ferramentas de IA (Claude, Gemini) no cotidiano técnico para aceleração do desenvolvimento de scripts, documentação de queries complexas e automação de tarefas operacionais repetitivas.
+                    </p>
+                  </div>
+                </div>
+
+                {/* Sustentação de Sistemas LIS & Infraestrutura */}
+                <div className="bg-slate-50 border border-slate-200 rounded-3xl p-8 shadow-sm flex flex-col justify-between">
+                  <div>
+                    <div className="flex items-center gap-3 mb-4">
+                      <div className="p-2.5 rounded-xl bg-[#1569EF]/10 text-[#1569EF]">
+                        <Server className="w-5 h-5" />
+                      </div>
+                      <h4 className="text-xl font-bold text-slate-900">Sustentação de Sistemas LIS & Infraestrutura</h4>
+                    </div>
+                    <p className="text-slate-600 text-sm leading-relaxed">
+                      Monitoramento proativo e sustentação das plataformas médicas hospitalares, gerenciamento de servidores corporativos via ferramentas RMM/RDP, além do gerenciamento de firewalls e do ambiente Office 365.
+                    </p>
+                  </div>
+                </div>
+
               </div>
             </motion.div>
           )}

@@ -59,29 +59,29 @@ export default function Portfolio() {
     {
       id: 0,
       title: "IALE - Portal de Gestão",
-      category: "Ecossistema Corporativo / Igreja",
-      description: "Plataforma completa para gestão integrada desenvolvida para a igreja que frequento, contando com painel administrativo dinâmico, controle de agenda e mural interativo de avisos.",
+      category: "Ecossistema Corporativo e Igreja",
+      description: "Plataforma completa para gestão integrada desenvolvida para a igreja que frequento. Contém painel de música, gestão de repertório, bate-papo em tempo real, central de comunicados e base de aniversariantes integrada via banco gerada por formulários.",
       url: "https://iale.vercel.app/login",
       githubUrl: "https://github.com/crystianjs/iale",
       techs: ["Next.js", "Supabase", "Tailwind CSS", "TypeScript"],
       features: [
-        "Painel administrativo em tempo real com controle de permissões.",
-        "Mural interativo de avisos e gestão de mídias corporativas.",
-        "Arquitetura focada em performance e sigilo de dados."
+        "Painel de música e gestão avançada de repertório para cultos.",
+        "Bate-papo integrado e central de comunicados para a comunidade.",
+        "Módulo de aniversariantes integrado via banco a partir de formulários."
       ]
     },
     {
       id: 1,
       title: "Analiza Ata - Hub Operacional",
       category: "Sistema de Missão Crítica",
-      description: "Sistema profissional para análise e gerenciamento de atas, oferecendo agilidade, controle de dados e interface altamente responsiva.",
+      description: "Ferramenta robusta para gerenciamento de grandes projetos onde você consegue adicionar pendências próprias ou de clientes, controlar o registro de horas trabalhadas por cada pessoa em cada subtarefa de uma tarefa principal, além de dashboards analíticos e barras de progresso.",
       url: "https://analiza-ata.vercel.app/login",
       githubUrl: "https://github.com/crystianjs/analiza-ata",
       techs: ["Next.js", "PostgreSQL", "Tailwind CSS", "Node.js"],
       features: [
-        "Interface otimizada para análise e gerenciamento rápido de atas.",
-        "Segurança avançada e controle de acesso estruturado.",
-        "Arquitetura moderna e altamente performática."
+        "Controle detalhado de pendências individuais e de clientes em grandes projetos.",
+        "Registro e monitoramento do horário trabalhado por cada membro em subtarefas e tarefas principais.",
+        "Dashboard dinâmico com barra de progresso e métricas de produtividade."
       ]
     }
   ];
@@ -103,7 +103,7 @@ export default function Portfolio() {
               onClick={() => setCurrentTab('projetos')}
               className={`px-4 sm:px-5 py-2 rounded-xl text-sm font-semibold transition-all whitespace-nowrap ${currentTab === 'projetos' ? 'bg-[#1569EF] text-white shadow-md shadow-blue-500/20' : 'text-slate-600 hover:text-slate-900'}`}
             >
-              Projetos & Prints
+              Projetos e Prints
             </button>
             <button 
               onClick={() => setCurrentTab('funcionalidades')}
@@ -121,7 +121,7 @@ export default function Portfolio() {
               onClick={() => setCurrentTab('curriculo')}
               className={`px-4 sm:px-5 py-2 rounded-xl text-sm font-semibold transition-all whitespace-nowrap ${currentTab === 'curriculo' ? 'bg-[#1569EF] text-white shadow-md shadow-blue-500/20' : 'text-slate-600 hover:text-slate-900'}`}
             >
-              Currículo & Formatura
+              Currículo e Formatura
             </button>
           </nav>
         </div>
@@ -191,7 +191,7 @@ export default function Portfolio() {
             </motion.div>
           )}
 
-          {/* ABA: PROJETOS & PRINTS COM LINKS REAIS */}
+          {/* ABA: PROJETOS E PRINTS COM LINKS REAIS */}
           {currentTab === 'projetos' && (
             <motion.div 
               key="projetos"
@@ -202,7 +202,7 @@ export default function Portfolio() {
             >
               <div className="mb-12">
                 <div className="text-[#1569EF] font-mono text-xs uppercase tracking-widest mb-2 font-bold">// Galeria Interativa</div>
-                <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">Projetos & Capturas Visuais</h2>
+                <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">Projetos e Capturas Visuais</h2>
                 <p className="text-slate-600 mt-2">Acesse diretamente os sistemas reais desenvolvidos.</p>
               </div>
 
@@ -329,19 +329,19 @@ export default function Portfolio() {
                 </div>
                 <div className="p-8 rounded-3xl bg-slate-50 border border-slate-200 shadow-sm">
                   <Database className="w-6 h-6 text-[#1569EF] mb-4" />
-                  <h3 className="text-lg font-bold text-slate-900 mb-3">Back-end & Dados</h3>
+                  <h3 className="text-lg font-bold text-slate-900 mb-3">Back-end e Dados</h3>
                   <p className="text-sm text-slate-600 font-mono">Supabase • PostgreSQL • Node.js APIs</p>
                 </div>
                 <div className="p-8 rounded-3xl bg-slate-50 border border-slate-200 shadow-sm">
                   <ShieldCheck className="w-6 h-6 text-[#1569EF] mb-4" />
-                  <h3 className="text-lg font-bold text-slate-900 mb-3">DevOps & Deploy</h3>
+                  <h3 className="text-lg font-bold text-slate-900 mb-3">DevOps e Deploy</h3>
                   <p className="text-sm text-slate-600 font-mono">Vercel Cloud • Git CI/CD • Segurança</p>
                 </div>
               </div>
             </motion.div>
           )}
 
-          {/* ABA: CURRÍCULO & CARROSSEL DE FORMATURA */}
+          {/* ABA: CURRÍCULO E CARROSSEL DE FORMATURA */}
           {currentTab === 'curriculo' && (
             <motion.div 
               key="curriculo"
@@ -351,8 +351,8 @@ export default function Portfolio() {
               transition={{ duration: 0.3 }}
             >
               <div className="mb-12">
-                <div className="text-[#1569EF] font-mono text-xs uppercase tracking-widest mb-2 font-bold">// Perfil Profissional & Conquistas</div>
-                <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">Currículo & Formatura</h2>
+                <div className="text-[#1569EF] font-mono text-xs uppercase tracking-widest mb-2 font-bold">// Perfil Profissional e Conquistas</div>
+                <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">Currículo e Formatura</h2>
                 <p className="text-slate-600 mt-2">Analista de TI e Dados | Formado em Análise e Desenvolvimento de Sistemas (ADS) pela Unicesumar.</p>
               </div>
 
@@ -367,7 +367,7 @@ export default function Portfolio() {
                       <div className="p-2.5 rounded-xl bg-[#1569EF]/30 text-cyan-300 border border-[#1569EF]/40">
                         <GraduationCap className="w-6 h-6" />
                       </div>
-                      <h3 className="text-2xl font-bold">Graduação & Trajetória</h3>
+                      <h3 className="text-2xl font-bold">Graduação e Trajetória</h3>
                     </div>
                     <p className="text-slate-300 text-base sm:text-lg leading-relaxed font-light mb-6">
                       Sou Analista de TI e Dados formado em ADS pela Faculdade Unicesumar, com atuação focada em engenharia de dados, automação, sustentação de sistemas de missão crítica e integração entre bancos de dados e planilhas no setor de Saúde e Diagnósticos Laboratoriais (operações Brasil/Espanha).
@@ -440,14 +440,14 @@ export default function Portfolio() {
               {/* Grid de Competências e Especialidades */}
               <div className="grid md:grid-cols-2 gap-8 mb-12">
                 
-                {/* Projetos & Automações */}
+                {/* Projetos e Automações */}
                 <div className="bg-slate-50 border border-slate-200 rounded-3xl p-8 shadow-sm flex flex-col justify-between">
                   <div>
                     <div className="flex items-center gap-3 mb-4">
                       <div className="p-2.5 rounded-xl bg-[#1569EF]/10 text-[#1569EF]">
                         <Zap className="w-5 h-5" />
                       </div>
-                      <h4 className="text-xl font-bold text-slate-900">Projetos & Automações</h4>
+                      <h4 className="text-xl font-bold text-slate-900">Projetos e Automações</h4>
                     </div>
                     <p className="text-slate-600 text-sm leading-relaxed">
                       Especialidade em transformar rotinas manuais repetitivas em workflows automatizados. Diversos projetos em produção, automações ativas e em andamento utilizando <strong>N8N</strong>, <strong>Power Automate</strong>, scripts em <strong>Python</strong> e requisições via <strong>Postman</strong>, além de Front-End com HTML e CSS para interfaces amigáveis.
@@ -455,14 +455,14 @@ export default function Portfolio() {
                   </div>
                 </div>
 
-                {/* Data Integration (SQL & Excel) */}
+                {/* Data Integration (SQL e Excel) */}
                 <div className="bg-slate-50 border border-slate-200 rounded-3xl p-8 shadow-sm flex flex-col justify-between">
                   <div>
                     <div className="flex items-center gap-3 mb-4">
                       <div className="p-2.5 rounded-xl bg-[#1569EF]/10 text-[#1569EF]">
                         <Database className="w-5 h-5" />
                       </div>
-                      <h4 className="text-xl font-bold text-slate-900">Data Integration (SQL ↔ Excel)</h4>
+                      <h4 className="text-xl font-bold text-slate-900">Data Integration (SQL e Excel)</h4>
                     </div>
                     <p className="text-slate-600 text-sm leading-relaxed">
                       Responsável pela movimentação, carga, tratamento e manipulação de grandes volumes de informações, realizando a exportação pesada de dados entre banco relacional, ferramentas de BI e Excel de forma performática para garantir melhoria de processos e SLA rápida.
@@ -515,14 +515,14 @@ export default function Portfolio() {
                   </div>
                 </div>
 
-                {/* Sustentação de Sistemas LIS & Infraestrutura */}
+                {/* Sustentação de Sistemas LIS e Infraestrutura */}
                 <div className="bg-slate-50 border border-slate-200 rounded-3xl p-8 shadow-sm flex flex-col justify-between">
                   <div>
                     <div className="flex items-center gap-3 mb-4">
                       <div className="p-2.5 rounded-xl bg-[#1569EF]/10 text-[#1569EF]">
                         <Server className="w-5 h-5" />
                       </div>
-                      <h4 className="text-xl font-bold text-slate-900">Sustentação de Sistemas LIS & Infraestrutura</h4>
+                      <h4 className="text-xl font-bold text-slate-900">Sustentação de Sistemas LIS e Infraestrutura</h4>
                     </div>
                     <p className="text-slate-600 text-sm leading-relaxed">
                       Monitoramento proativo e sustentação das plataformas médicas hospitalares, gerenciamento de servidores corporativos via ferramentas RMM/RDP, além do gerenciamento de firewalls e do ambiente Office 365.

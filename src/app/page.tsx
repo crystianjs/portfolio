@@ -27,8 +27,7 @@ import {
   UserCheck,
   X,
   Clock,
-  Filter,
-  Check
+  Filter
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -132,7 +131,7 @@ export default function Portfolio() {
             <button onClick={() => setCurrentTab('projetos')} className={`px-4 sm:px-5 py-2 rounded-xl text-sm font-semibold transition-all whitespace-nowrap ${currentTab === 'projetos' ? 'bg-[#1569EF] text-white shadow-md' : 'text-slate-600 hover:text-slate-900'}`}>Projetos</button>
             <button onClick={() => setCurrentTab('stack')} className={`px-4 sm:px-5 py-2 rounded-xl text-sm font-semibold transition-all whitespace-nowrap ${currentTab === 'stack' ? 'bg-[#1569EF] text-white shadow-md' : 'text-slate-600 hover:text-slate-900'}`}>Stack Tech</button>
             <button onClick={() => setCurrentTab('curriculo')} className={`px-4 sm:px-5 py-2 rounded-xl text-sm font-semibold transition-all whitespace-nowrap ${currentTab === 'curriculo' ? 'bg-[#1569EF] text-white shadow-md' : 'text-slate-600 hover:text-slate-900'}`}>Currículo</button>
-            <button onClick={() => setCurrentTab('formatura')} className={`px-4 sm:px-5 py-2 rounded-xl text-sm font-semibold transition-all whitespace-nowrap ${currentTab === 'formatura' ? 'bg-[#1569EF] text-white shadow-md' : 'text-slate-600 hover:text-slate-900'}`}>Formatura</button>
+            <button onClick={() => setCurrentTab('formatura')} className={`px-4 sm:px-5 py-2 rounded-xl text-sm font-semibold transition-all whitespace-nowrap ${currentTab === 'formatura' ? 'bg-[#1569EF] text-white shadow-md' : 'text-slate-600 hover:text-slate-900'}`}>Colação de Grau</button>
           </nav>
         </div>
       </header>
@@ -415,13 +414,44 @@ export default function Portfolio() {
 
           {currentTab === 'curriculo' && (
             <motion.div key="curriculo" initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -15 }} transition={{ duration: 0.3 }}>
-              <div className="mb-12">
+              <div className="mb-8">
                 <div className="text-[#1569EF] font-mono text-xs uppercase tracking-widest mb-2 font-bold">// Perfil Profissional e Conquistas</div>
-                <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">Currículo e Formatura</h2>
+                <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">Currículo Profissional</h2>
                 <p className="text-slate-600 mt-2">Analista de TI e Dados | Formado em Análise e Desenvolvimento de Sistemas (ADS) pela Unicesumar.</p>
               </div>
 
-              <div className="bg-gradient-to-br from-slate-900 to-blue-950 text-white rounded-3xl p-8 sm:p-10 shadow-xl mb-12 relative overflow-hidden">
+              {/* BOTÕES DE FILTRO / ATALHO RÁPIDO NO CURRÍCULO */}
+              <div className="bg-slate-100 p-4 rounded-2xl border border-slate-200 mb-12 flex flex-wrap items-center gap-3">
+                <div className="flex items-center gap-2 text-slate-700 text-sm font-bold mr-2">
+                  <Filter className="w-4 h-4 text-[#1569EF]" /> Ir Direto para:
+                </div>
+                <button 
+                  onClick={() => scrollToSection('curriculo-trajetoria')}
+                  className="px-4 py-2 bg-white text-slate-800 hover:bg-[#1569EF] hover:text-white rounded-xl text-xs font-semibold transition-all border border-slate-200 shadow-sm"
+                >
+                  Trajetória Acadêmica
+                </button>
+                <button 
+                  onClick={() => scrollToSection('curriculo-competencias')}
+                  className="px-4 py-2 bg-white text-slate-800 hover:bg-[#1569EF] hover:text-white rounded-xl text-xs font-semibold transition-all border border-slate-200 shadow-sm"
+                >
+                  Competências Técnicas
+                </button>
+                <button 
+                  onClick={() => scrollToSection('curriculo-casos')}
+                  className="px-4 py-2 bg-white text-slate-800 hover:bg-[#1569EF] hover:text-white rounded-xl text-xs font-semibold transition-all border border-slate-200 shadow-sm"
+                >
+                  Casos de Uso Reais
+                </button>
+                <button 
+                  onClick={() => scrollToSection('curriculo-sobre')}
+                  className="px-4 py-2 bg-white text-slate-800 hover:bg-[#1569EF] hover:text-white rounded-xl text-xs font-semibold transition-all border border-slate-200 shadow-sm"
+                >
+                  Sobre Mim
+                </button>
+              </div>
+
+              <div id="curriculo-trajetoria" className="bg-gradient-to-br from-slate-900 to-blue-950 text-white rounded-3xl p-8 sm:p-10 shadow-xl mb-12 relative overflow-hidden scroll-mt-28">
                 <div className="flex items-center gap-3 mb-6">
                   <div className="p-2.5 rounded-xl bg-[#1569EF]/30 text-cyan-300 border border-[#1569EF]/40">
                     <GraduationCap className="w-6 h-6" />
@@ -437,6 +467,9 @@ export default function Portfolio() {
               </div>
 
               {/* Grid de Competências e Especialidades */}
+              <div id="curriculo-competencias" className="mb-8 scroll-mt-28">
+                <h3 className="text-2xl font-bold text-slate-900 mb-6">// Competências Principais</h3>
+              </div>
               <div className="grid md:grid-cols-2 gap-8 mb-12">
                 <div className="bg-slate-50 border border-slate-200 rounded-3xl p-8 shadow-sm flex flex-col justify-between">
                   <div>
@@ -523,11 +556,11 @@ export default function Portfolio() {
                 </div>
               </div>
 
-              {/* SEÇÃO DE EXPERIÊNCIAS PRÁTICAS E CASOS DE USO REAIS (POWER AUTOMATE, PYTHON, POSTMAN, GIT/GITHUB) */}
-              <div className="mb-12">
+              {/* SEÇÃO DE EXPERIÊNCIAS PRÁTICAS E CASOS DE USO REAIS */}
+              <div id="curriculo-casos" className="mb-12 scroll-mt-28">
                 <div className="text-[#1569EF] font-mono text-xs uppercase tracking-widest mb-2 font-bold">// Casos de Uso Reais</div>
                 <h3 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">Experiência Prática com Ferramentas</h3>
-                <p className="text-slate-600 text-sm mt-1">Aplicações diárias e resoluções de problemas em ambiente corporativo.</p>
+                <p className="text-slate-600 mt-2">Aplicações diárias e resoluções de problemas em ambiente corporativo.</p>
               </div>
 
               <div className="space-y-8 mb-12">
@@ -589,7 +622,7 @@ export default function Portfolio() {
               </div>
 
               {/* Seção "Sobre Mim" */}
-              <div className="bg-slate-900 text-white rounded-3xl p-8 sm:p-12 shadow-2xl relative overflow-hidden border border-slate-800">
+              <div id="curriculo-sobre" className="bg-slate-900 text-white rounded-3xl p-8 sm:p-12 shadow-2xl relative overflow-hidden border border-slate-800 scroll-mt-28">
                 <div className="absolute -right-16 -bottom-16 w-80 h-80 bg-blue-600/10 rounded-full blur-3xl pointer-events-none"></div>
                 
                 <div className="flex items-center gap-3 mb-6">
@@ -622,7 +655,7 @@ export default function Portfolio() {
             <motion.div key="formatura" initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -15 }} transition={{ duration: 0.3 }}>
               <div className="mb-12">
                 <div className="text-[#1569EF] font-mono text-xs uppercase tracking-widest mb-2 font-bold">// Marco Acadêmico</div>
-                <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">Galeria de Formatura</h2>
+                <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">Galeria de Colação de Grau</h2>
                 <p className="text-slate-600 mt-2">Clique em qualquer foto para visualizá-la em tela cheia.</p>
               </div>
 

@@ -96,7 +96,7 @@ export default function Portfolio() {
       <main className="max-w-7xl mx-auto px-6 pt-36 pb-24 relative z-10 min-h-[75vh]">
         <AnimatePresence mode="wait">
           
-          {/* ABA: HOME COM BANNER E FOTO INTEGRADA */}
+          {/* ABA: HOME COM BANNER E FOTO COM EFEITO HOVER */}
           {currentTab === 'home' && (
             <motion.div 
               key="home"
@@ -140,13 +140,16 @@ export default function Portfolio() {
                   </div>
                 </div>
 
-                {/* Bloco da Foto Integrada Direto no Fundo Azul (Sem Borda ou Card) */}
+                {/* Bloco da Foto com Efeito Hover (Trazendo para frente / Zoom suave) */}
                 <div className="lg:col-span-5 flex justify-center lg:justify-end z-10 mt-10 lg:mt-0">
-                  <div className="relative w-72 h-80 sm:w-80 sm:h-96 rounded-3xl overflow-hidden shadow-2xl">
+                  <div className="relative w-72 h-80 sm:w-80 sm:h-96 rounded-3xl overflow-hidden shadow-2xl group cursor-pointer">
+                    {/* Brilho sutil de fundo no hover */}
+                    <div className="absolute inset-0 bg-blue-400/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10 pointer-events-none"></div>
+                    
                     <img 
                       src="/avatar-fullstack.jpg" 
                       alt="Foto Profissional Crystian FullStack" 
-                      className="w-full h-full object-cover object-top"
+                      className="w-full h-full object-cover object-top transition-all duration-500 ease-out group-hover:scale-105 group-hover:-translate-y-1 group-hover:shadow-2xl"
                     />
                   </div>
                 </div>

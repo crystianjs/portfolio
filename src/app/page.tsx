@@ -29,7 +29,6 @@ export default function Portfolio() {
   const [currentTab, setCurrentTab] = useState<'home' | 'projetos' | 'funcionalidades' | 'stack' | 'curriculo'>('home');
   const [activeProject, setActiveProject] = useState(0);
 
-  // Lista ajustada com os nomes exatos das suas fotos na pasta public/
   const formaturaImages = [
     { src: "/formatura(1).jpeg", caption: "Formação em ADS - Unicesumar" },
     { src: "/formatura(2).jpeg", caption: "Momento da Colação de Grau" },
@@ -39,7 +38,6 @@ export default function Portfolio() {
 
   const [currentSlide, setCurrentSlide] = useState(0);
 
-  // Auto-play intuitivo do carrossel a cada 4 segundos
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % formaturaImages.length);
@@ -89,6 +87,11 @@ export default function Portfolio() {
   return (
     <div className="min-h-screen bg-white text-slate-900 font-sans antialiased selection:bg-[#1569EF]/20 selection:text-[#1569EF]">
       
+      {/* Configuração da Aba (Favicon e Título) */}
+      <head>
+        <link rel="icon" href="/fivcon.png" type="image/png" />
+      </head>
+
       {/* --- NAVBAR SUPERIOR (Centralizada) --- */}
       <header className="fixed top-0 w-full z-50 bg-white/95 backdrop-blur-md border-b border-slate-100 shadow-sm">
         <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-center">
@@ -212,14 +215,24 @@ export default function Portfolio() {
                     key={proj.id}
                     className="group rounded-3xl bg-slate-50 border border-slate-200 hover:border-[#1569EF]/50 transition-all duration-300 relative overflow-hidden flex flex-col justify-between shadow-lg shadow-slate-100 hover:shadow-xl hover:-translate-y-1"
                   >
-                    <div className="w-full h-56 bg-slate-900 border-b border-slate-200 relative overflow-hidden flex items-center justify-center">
-                      <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent opacity-60 z-10"></div>
-                      <div className="absolute inset-0 flex flex-col items-center justify-center text-slate-400 group-hover:scale-105 transition-transform duration-500">
-                        <Monitor className="w-12 h-12 mb-2 text-slate-500 group-hover:text-[#1569EF] transition-colors" />
-                        <span className="text-xs font-mono text-slate-300">Preview: {proj.title}</span>
+                    {/* Mockup de Preview Modernizado */}
+                    <div className="w-full h-56 bg-gradient-to-br from-slate-900 via-blue-950 to-slate-900 border-b border-slate-200 relative overflow-hidden flex flex-col items-center justify-center p-6 text-center">
+                      <div className="absolute top-4 left-4 flex gap-1.5">
+                        <div className="w-3 h-3 rounded-full bg-red-500/80"></div>
+                        <div className="w-3 h-3 rounded-full bg-amber-500/80"></div>
+                        <div className="w-3 h-3 rounded-full bg-emerald-500/80"></div>
+                      </div>
+                      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-blue-600/20 via-transparent to-transparent opacity-80 pointer-events-none"></div>
+                      
+                      <div className="relative z-10 group-hover:scale-105 transition-transform duration-500 flex flex-col items-center">
+                        <div className="p-3 bg-blue-600/20 border border-blue-400/30 rounded-2xl text-cyan-300 mb-3 shadow-lg backdrop-blur-md">
+                          <Monitor className="w-8 h-8" />
+                        </div>
+                        <span className="text-sm font-bold text-white tracking-wide">{proj.title}</span>
+                        <span className="text-xs font-mono text-blue-300 mt-1 bg-white/10 px-3 py-1 rounded-full backdrop-blur-md">Ambiente de Produção Ativo</span>
                       </div>
 
-                      <div className="absolute top-4 right-4 z-20 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <div className="absolute top-4 right-4 z-20 flex gap-2">
                         <a href={proj.url} target="_blank" rel="noopener noreferrer" className="p-2.5 bg-white text-slate-900 rounded-xl hover:bg-[#1569EF] hover:text-white transition-all shadow-lg">
                           <ExternalLink className="w-4 h-4" />
                         </a>
@@ -553,10 +566,10 @@ export default function Portfolio() {
             <a href="https://github.com/crystianjs" target="_blank" rel="noopener noreferrer" className="p-3 bg-slate-800 border border-slate-700 rounded-xl hover:border-[#1569EF] hover:text-[#1569EF] transition-all text-white">
               <Github className="w-5 h-5" />
             </a>
-            <a href="https://www.linkedin.com/in/crystian-jesus-a66622219/" className="p-3 bg-slate-800 border border-slate-700 rounded-xl hover:border-[#1569EF] hover:text-[#1569EF] transition-all text-white">
+            <a href="#" className="p-3 bg-slate-800 border border-slate-700 rounded-xl hover:border-[#1569EF] hover:text-[#1569EF] transition-all text-white">
               <Linkedin className="w-5 h-5" />
             </a>
-            <a href="crystianjs09@gmail.com" className="p-3 bg-slate-800 border border-slate-700 rounded-xl hover:border-[#1569EF] hover:text-[#1569EF] transition-all text-white">
+            <a href="mailto:contato@exemplo.com" className="p-3 bg-slate-800 border border-slate-700 rounded-xl hover:border-[#1569EF] hover:text-[#1569EF] transition-all text-white">
               <Mail className="w-5 h-5" />
             </a>
           </div>

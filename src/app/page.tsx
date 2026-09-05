@@ -140,23 +140,14 @@ export default function Portfolio() {
                   </div>
                 </div>
 
-                {/* Bloco da Foto Integrada Direto no Fundo Azul (Sem Card) */}
+                {/* Bloco da Foto Integrada Direto no Fundo Azul (Sem Borda ou Card) */}
                 <div className="lg:col-span-5 flex justify-center lg:justify-end z-10 mt-10 lg:mt-0">
-                  <div className="relative w-72 h-80 sm:w-80 sm:h-96 rounded-3xl overflow-hidden shadow-2xl border border-white/20">
-                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950/50 via-transparent to-cyan-400/10 pointer-events-none z-10"></div>
-                    
+                  <div className="relative w-72 h-80 sm:w-80 sm:h-96 rounded-3xl overflow-hidden shadow-2xl">
                     <img 
-                      src="/avatar-fullstack.png" 
+                      src="/avatar-fullstack.jpg" 
                       alt="Foto Profissional Crystian FullStack" 
-                      className="w-full h-full object-cover object-top relative z-0"
-                      onError={(e) => { e.currentTarget.style.display = 'none'; }}
+                      className="w-full h-full object-cover object-top"
                     />
-                    
-                    <div className="absolute inset-0 flex flex-col items-center justify-center text-center p-6 text-slate-300 z-20">
-                      <Terminal className="w-10 h-10 text-cyan-300 mb-2" />
-                      <span className="text-xs font-mono font-bold">Coloque a imagem em</span>
-                      <span className="text-[10px] text-slate-300 mt-1 font-mono">/public/avatar-fullstack.png</span>
-                    </div>
                   </div>
                 </div>
 

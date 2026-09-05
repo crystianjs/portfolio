@@ -58,7 +58,7 @@ export default function Portfolio() {
   const projects = [
     {
       id: 0,
-      title: "IALE - Portal de Gestão",
+      title: "IALE - Comunidade",
       category: "Ecossistema Corporativo e Igreja",
       description: "Plataforma completa para gestão integrada desenvolvida para a igreja que frequento. Contém painel de música, gestão de repertório, bate-papo em tempo real, central de comunicados e base de aniversariantes integrada via banco gerada por formulários.",
       url: "https://iale.vercel.app/login",
@@ -72,7 +72,7 @@ export default function Portfolio() {
     },
     {
       id: 1,
-      title: "Analiza Ata - Hub Operacional",
+      title: "Hub Operacional - Pendencias e Gestão",
       category: "Sistema de Missão Crítica",
       description: "Ferramenta robusta para gerenciamento de grandes projetos onde você consegue adicionar pendências próprias ou de clientes, controlar o registro de horas trabalhadas por cada pessoa em cada subtarefa de uma tarefa principal, além de dashboards analíticos e barras de progresso.",
       url: "https://analiza-ata.vercel.app/login",

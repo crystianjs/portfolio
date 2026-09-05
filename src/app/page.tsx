@@ -6,18 +6,16 @@ import {
   Linkedin, 
   ExternalLink, 
   Mail, 
-  Globe, 
   ShieldCheck, 
   Layout, 
   Database, 
-  Cpu, 
-  MessageCircle,
-  ArrowRight,
   Layers,
   CheckCircle2,
   Monitor,
   Code2,
-  UserCheck
+  UserCheck,
+  Terminal,
+  ArrowRight
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -59,14 +57,11 @@ export default function Portfolio() {
   return (
     <div className="min-h-screen bg-[#f8fafc] text-[#041634] selection:bg-[#1569EF]/20 selection:text-[#1569EF] font-sans antialiased relative overflow-hidden">
       
-      {/* --- NAVBAR SUPERIOR (Centralizada, Sem Logo e com Avatar à Direita estilo Sólides) --- */}
+      {/* --- NAVBAR SUPERIOR --- */}
       <header className="fixed top-0 w-full z-50 bg-white/90 backdrop-blur-md border-b border-slate-200 shadow-sm">
         <div className="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
-          
-          {/* Espaço esquerdo vazio para balancear o layout */}
           <div className="w-10"></div>
 
-          {/* Navbar Centralizada */}
           <nav className="flex items-center gap-1 bg-slate-100 p-1.5 rounded-2xl border border-slate-200">
             <button 
               onClick={() => setCurrentTab('home')}
@@ -94,27 +89,23 @@ export default function Portfolio() {
             </button>
           </nav>
 
-          {/* Perfil / Avatar no canto direito (Igual à referência) */}
           <div className="flex items-center gap-3">
             <div className="text-right hidden sm:block">
               <span className="block text-xs font-bold text-[#041634]">Crystian JS</span>
               <span className="block text-[10px] text-emerald-600 font-mono">● Online</span>
             </div>
-            <div className="w-10 h-10 rounded-full border-2 border-[#1569EF] overflow-hidden bg-slate-200 shadow-sm flex items-center justify-center">
-              {/* Coloque sua foto de IA na pasta public/ com o nome avatar-fullstack.png */}
+            <div className="w-10 h-10 rounded-full border-2 border-[#1569EF] overflow-hidden bg-slate-200 shadow-sm flex items-center justify-center relative">
               <img 
                 src="/avatar-fullstack.png" 
                 alt="Avatar FullStack" 
                 className="w-full h-full object-cover"
                 onError={(e) => {
-                  // Fallback caso a imagem ainda não esteja na pasta public
                   e.currentTarget.style.display = 'none';
                 }}
               />
               <UserCheck className="w-5 h-5 text-[#041634] absolute" />
             </div>
           </div>
-
         </div>
       </header>
 
@@ -122,7 +113,6 @@ export default function Portfolio() {
       <main className="max-w-6xl mx-auto px-6 pt-36 pb-24 relative z-10 min-h-[75vh]">
         <AnimatePresence mode="wait">
           
-          {/* ABA: HOME COM BANNER PROFISSIONAL */}
           {currentTab === 'home' && (
             <motion.div 
               key="home"
@@ -132,7 +122,6 @@ export default function Portfolio() {
               transition={{ duration: 0.3 }}
               className="py-6"
             >
-              {/* Banner Principal em Card Profissional (Estilo Sólides) */}
               <div className="bg-white border border-slate-200 rounded-3xl p-8 sm:p-12 shadow-xl shadow-slate-200/50 mb-12 relative overflow-hidden flex flex-col lg:flex-row items-center justify-between gap-8">
                 <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-br from-[#1569EF]/10 to-transparent rounded-full blur-3xl pointer-events-none"></div>
 
@@ -166,11 +155,9 @@ export default function Portfolio() {
                   </div>
                 </div>
 
-                {/* Área do Banner com Foto Profissional gerada por IA */}
                 <div className="relative z-10 shrink-0">
                   <div className="w-64 h-64 sm:w-72 sm:h-72 rounded-3xl bg-gradient-to-br from-[#041634] to-[#0A3F94] p-2 shadow-2xl relative">
-                    <div className="w-full h-full rounded-2xl overflow-hidden bg-slate-900 flex items-center justify-center border border-slate-700">
-                      {/* Insira sua foto gerada por IA na pasta public com o nome avatar-fullstack.png */}
+                    <div className="w-full h-full rounded-2xl overflow-hidden bg-slate-900 flex items-center justify-center border border-slate-700 relative">
                       <img 
                         src="/avatar-fullstack.png" 
                         alt="Banner FullStack IA" 
@@ -191,7 +178,6 @@ export default function Portfolio() {
             </motion.div>
           )}
 
-          {/* ABA: PROJETOS & PRINTS */}
           {currentTab === 'projetos' && (
             <motion.div 
               key="projetos"
@@ -255,7 +241,6 @@ export default function Portfolio() {
             </motion.div>
           )}
 
-          {/* ABA: APRESENTAÇÃO DINÂMICA */}
           {currentTab === 'funcionalidades' && (
             <motion.div 
               key="funcionalidades"
@@ -306,7 +291,6 @@ export default function Portfolio() {
             </motion.div>
           )}
 
-          {/* ABA: STACK TECH */}
           {currentTab === 'stack' && (
             <motion.div 
               key="stack"
@@ -349,7 +333,7 @@ export default function Portfolio() {
         <div className="max-w-6xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-8">
           <div>
             <div className="font-mono font-bold text-lg text-white mb-2 flex items-center gap-2">
-              <Sparkles className="w-4 h-4 text-[#1569EF]" /> DEV<span className="text-[#1569EF]">.</span>FS
+              <Terminal className="w-4 h-4 text-[#1569EF]" /> DEV<span className="text-[#1569EF]">.</span>FS
             </div>
             <p className="text-slate-400 text-xs font-mono">
               © {new Date().getFullYear()} — Desenvolvido com foco em alta performance e sigilo.

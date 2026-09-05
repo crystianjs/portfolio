@@ -23,7 +23,10 @@ import {
   Server,
   Zap,
   MessageSquare,
-  UserCheck
+  UserCheck,
+  BarChart3,
+  Activity,
+  Users
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -232,7 +235,7 @@ export default function Portfolio() {
                 <p className="text-slate-600 mt-2">Acesse diretamente os sistemas reais desenvolvidos.</p>
               </div>
 
-              <div className="grid md:grid-cols-2 gap-8">
+              <div className="grid md:grid-cols-2 gap-8 mb-16">
                 {projects.map((proj) => (
                   <div 
                     key={proj.id}
@@ -287,6 +290,74 @@ export default function Portfolio() {
                   </div>
                 ))}
               </div>
+
+              {/* SEÇÃO DETALHADA DE FUNÇÕES COM AS IMAGENS DE PUBLIC/PROJETO/ */}
+              <div className="mt-12">
+                <div className="mb-8">
+                  <div className="text-[#1569EF] font-mono text-xs uppercase tracking-widest mb-2 font-bold">// Detalhamento Técnico</div>
+                  <h3 className="text-2xl sm:text-3xl font-extrabold text-slate-900">Módulos e Funções do Hub Operacional</h3>
+                  <p className="text-slate-600 text-sm mt-1">Conheça as telas e regras implementadas no sistema de missão crítica.</p>
+                </div>
+
+                <div className="space-y-12">
+                  {/* Função 1 */}
+                  <div className="grid lg:grid-cols-12 gap-8 items-center bg-slate-50 border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-sm">
+                    <div className="lg:col-span-5 space-y-4">
+                      <span className="text-xs font-mono text-[#1569EF] bg-[#1569EF]/10 px-3 py-1 rounded-full font-bold">Módulo de Tarefas</span>
+                      <h4 className="text-2xl font-bold text-slate-900">Tarefas, Subtarefas e Registro de Atividades</h4>
+                      <p className="text-slate-600 text-sm leading-relaxed">
+                        Gerenciamento completo de pendências onde cada tarefa principal possui subtarefas detalhadas. O sistema permite o registro de horários trabalhados por colaborador, anotações de procedimentos realizados via scripts Python e acompanhamento do progresso em tempo real.
+                      </p>
+                    </div>
+                    <div className="lg:col-span-7 bg-slate-900 rounded-2xl overflow-hidden border border-slate-200 shadow-md">
+                      <img src="/projeto/headi_tarefa_subtaref_funcoes.png" alt="Tarefas e Subtarefas" className="w-full h-auto object-cover" />
+                    </div>
+                  </div>
+
+                  {/* Função 2 */}
+                  <div className="grid lg:grid-cols-12 gap-8 items-center bg-slate-50 border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-sm">
+                    <div className="lg:col-span-7 lg:order-1 order-2 bg-slate-900 rounded-2xl overflow-hidden border border-slate-200 shadow-md">
+                      <img src="/projeto/Dashboard_Projeto1.png" alt="Dashboard de Evolução" className="w-full h-auto object-cover" />
+                    </div>
+                    <div className="lg:col-span-5 lg:order-2 order-1 space-y-4">
+                      <span className="text-xs font-mono text-[#1569EF] bg-[#1569EF]/10 px-3 py-1 rounded-full font-bold">Módulo de Métricas</span>
+                      <h4 className="text-2xl font-bold text-slate-900">Dashboard de Evolução do Projeto</h4>
+                      <p className="text-slate-600 text-sm leading-relaxed">
+                        Acompanhamento visual de status operacionais com barra de progresso de conclusão, contagem total de tarefas, itens concluídos, em andamento e pendentes por projeto específico.
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Função 3 */}
+                  <div className="grid lg:grid-cols-12 gap-8 items-center bg-slate-50 border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-sm">
+                    <div className="lg:col-span-5 space-y-4">
+                      <span className="text-xs font-mono text-[#1569EF] bg-[#1569EF]/10 px-3 py-1 rounded-full font-bold">Módulo de Monitoramento</span>
+                      <h4 className="text-2xl font-bold text-slate-900">Torre de Controle ao Vivo</h4>
+                      <p className="text-slate-600 text-sm leading-relaxed">
+                        Visão geral em tempo real da disponibilidade da equipe, permitindo acompanhar quem está trabalhando, disponível ou em deslocamento para unidades corporativas de atendimento.
+                      </p>
+                    </div>
+                    <div className="lg:col-span-7 bg-slate-900 rounded-2xl overflow-hidden border border-slate-200 shadow-md">
+                      <img src="/projeto/torre_ao_vivo.png" alt="Torre de Controle ao Vivo" className="w-full h-auto object-cover" />
+                    </div>
+                  </div>
+
+                  {/* Função 4 */}
+                  <div className="grid lg:grid-cols-12 gap-8 items-center bg-slate-50 border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-sm">
+                    <div className="lg:col-span-7 lg:order-1 order-2 bg-slate-900 rounded-2xl overflow-hidden border border-slate-200 shadow-md">
+                      <img src="/projeto/Admin.png" alt="Painel Administrativo" className="w-full h-auto object-cover" />
+                    </div>
+                    <div className="lg:col-span-5 lg:order-2 order-1 space-y-4">
+                      <span className="text-xs font-mono text-[#1569EF] bg-[#1569EF]/10 px-3 py-1 rounded-full font-bold">Módulo Administrativo</span>
+                      <h4 className="text-2xl font-bold text-slate-900">Gestão de Equipe e Permissões</h4>
+                      <p className="text-slate-600 text-sm leading-relaxed">
+                        Painel completo de administração para cadastro de novos usuários, definição de funções/setores e liberação granular de acesso aos diferentes projetos corporativos.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
             </motion.div>
           )}
 
@@ -376,7 +447,7 @@ export default function Portfolio() {
             </motion.div>
           )}
 
-          {/* ABA: CURRÍCULO PROFISSIONAL E APRESENTAÇÃO */}
+          {/* ABA: CURRÍCULO PROFISSIONAL (Estrutura: Formatura -> Sobre Mim -> Competências) */}
           {currentTab === 'curriculo' && (
             <motion.div 
               key="curriculo"
@@ -387,28 +458,116 @@ export default function Portfolio() {
             >
               <div className="mb-12">
                 <div className="text-[#1569EF] font-mono text-xs uppercase tracking-widest mb-2 font-bold">// Perfil Profissional e Conquistas</div>
-                <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">Currículo Profissional</h2>
+                <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">Currículo e Formatura</h2>
                 <p className="text-slate-600 mt-2">Analista de TI e Dados | Formado em Análise e Desenvolvimento de Sistemas (ADS) pela Unicesumar.</p>
               </div>
 
-              {/* Resumo Profissional Destaque */}
-              <div className="bg-gradient-to-br from-slate-900 to-blue-950 text-white rounded-3xl p-8 sm:p-10 shadow-xl mb-12 relative overflow-hidden">
-                <div className="absolute right-0 top-0 w-80 h-80 bg-[#1569EF]/20 rounded-full blur-3xl pointer-events-none"></div>
-                <div className="flex items-center gap-3 mb-6">
-                  <div className="p-2.5 rounded-xl bg-[#1569EF]/30 text-cyan-300 border border-[#1569EF]/40">
-                    <GraduationCap className="w-6 h-6" />
+              {/* 1. TOPO: Card Formatura + Fotos em Slide */}
+              <div className="grid lg:grid-cols-12 gap-8 mb-12 items-stretch">
+                <div className="lg:col-span-7 bg-gradient-to-br from-slate-900 to-blue-950 text-white rounded-3xl p-8 sm:p-10 shadow-xl flex flex-col justify-between relative overflow-hidden">
+                  <div className="absolute right-0 top-0 w-80 h-80 bg-[#1569EF]/20 rounded-full blur-3xl pointer-events-none"></div>
+                  <div>
+                    <div className="flex items-center gap-3 mb-6">
+                      <div className="p-2.5 rounded-xl bg-[#1569EF]/30 text-cyan-300 border border-[#1569EF]/40">
+                        <GraduationCap className="w-6 h-6" />
+                      </div>
+                      <h3 className="text-2xl font-bold">Graduação e Marco Acadêmico</h3>
+                    </div>
+                    <p className="text-slate-300 text-base sm:text-lg leading-relaxed font-light mb-6">
+                      Formado em Análise e Desenvolvimento de Sistemas (ADS) pela Faculdade Unicesumar, consolidando a base acadêmica necessária para atuar com engenharia de dados, automação e sustentação de sistemas críticos em nível internacional.
+                    </p>
+                    <p className="text-slate-300 text-sm leading-relaxed font-light">
+                      Cada etapa desta jornada acadêmica reflete dedicação à tecnologia e busca constante por excelência técnica e resolução de problemas complexos.
+                    </p>
                   </div>
-                  <h3 className="text-2xl font-bold">Graduação e Trajetória</h3>
                 </div>
-                <p className="text-slate-300 text-base sm:text-lg leading-relaxed font-light mb-6">
-                  Sou Analista de TI e Dados formado em ADS pela Faculdade Unicesumar, com atuação focada em engenharia de dados, automação, sustentação de sistemas de missão crítica e integração entre bancos de dados e planilhas no setor de Saúde e Diagnósticos Laboratoriais (operações Brasil/Espanha).
-                </p>
-                <p className="text-slate-300 text-sm leading-relaxed font-light">
-                  No dia a dia, utilizo um excelente relacionamento interpessoal para colaborar com o time na resolução rápida de problemas, aplicando a metodologia Kanban para manter o fluxo de entregas ágil e organizado.
-                </p>
+
+                {/* Carrossel de Formatura */}
+                <div className="lg:col-span-5 bg-slate-900 rounded-3xl overflow-hidden shadow-xl border border-slate-200 relative flex flex-col justify-between group">
+                  <div className="relative w-full h-72 sm:h-80 bg-slate-950 overflow-hidden flex items-center justify-center">
+                    {formaturaImages.map((img, idx) => (
+                      <div 
+                        key={idx}
+                        className={`absolute inset-0 transition-opacity duration-700 ease-in-out ${idx === currentSlide ? 'opacity-100 scale-100' : 'opacity-0 scale-105 pointer-events-none'}`}
+                      >
+                        <img 
+                          src={img.src} 
+                          alt={img.caption}
+                          className="w-full h-full object-cover"
+                          onError={(e) => {
+                            e.currentTarget.style.display = 'none';
+                          }}
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent opacity-80"></div>
+                        <div className="absolute bottom-4 left-4 right-4 text-center z-10">
+                          <span className="text-xs font-mono bg-[#1569EF]/80 text-white px-3 py-1 rounded-full backdrop-blur-md">
+                            {img.caption}
+                          </span>
+                        </div>
+                      </div>
+                    ))}
+
+                    <button 
+                      onClick={prevSlide}
+                      className="absolute left-3 top-1/2 -translate-y-1/2 p-2 rounded-full bg-black/50 text-white hover:bg-[#1569EF] transition-all backdrop-blur-sm z-20"
+                      aria-label="Foto anterior"
+                    >
+                      <ChevronLeft className="w-5 h-5" />
+                    </button>
+                    <button 
+                      onClick={nextSlide}
+                      className="absolute right-3 top-1/2 -translate-y-1/2 p-2 rounded-full bg-black/50 text-white hover:bg-[#1569EF] transition-all backdrop-blur-sm z-20"
+                      aria-label="Próxima foto"
+                    >
+                      <ChevronRight className="w-5 h-5" />
+                    </button>
+                  </div>
+
+                  <div className="p-4 bg-slate-900 flex justify-center gap-2 items-center border-t border-slate-800">
+                    {formaturaImages.map((_, idx) => (
+                      <button 
+                        key={idx}
+                        onClick={() => setCurrentSlide(idx)}
+                        className={`h-2 rounded-full transition-all ${idx === currentSlide ? 'w-8 bg-[#1569EF]' : 'w-2 bg-slate-700 hover:bg-slate-500'}`}
+                        aria-label={`Ir para slide ${idx + 1}`}
+                      />
+                    ))}
+                  </div>
+                </div>
               </div>
 
-              {/* Grid de Competências e Especialidades */}
+              {/* 2. MEIO: Card "Sobre Mim" */}
+              <div className="bg-slate-900 text-white rounded-3xl p-8 sm:p-12 shadow-2xl relative overflow-hidden border border-slate-800 mb-12">
+                <div className="absolute -right-16 -bottom-16 w-80 h-80 bg-blue-600/10 rounded-full blur-3xl pointer-events-none"></div>
+                
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="p-3 rounded-2xl bg-[#1569EF]/20 text-[#1569EF] border border-[#1569EF]/30">
+                    <UserCheck className="w-6 h-6 text-cyan-300" />
+                  </div>
+                  <div>
+                    <span className="text-xs font-mono text-[#1569EF] uppercase tracking-wider font-bold">Apresentação Pessoal</span>
+                    <h3 className="text-2xl sm:text-3xl font-extrabold text-white">Sobre Mim</h3>
+                  </div>
+                </div>
+
+                <div className="space-y-6 text-slate-300 text-base sm:text-lg leading-relaxed font-light">
+                  <p>
+                    Olá! Sou o <strong className="text-white font-semibold">Crystian</strong>, um profissional apaixonado por tecnologia, dados e inovação, com forte atuação corporativa internacional (Brasil e Espanha) no exigente setor de Saúde e Diagnósticos Laboratoriais.
+                  </p>
+                  <p>
+                    Minha jornada é impulsionada pelo desejo constante de resolver problemas complexos e otimizar processos operacionais que antes pareciam engessados. Acredito que a combinação entre uma engenharia de dados sólida, automações inteligentes com ferramentas modernas e o uso estratégico de Inteligência Artificial é o segredo para entregar valor real aos negócios.
+                  </p>
+                  <p>
+                    Seja construindo ecossistemas web performáticos em Next.js, estruturando queries avançadas em PostgreSQL para sistemas de missão crítica (LIS), ou desenvolvendo fluxos automatizados em N8N e Python, meu compromisso é sempre unir alta técnica, empatia no trabalho em equipe e agilidade através do Kanban.
+                  </p>
+                </div>
+              </div>
+
+              {/* 3. ABAIXO: Cards de Manipulação de Dados, SQL e Competências */}
+              <div className="mb-8">
+                <h3 className="text-2xl font-bold text-slate-900 mb-6">// Competências e Atuação Técnica</h3>
+              </div>
+
               <div className="grid md:grid-cols-2 gap-8 mb-12">
                 <div className="bg-slate-50 border border-slate-200 rounded-3xl p-8 shadow-sm flex flex-col justify-between">
                   <div>
@@ -495,37 +654,10 @@ export default function Portfolio() {
                 </div>
               </div>
 
-              {/* Seção "Sobre Mim" em forma de Apresentação Profissional Logo Abaixo */}
-              <div className="bg-slate-900 text-white rounded-3xl p-8 sm:p-12 shadow-2xl relative overflow-hidden border border-slate-800">
-                <div className="absolute -right-16 -bottom-16 w-80 h-80 bg-blue-600/10 rounded-full blur-3xl pointer-events-none"></div>
-                
-                <div className="flex items-center gap-3 mb-6">
-                  <div className="p-3 rounded-2xl bg-[#1569EF]/20 text-[#1569EF] border border-[#1569EF]/30">
-                    <UserCheck className="w-6 h-6 text-cyan-300" />
-                  </div>
-                  <div>
-                    <span className="text-xs font-mono text-[#1569EF] uppercase tracking-wider font-bold">Apresentação Pessoal</span>
-                    <h3 className="text-2xl sm:text-3xl font-extrabold text-white">Sobre Mim</h3>
-                  </div>
-                </div>
-
-                <div className="space-y-6 text-slate-300 text-base sm:text-lg leading-relaxed font-light">
-                  <p>
-                    Olá! Sou o <strong className="text-white font-semibold">Crystian</strong>, um profissional apaixonado por tecnologia, dados e inovação, com forte atuação corporativa internacional (Brasil e Espanha) no exigente setor de Saúde e Diagnósticos Laboratoriais.
-                  </p>
-                  <p>
-                    Minha jornada é impulsionada pelo desejo constante de resolver problemas complexos e otimizar processos operacionais que antes pareciam engessados. Acredito que a combinação entre uma engenharia de dados sólida, automações inteligentes com ferramentas modernas e o uso estratégico de Inteligência Artificial é o segredo para entregar valor real aos negócios.
-                  </p>
-                  <p>
-                    Seja construindo ecossistemas web performáticos em Next.js, estruturando queries avançadas em PostgreSQL para sistemas de missão crítica (LIS), ou desenvolvendo fluxos automatizados em N8N e Python, meu compromisso é sempre unir alta técnica, empatia no trabalho em equipe e agilidade através do Kanban.
-                  </p>
-                </div>
-              </div>
-
             </motion.div>
           )}
 
-          {/* ABA: FORMATURA (Carrossel Exclusivo) */}
+          {/* ABA: FORMATURA (Carrossel com legendas atualizadas) */}
           {currentTab === 'formatura' && (
             <motion.div 
               key="formatura"
@@ -540,7 +672,6 @@ export default function Portfolio() {
                 <p className="text-slate-600 mt-2">Registros da conclusão da graduação em Análise e Desenvolvimento de Sistemas.</p>
               </div>
 
-              {/* Carrossel Exclusivo de Formatura */}
               <div className="max-w-4xl mx-auto bg-slate-900 rounded-3xl overflow-hidden shadow-2xl border border-slate-800 relative group">
                 <div className="relative w-full h-[400px] sm:h-[500px] bg-slate-950 overflow-hidden flex items-center justify-center">
                   
@@ -600,19 +731,17 @@ export default function Portfolio() {
         </AnimatePresence>
       </main>
 
-      {/* --- RODAPÉ COM ÍCONE PERSONALIZADO --- */}
+      {/* --- RODAPÉ SEM ÍCONES EXTRAS --- */}
       <footer id="contato" className="border-t border-slate-200 bg-slate-900 text-white py-16 relative z-10">
         <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-8">
           
-          <div className="flex items-center gap-3">
-            <div>
-              <div className="font-mono font-bold text-lg text-white mb-1 flex items-center gap-2">
-                <Terminal className="w-4 h-4 text-[#1569EF]" /> DEV<span className="text-[#1569EF]">.</span> CRYSTIAN
-              </div>
-              <p className="text-slate-400 text-xs font-mono">
-                © {new Date().getFullYear()} — Desenvolvido com foco em alta performance e sigilo.
-              </p>
+          <div>
+            <div className="font-mono font-bold text-lg text-white mb-1 flex items-center gap-2">
+              <Terminal className="w-4 h-4 text-[#1569EF]" /> DEV<span className="text-[#1569EF]">.</span> CRYSTIAN
             </div>
+            <p className="text-slate-400 text-xs font-mono">
+              © {new Date().getFullYear()} — Desenvolvido com foco em alta performance e sigilo.
+            </p>
           </div>
 
           <div className="flex gap-4">

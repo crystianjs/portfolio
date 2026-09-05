@@ -553,10 +553,10 @@ export default function Portfolio() {
             <a href="https://github.com/crystianjs" target="_blank" rel="noopener noreferrer" className="p-3 bg-slate-800 border border-slate-700 rounded-xl hover:border-[#1569EF] hover:text-[#1569EF] transition-all text-white">
               <Github className="w-5 h-5" />
             </a>
-            <a href="#" className="p-3 bg-slate-800 border border-slate-700 rounded-xl hover:border-[#1569EF] hover:text-[#1569EF] transition-all text-white">
+            <a href="https://www.linkedin.com/in/crystian-jesus-a66622219/" className="p-3 bg-slate-800 border border-slate-700 rounded-xl hover:border-[#1569EF] hover:text-[#1569EF] transition-all text-white">
               <Linkedin className="w-5 h-5" />
             </a>
-            <a href="mailto:contato@exemplo.com" className="p-3 bg-slate-800 border border-slate-700 rounded-xl hover:border-[#1569EF] hover:text-[#1569EF] transition-all text-white">
+            <a href="crystianjs09@gmail.com" className="p-3 bg-slate-800 border border-slate-700 rounded-xl hover:border-[#1569EF] hover:text-[#1569EF] transition-all text-white">
               <Mail className="w-5 h-5" />
             </a>
           </div>

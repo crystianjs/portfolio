@@ -21,7 +21,9 @@ import {
   ChevronRight,
   Cpu,
   Server,
-  Zap
+  Zap,
+  MessageSquare,
+  UserCheck
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -112,7 +114,7 @@ export default function Portfolio() {
               onClick={() => setCurrentTab('funcionalidades')}
               className={`px-4 sm:px-5 py-2 rounded-xl text-sm font-semibold transition-all whitespace-nowrap ${currentTab === 'funcionalidades' ? 'bg-[#1569EF] text-white shadow-md shadow-blue-500/20' : 'text-slate-600 hover:text-slate-900'}`}
             >
-              Minhas Ideias
+              Funcionalidades
             </button>
             <button 
               onClick={() => setCurrentTab('stack')}
@@ -167,13 +169,15 @@ export default function Portfolio() {
                       onClick={() => setCurrentTab('projetos')}
                       className="px-8 py-4 bg-white text-[#1569EF] font-bold rounded-2xl flex items-center gap-3 transition-all shadow-lg hover:bg-slate-100 hover:scale-[1.02]"
                     >
-                      Explorar Projetos <ArrowRight className="w-4 h-4" />
+                      Meus Projetos <ArrowRight className="w-4 h-4" />
                     </button>
                     <a 
-                      href="#contato"
+                      href="https://wa.me/5515981149404" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
                       className="px-8 py-4 bg-blue-900/40 backdrop-blur-md text-white font-semibold rounded-2xl flex items-center gap-3 transition-all border border-white/20 hover:bg-blue-900/60"
                     >
-                      <Briefcase className="w-4 h-4 text-cyan-300" /> Entrar em Contato
+                      <MessageSquare className="w-4 h-4 text-cyan-300" /> Entrar em Contato
                     </a>
                   </div>
                 </div>
@@ -204,8 +208,8 @@ export default function Portfolio() {
               transition={{ duration: 0.3 }}
             >
               <div className="mb-12">
-                <div className="text-[#1569EF] font-mono text-xs uppercase tracking-widest mb-2 font-bold">// Galeria Interativa</div>
-                <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">Projetos e Capturas Visuais</h2>
+                <div className="text-[#1569EF] font-mono text-xs uppercase tracking-widest mb-2 font-bold">// Todos meus projetos</div>
+                <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">Projetos</h2>
                 <p className="text-slate-600 mt-2">Acesse diretamente os sistemas reais desenvolvidos.</p>
               </div>
 
@@ -215,7 +219,6 @@ export default function Portfolio() {
                     key={proj.id}
                     className="group rounded-3xl bg-slate-50 border border-slate-200 hover:border-[#1569EF]/50 transition-all duration-300 relative overflow-hidden flex flex-col justify-between shadow-lg shadow-slate-100 hover:shadow-xl hover:-translate-y-1"
                   >
-                    {/* Mockup de Preview Modernizado */}
                     <div className="w-full h-56 bg-gradient-to-br from-slate-900 via-blue-950 to-slate-900 border-b border-slate-200 relative overflow-hidden flex flex-col items-center justify-center p-6 text-center">
                       <div className="absolute top-4 left-4 flex gap-1.5">
                         <div className="w-3 h-3 rounded-full bg-red-500/80"></div>
@@ -544,6 +547,34 @@ export default function Portfolio() {
                 </div>
 
               </div>
+
+              {/* Seção "Sobre Mim" em forma de Apresentação Profissional Logo Abaixo */}
+              <div className="bg-slate-900 text-white rounded-3xl p-8 sm:p-12 shadow-2xl relative overflow-hidden border border-slate-800">
+                <div className="absolute -right-16 -bottom-16 w-80 h-80 bg-blue-600/10 rounded-full blur-3xl pointer-events-none"></div>
+                
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="p-3 rounded-2xl bg-[#1569EF]/20 text-[#1569EF] border border-[#1569EF]/30">
+                    <UserCheck className="w-6 h-6 text-cyan-300" />
+                  </div>
+                  <div>
+                    <span className="text-xs font-mono text-[#1569EF] uppercase tracking-wider font-bold">Apresentação Pessoal</span>
+                    <h3 className="text-2xl sm:text-3xl font-extrabold text-white">Sobre Mim</h3>
+                  </div>
+                </div>
+
+                <div className="space-y-6 text-slate-300 text-base sm:text-lg leading-relaxed font-light">
+                  <p>
+                    Olá! Sou o <strong className="text-white font-semibold">Crystian</strong>, um profissional apaixonado por tecnologia, dados e inovação, com forte atuação corporativa internacional (Brasil e Espanha) no exigente setor de Saúde e Diagnósticos Laboratoriais.
+                  </p>
+                  <p>
+                    Minha jornada é impulsionada pelo desejo constante de resolver problemas complexos e otimizar processos operacionais que antes pareciam engessados. Acredito que a combinação entre uma engenharia de dados sólida, automações inteligentes com ferramentas modernas e o uso estratégico de Inteligência Artificial é o segredo para entregar valor real aos negócios.
+                    </p>
+                  <p>
+                    Seja construindo ecossistemas web performáticos em Next.js, estruturando queries avançadas em PostgreSQL para sistemas de missão crítica (LIS), ou desenvolvendo fluxos automatizados em N8N e Python, meu compromisso é sempre unir alta técnica, empatia no trabalho em equipe e agilidade através do Kanban.
+                  </p>
+                </div>
+              </div>
+
             </motion.div>
           )}
 
@@ -555,7 +586,7 @@ export default function Portfolio() {
         <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-8">
           <div>
             <div className="font-mono font-bold text-lg text-white mb-2 flex items-center gap-2">
-              <Terminal className="w-4 h-4 text-[#1569EF]" /> DEV<span className="text-[#1569EF]">.</span>FS
+              <Terminal className="w-4 h-4 text-[#1569EF]" /> DEV<span className="text-[#1569EF]">.</span> CRYSTIAN
             </div>
             <p className="text-slate-400 text-xs font-mono">
               © {new Date().getFullYear()} — Desenvolvido com foco em alta performance e sigilo.
@@ -563,14 +594,17 @@ export default function Portfolio() {
           </div>
 
           <div className="flex gap-4">
-            <a href="https://github.com/crystianjs" target="_blank" rel="noopener noreferrer" className="p-3 bg-slate-800 border border-slate-700 rounded-xl hover:border-[#1569EF] hover:text-[#1569EF] transition-all text-white">
+            <a href="https://github.com/crystianjs" target="_blank" rel="noopener noreferrer" className="p-3 bg-slate-800 border border-slate-700 rounded-xl hover:border-[#1569EF] hover:text-[#1569EF] transition-all text-white" aria-label="GitHub">
               <Github className="w-5 h-5" />
             </a>
-            <a href="#" className="p-3 bg-slate-800 border border-slate-700 rounded-xl hover:border-[#1569EF] hover:text-[#1569EF] transition-all text-white">
+            <a href="https://www.linkedin.com/in/crystian-silva-b9a30425a" target="_blank" rel="noopener noreferrer" className="p-3 bg-slate-800 border border-slate-700 rounded-xl hover:border-[#1569EF] hover:text-[#1569EF] transition-all text-white" aria-label="LinkedIn">
               <Linkedin className="w-5 h-5" />
             </a>
-            <a href="mailto:contato@exemplo.com" className="p-3 bg-slate-800 border border-slate-700 rounded-xl hover:border-[#1569EF] hover:text-[#1569EF] transition-all text-white">
+            <a href="mailto:crystianjs09@gmail.com" className="p-3 bg-slate-800 border border-slate-700 rounded-xl hover:border-[#1569EF] hover:text-[#1569EF] transition-all text-white" aria-label="E-mail">
               <Mail className="w-5 h-5" />
+            </a>
+            <a href="https://wa.me/5515981149404" target="_blank" rel="noopener noreferrer" className="p-3 bg-slate-800 border border-slate-700 rounded-xl hover:border-[#1569EF] hover:text-[#1569EF] transition-all text-white" aria-label="WhatsApp">
+              <MessageSquare className="w-5 h-5" />
             </a>
           </div>
         </div>

@@ -2,7 +2,7 @@ import React from 'react';
 import './globals.css';
 
 export const metadata = {
-  title: 'Crystian.Dev',
+  title: 'DevOps - Crystian',
   description: 'Desenvolvedor Full Stack & Soluções Corporativas',
 };
 

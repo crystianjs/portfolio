@@ -27,7 +27,8 @@ import {
   UserCheck,
   X,
   Clock,
-  Filter
+  Filter,
+  Sparkles
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -416,7 +417,7 @@ export default function Portfolio() {
             <motion.div key="curriculo" initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -15 }} transition={{ duration: 0.3 }}>
               <div className="mb-8">
                 <div className="text-[#1569EF] font-mono text-xs uppercase tracking-widest mb-2 font-bold">// Perfil Profissional e Conquistas</div>
-                <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">Currículo Profissional</h2>
+                <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">Currículo e Formatura</h2>
                 <p className="text-slate-600 mt-2">Analista de TI e Dados | Formado em Análise e Desenvolvimento de Sistemas (ADS) pela Unicesumar.</p>
               </div>
 
@@ -471,6 +472,21 @@ export default function Portfolio() {
                 <h3 className="text-2xl font-bold text-slate-900 mb-6">// Competências Principais</h3>
               </div>
               <div className="grid md:grid-cols-2 gap-8 mb-12">
+                {/* NOVA COMPETÊNCIA ADICIONADA */}
+                <div className="bg-slate-50 border border-slate-200 rounded-3xl p-8 shadow-sm flex flex-col justify-between">
+                  <div>
+                    <div className="flex items-center gap-3 mb-4">
+                      <div className="p-2.5 rounded-xl bg-[#1569EF]/10 text-[#1569EF]">
+                        <Sparkles className="w-5 h-5" />
+                      </div>
+                      <h4 className="text-xl font-bold text-slate-900">Design de Sistemas & UI/UX</h4>
+                    </div>
+                    <p className="text-slate-600 text-sm leading-relaxed">
+                      Criador de sites e sistemas intuitivos, seguros e 100% funcionais. Unindo uma bagagem de dois anos em marketing digital e aplicação de conceitos de <strong>UI/UX</strong>, priorizo sempre a dor e a experiência real do usuário, utilizando IA como aliada para acelerar correções e atender demandas com precisão.
+                    </p>
+                  </div>
+                </div>
+
                 <div className="bg-slate-50 border border-slate-200 rounded-3xl p-8 shadow-sm flex flex-col justify-between">
                   <div>
                     <div className="flex items-center gap-3 mb-4">
@@ -559,18 +575,51 @@ export default function Portfolio() {
               {/* SEÇÃO DE EXPERIÊNCIAS PRÁTICAS E CASOS DE USO REAIS */}
               <div id="curriculo-casos" className="mb-12 scroll-mt-28">
                 <div className="text-[#1569EF] font-mono text-xs uppercase tracking-widest mb-2 font-bold">// Casos de Uso Reais</div>
-                <h3 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">Experiência Prática com Ferramentas</h3>
-                <p className="text-slate-600 mt-2">Aplicações diárias e resoluções de problemas em ambiente corporativo.</p>
+                <h3 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">Experiência Prática com Ferramentas</h3>
+                <p className="text-slate-600 mt-2">Aplicações diárias, vivência técnica e resoluções de problemas em ambiente corporativo.</p>
               </div>
 
               <div className="space-y-8 mb-12">
-                {/* 1. Power Automate */}
+                {/* 1. PostgreSQL */}
+                <div className="grid lg:grid-cols-12 gap-8 items-center bg-slate-50 border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-sm">
+                  <div className="lg:col-span-5 space-y-3">
+                    <span className="text-xs font-mono text-[#1569EF] bg-[#1569EF]/10 px-3 py-1 rounded-full font-bold">Engenharia de Dados & SQL</span>
+                    <h4 className="text-xl font-bold text-slate-900">Paixão por PostgreSQL e Consultas Complexas</h4>
+                    <p className="text-slate-600 text-sm leading-relaxed">
+                      A criação de consultas SQL avançadas utilizando múltiplos relacionamentos (<code>INNER JOIN</code>, <code>LEFT JOIN</code>) e agregações faz parte da minha rotina diária, seja em projetos pessoais ou corporativos. Sou apaixonado por estruturar queries e, embora às vezes a tabela não tenha um ID óbvio e a gente acabe sofrendo um pouco, acredito que em qualquer banco de dados, mesmo à primeira vista, consigo extrair dados precisos e estruturados.
+                    </p>
+                  </div>
+                  <div className="lg:col-span-7 bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-md flex justify-center p-4 cursor-pointer" onClick={() => setSelectedImage("/PostgreSQL-Logo.jpg")}>
+                    <img src="/PostgreSQL-Logo.jpg" alt="PostgreSQL" className="max-h-[280px] w-auto object-contain hover:scale-105 transition-transform duration-300 rounded-xl" title="Clique para ampliar" />
+                  </div>
+                </div>
+
+                {/* 2. Claude.ia + Gemini */}
+                <div className="grid lg:grid-cols-12 gap-8 items-center bg-slate-50 border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-sm">
+                  <div className="lg:col-span-7 lg:order-1 order-2 bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-md flex justify-center gap-4 p-4">
+                    <div className="cursor-pointer flex-1 flex justify-center" onClick={() => setSelectedImage("/claude.ia.png")}>
+                      <img src="/claude.ia.png" alt="Claude AI" className="max-h-[240px] w-auto object-contain hover:scale-105 transition-transform duration-300 rounded-xl" title="Clique para ampliar" />
+                    </div>
+                    <div className="cursor-pointer flex-1 flex justify-center" onClick={() => setSelectedImage("/gemini.png")}>
+                      <img src="/gemini.png" alt="Gemini" className="max-h-[240px] w-auto object-contain hover:scale-105 transition-transform duration-300 rounded-xl" title="Clique para ampliar" />
+                    </div>
+                  </div>
+                  <div className="lg:col-span-5 lg:order-2 order-1 space-y-3">
+                    <span className="text-xs font-mono text-[#1569EF] bg-[#1569EF]/10 px-3 py-1 rounded-full font-bold">Inteligência Artificial & Curva de Aprendizado</span>
+                    <h4 className="text-xl font-bold text-slate-900">Uso Estratégico de Claude e Gemini</h4>
+                    <p className="text-slate-600 text-sm leading-relaxed">
+                      Minha curva de aprendizado sempre foi focada em compreender a sintaxe de cada linguagem e colocá-la em prática com o suporte de Inteligência Artificial. Vivo, aprendo e evoluo muito com essa sinergia, inclusive na depuração de códigos. A IA nem sempre faz tudo sozinha; quantas vezes precisei escrever código na unha, porque só escreve quem realmente entende o que está fazendo. Sigo em constante evolução, unindo dedicação pessoal e o potencial da IA.
+                    </p>
+                  </div>
+                </div>
+
+                {/* 3. Power Automate */}
                 <div className="grid lg:grid-cols-12 gap-8 items-center bg-slate-50 border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-sm">
                   <div className="lg:col-span-5 space-y-3">
                     <span className="text-xs font-mono text-[#1569EF] bg-[#1569EF]/10 px-3 py-1 rounded-full font-bold">Automação Corporativa</span>
                     <h4 className="text-xl font-bold text-slate-900">Power Automate na Prática</h4>
                     <p className="text-slate-600 text-sm leading-relaxed">
-                      O Power Automate é uma ferramenta sensacional, utilizada frequentemente no meu dia a dia de trabalho. Não aprendi em estudo de caso, foi na prática, em uma necessidade da empresa na tratativa de alguns fluxos repetitivos em problemas de grande escala.
+                      O Power Automate é uma ferramenta sensacional, utilizada frequentemente no meu dia a dia de trabalho. Não aprendi em estudo de caso, foi na prática, diante de uma necessidade real da empresa na tratativa de fluxos repetitivos e resolução de problemas de grande escala.
                     </p>
                   </div>
                   <div className="lg:col-span-7 bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-md flex justify-center p-4 cursor-pointer" onClick={() => setSelectedImage("/projeto/power_automate.png")}>
@@ -578,27 +627,27 @@ export default function Portfolio() {
                   </div>
                 </div>
 
-                {/* 2. Python */}
+                {/* 4. Python */}
                 <div className="grid lg:grid-cols-12 gap-8 items-center bg-slate-50 border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-sm">
                   <div className="lg:col-span-7 lg:order-1 order-2 bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-md flex justify-center p-4 cursor-pointer" onClick={() => setSelectedImage("/projeto/python.png")}>
                     <img src="/projeto/python.png" alt="Python" className="max-h-[280px] w-auto object-contain hover:scale-105 transition-transform duration-300 rounded-xl" title="Clique para ampliar" />
                   </div>
                   <div className="lg:col-span-5 lg:order-2 order-1 space-y-3">
                     <span className="text-xs font-mono text-[#1569EF] bg-[#1569EF]/10 px-3 py-1 rounded-full font-bold">Automação e Scripts</span>
-                    <h4 className="text-xl font-bold text-slate-900">Python e IA Generativa</h4>
+                    <h4 className="text-xl font-bold text-slate-900">Python e Automação de Relatórios</h4>
                     <p className="text-slate-600 text-sm leading-relaxed">
-                      Juntamente com a IA, o Python me proporcionou automações mais precisas e validadas. Entendo a semântica da linguagem e ela tem me ajudado a remover fluxos repetitivos do meu caminho. Atualmente, em um processo de baixar um informe em HTML, convertê-lo perfeitamente em PDF e enviá-lo aos setores, preciso apenas jogar esse HTML em um diretório mapeado na máquina local: o script processa com a biblioteca <code>pyhtml2pdf</code> e já realiza o disparo para os responsáveis. Isto é tecnologia.
+                      Juntamente com a IA, o Python me proporcionou automações mais precisas e validadas. Entendo a semântica da linguagem e ela tem me ajudado a remover rotinas repetitivas do caminho. Atualmente, em um processo de baixar um informe em HTML, convertê-lo perfeitamente em PDF e enviá-lo aos setores, preciso apenas jogar o arquivo em um diretório mapeado: o script processa com a biblioteca <code>pyhtml2pdf</code> e já realiza o disparo automático para os responsáveis. Isto é tecnologia.
                     </p>
                   </div>
                 </div>
 
-                {/* 3. Postman */}
+                {/* 5. Postman */}
                 <div className="grid lg:grid-cols-12 gap-8 items-center bg-slate-50 border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-sm">
                   <div className="lg:col-span-5 space-y-3">
                     <span className="text-xs font-mono text-[#1569EF] bg-[#1569EF]/10 px-3 py-1 rounded-full font-bold">Testes de API</span>
                     <h4 className="text-xl font-bold text-slate-900">Postman em Ambiente de Produção</h4>
                     <p className="text-slate-600 text-sm leading-relaxed">
-                      Com um conhecimento bem simplório em Postman, me adaptei muito bem em estruturar payloads, testar requisições via POST e GET unificadamente com trechos de código, seguindo em constante evolução na ferramenta.
+                      Com um conhecimento prático em Postman, me adaptei muito bem em estruturar payloads, testar requisições via POST e GET unificadamente com trechos de código, seguindo em constante evolução na ferramenta.
                     </p>
                   </div>
                   <div className="lg:col-span-7 bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-md flex justify-center p-4 cursor-pointer" onClick={() => setSelectedImage("/projeto/postman.png")}>
@@ -606,7 +655,7 @@ export default function Portfolio() {
                   </div>
                 </div>
 
-                {/* 4. Git e GitHub */}
+                {/* 6. Git e GitHub */}
                 <div className="grid lg:grid-cols-12 gap-8 items-center bg-slate-50 border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-sm">
                   <div className="lg:col-span-7 lg:order-1 order-2 bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-md flex justify-center p-4 cursor-pointer" onClick={() => setSelectedImage("/projeto/git_github.png")}>
                     <img src="/projeto/git_github.png" alt="Git e GitHub" className="max-h-[280px] w-auto object-contain hover:scale-105 transition-transform duration-300 rounded-xl" title="Clique para ampliar" />
@@ -615,7 +664,7 @@ export default function Portfolio() {
                     <span className="text-xs font-mono text-[#1569EF] bg-[#1569EF]/10 px-3 py-1 rounded-full font-bold">Versionamento e CI/CD</span>
                     <h4 className="text-xl font-bold text-slate-900">Git e GitHub no Dia a Dia</h4>
                     <p className="text-slate-600 text-sm leading-relaxed">
-                      Utilizo com uma frequência anormal estas duas ferramentas para todos os meus projetos pessoais e corporativos, garantindo versionamento seguro e conexão contínua com plataformas de hospedagem em nuvem.
+                      Utilizo com alta frequência estas duas ferramentas para todos os meus projetos pessoais e corporativos, garantindo versionamento seguro e conexão contínua com plataformas de hospedagem em nuvem.
                     </p>
                   </div>
                 </div>

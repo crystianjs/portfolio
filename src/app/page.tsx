@@ -13,9 +13,9 @@ import {
   CheckCircle2,
   Monitor,
   Code2,
-  UserCheck,
   Terminal,
-  ArrowRight
+  ArrowRight,
+  Briefcase
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -27,10 +27,10 @@ export default function Portfolio() {
     {
       id: 0,
       title: "IALE - Portal de Gestão",
-      category: "Ecossistema Corporativo",
-      description: "Plataforma completa para gestão integrada, painel administrativo dinâmico, controle de agenda e mural interativo de avisos.",
-      url: "https://seu-link-de-demo.com",
-      githubUrl: "https://github.com/crystianjs/portfolio",
+      category: "Ecossistema Corporativo / Igreja",
+      description: "Plataforma completa para gestão integrada desenvolvida para a igreja que frequento, contando com painel administrativo dinâmico, controle de agenda e mural interativo de avisos.",
+      url: "https://iale.vercel.app/login",
+      githubUrl: "https://github.com/crystianjs/iale",
       techs: ["Next.js", "Supabase", "Tailwind CSS", "TypeScript"],
       features: [
         "Painel administrativo em tempo real com controle de permissões.",
@@ -40,16 +40,16 @@ export default function Portfolio() {
     },
     {
       id: 1,
-      title: "Projeto X - Hub Operacional",
+      title: "Analiza Ata - Hub Operacional",
       category: "Sistema de Missão Crítica",
-      description: "Torre de controle operacional avançada com cronômetros persistentes no servidor, logs detalhados e segurança RBAC.",
-      url: "https://seu-link-de-demo-2.com",
-      githubUrl: "https://github.com/crystianjs/portfolio",
-      techs: ["Next.js", "PostgreSQL", "RBAC Security", "Node.js"],
+      description: "Sistema profissional para análise e gerenciamento de atas, oferecendo agilidade, controle de dados e interface altamente responsiva.",
+      url: "https://analiza-ata.vercel.app/login",
+      githubUrl: "https://github.com/crystianjs/analiza-ata",
+      techs: ["Next.js", "PostgreSQL", "Tailwind CSS", "Node.js"],
       features: [
-        "Torre de controle ao vivo para monitoramento de operações.",
-        "Cronômetro persistente gerenciado via server-side.",
-        "Controle de acesso rigoroso baseado em funções (RBAC)."
+        "Interface otimizada para análise e gerenciamento rápido de atas.",
+        "Segurança avançada e controle de acesso estruturado.",
+        "Arquitetura moderna e altamente performática."
       ]
     }
   ];
@@ -57,11 +57,9 @@ export default function Portfolio() {
   return (
     <div className="min-h-screen bg-white text-slate-900 font-sans antialiased selection:bg-[#1569EF]/20 selection:text-[#1569EF]">
       
-      {/* --- NAVBAR SUPERIOR (Centralizada, Sem Logo e com Perfil) --- */}
+      {/* --- NAVBAR SUPERIOR (Centralizada, Sem Logo e Sem Avatar) --- */}
       <header className="fixed top-0 w-full z-50 bg-white/95 backdrop-blur-md border-b border-slate-100 shadow-sm">
-        <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-          
-          <div className="w-10"></div>
+        <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-center">
 
           {/* Menu Centralizado */}
           <nav className="flex items-center gap-1 bg-slate-100/80 p-1.5 rounded-2xl border border-slate-200/60">
@@ -91,23 +89,6 @@ export default function Portfolio() {
             </button>
           </nav>
 
-          {/* Perfil / Avatar no canto direito */}
-          <div className="flex items-center gap-3">
-            <div className="text-right hidden sm:block">
-              <span className="block text-xs font-bold text-slate-900">Crystian JS</span>
-              <span className="block text-[10px] text-emerald-600 font-mono font-semibold">● Online</span>
-            </div>
-            <div className="w-10 h-10 rounded-full border-2 border-[#1569EF] overflow-hidden bg-slate-100 shadow-sm flex items-center justify-center relative">
-              <img 
-                src="/avatar-fullstack.png" 
-                alt="Avatar" 
-                className="w-full h-full object-cover"
-                onError={(e) => { e.currentTarget.style.display = 'none'; }}
-              />
-              <UserCheck className="w-5 h-5 text-slate-700 absolute" />
-            </div>
-          </div>
-
         </div>
       </header>
 
@@ -115,7 +96,7 @@ export default function Portfolio() {
       <main className="max-w-7xl mx-auto px-6 pt-36 pb-24 relative z-10 min-h-[75vh]">
         <AnimatePresence mode="wait">
           
-          {/* ABA: HOME COM BANNER INSPIRADO NA REFERÊNCIA */}
+          {/* ABA: HOME COM BANNER E FOTO GEOMÉTRICA */}
           {currentTab === 'home' && (
             <motion.div 
               key="home"
@@ -125,14 +106,12 @@ export default function Portfolio() {
               transition={{ duration: 0.3 }}
               className="py-4"
             >
-              {/* Bloco principal dividido estilo referência */}
-              <div className="grid lg:grid-cols-12 gap-8 items-center bg-gradient-to-r from-[#1569EF] to-blue-700 rounded-3xl p-8 sm:p-14 text-white shadow-2xl relative overflow-hidden">
-                
-                {/* Elementos visuais de fundo sutis */}
+              <div className="grid lg:grid-cols-12 gap-8 items-center bg-gradient-to-r from-[#1569EF] to-blue-700 rounded-3xl p-8 sm:p-14 lg:p-16 text-white shadow-2xl relative overflow-hidden">
                 <div className="absolute -right-20 -bottom-20 w-96 h-96 bg-white/10 rounded-full blur-3xl pointer-events-none"></div>
+                <div className="absolute -top-10 -left-10 w-48 h-48 bg-cyan-400/10 rounded-full blur-2xl pointer-events-none"></div>
 
                 <div className="lg:col-span-7 z-10">
-                  <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 backdrop-blur-md text-white text-xs font-mono mb-6 border border-white/20">
+                  <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/15 backdrop-blur-md text-white text-xs font-mono mb-6 border border-white/20">
                     <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
                     <span>Disponível para novos projetos</span>
                   </div>
@@ -152,29 +131,32 @@ export default function Portfolio() {
                     >
                       Explorar Projetos <ArrowRight className="w-4 h-4" />
                     </button>
-                    <button 
-                      onClick={() => setCurrentTab('funcionalidades')}
+                    <a 
+                      href="#contato"
                       className="px-8 py-4 bg-blue-900/40 backdrop-blur-md text-white font-semibold rounded-2xl flex items-center gap-3 transition-all border border-white/20 hover:bg-blue-900/60"
                     >
-                      <Code2 className="w-4 h-4 text-cyan-300" /> Ver Funcionalidades
-                    </button>
+                      <Briefcase className="w-4 h-4 text-cyan-300" /> Entrar em Contato
+                    </a>
                   </div>
                 </div>
 
-                {/* Bloco da Foto Profissional gerada por IA (Estilo Referência) */}
-                <div className="lg:col-span-5 flex justify-center z-10">
-                  <div className="w-72 h-80 sm:w-80 sm:h-96 rounded-2xl bg-white p-3 shadow-2xl rotate-1 hover:rotate-0 transition-transform duration-300 relative">
-                    <div className="w-full h-full rounded-xl overflow-hidden bg-slate-900 flex items-center justify-center relative border border-slate-200">
+                {/* Bloco da Foto com Contraste Geométrico e Bordas Arredondadas */}
+                <div className="lg:col-span-5 flex justify-center z-10 lg:justify-end mt-10 lg:mt-0">
+                  <div className="relative group">
+                    <div className="absolute -inset-5 bg-white/10 rounded-full blur-2xl pointer-events-none group-hover:bg-white/20 transition-all duration-500"></div>
+                    <div className="absolute -bottom-8 -right-8 w-40 h-40 bg-cyan-400/20 rounded-full blur-3xl pointer-events-none"></div>
+
+                    <div className="w-72 h-80 sm:w-80 sm:h-96 rounded-[2.5rem] rounded-tr-[5rem] overflow-hidden bg-gradient-to-b from-blue-600/50 to-slate-900/80 border-2 border-white/30 shadow-2xl relative flex items-center justify-center transition-transform duration-500 group-hover:scale-[1.01]">
                       <img 
                         src="/avatar-fullstack.png" 
-                        alt="Foto Profissional FullStack IA" 
-                        className="w-full h-full object-cover"
+                        alt="Foto Profissional Crystian FullStack" 
+                        className="w-full h-full object-cover object-top"
                         onError={(e) => { e.currentTarget.style.display = 'none'; }}
                       />
                       <div className="absolute inset-0 flex flex-col items-center justify-center text-center p-6 text-slate-400">
-                        <Terminal className="w-12 h-12 text-[#1569EF] mb-3" />
-                        <span className="text-xs font-mono text-slate-300 font-bold">Sua Foto FullStack (IA)</span>
-                        <span className="text-[10px] text-slate-500 mt-1">Coloque a imagem em /public/avatar-fullstack.png</span>
+                        <Terminal className="w-12 h-12 text-cyan-300 mb-3" />
+                        <span className="text-xs font-mono text-slate-200 font-bold">Sua Foto Real (PNG)</span>
+                        <span className="text-[10px] text-slate-400 mt-1">Coloque a imagem em /public/avatar-fullstack.png</span>
                       </div>
                     </div>
                   </div>
@@ -184,7 +166,7 @@ export default function Portfolio() {
             </motion.div>
           )}
 
-          {/* ABA: PROJETOS & PRINTS */}
+          {/* ABA: PROJETOS & PRINTS COM LINKS REAIS */}
           {currentTab === 'projetos' && (
             <motion.div 
               key="projetos"
@@ -196,7 +178,7 @@ export default function Portfolio() {
               <div className="mb-12">
                 <div className="text-[#1569EF] font-mono text-xs uppercase tracking-widest mb-2 font-bold">// Galeria Interativa</div>
                 <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">Projetos & Capturas Visuais</h2>
-                <p className="text-slate-600 mt-2">Cards organizados com links diretos para demonstração e repositório.</p>
+                <p className="text-slate-600 mt-2">Acesse diretamente os sistemas reais desenvolvidos.</p>
               </div>
 
               <div className="grid md:grid-cols-2 gap-8">
@@ -209,14 +191,14 @@ export default function Portfolio() {
                       <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent opacity-60 z-10"></div>
                       <div className="absolute inset-0 flex flex-col items-center justify-center text-slate-400 group-hover:scale-105 transition-transform duration-500">
                         <Monitor className="w-12 h-12 mb-2 text-slate-500 group-hover:text-[#1569EF] transition-colors" />
-                        <span className="text-xs font-mono text-slate-300">Preview / Print: {proj.title}</span>
+                        <span className="text-xs font-mono text-slate-300">Preview: {proj.title}</span>
                       </div>
 
                       <div className="absolute top-4 right-4 z-20 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                         <a href={proj.url} target="_blank" rel="noopener noreferrer" className="p-2.5 bg-white text-slate-900 rounded-xl hover:bg-[#1569EF] hover:text-white transition-all shadow-lg">
                           <ExternalLink className="w-4 h-4" />
                         </a>
-                        <a href={proj.githubUrl} target="_blank" rel="noopener noreferrer" className="p-2.5 bg-white text-slate-900 rounded-xl hover:bg-slate-900 hover:text-white transition-all shadow-lg">
+                        <a href={proj.githubUrl} target="_blank" rel="noopener noreferrer" className="p-2.5 bg-white text-slate-900 rounded-xl hover:bg-[#1569EF] hover:text-white transition-all shadow-lg">
                           <Github className="w-4 h-4" />
                         </a>
                       </div>

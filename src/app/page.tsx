@@ -605,15 +605,6 @@ export default function Portfolio() {
         <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-8">
           
           <div className="flex items-center gap-3">
-            {/* Ícone personalizado do rodapé (/public/icone_progromacao.jpg) */}
-            <div className="w-10 h-10 rounded-xl overflow-hidden bg-slate-800 flex items-center justify-center shrink-0 shadow-md">
-              <img 
-                src="/icone_progromacao.jpg" 
-                alt="Ícone Programação" 
-                className="w-full h-full object-cover"
-                onError={(e) => { e.currentTarget.style.display = 'none'; }}
-              />
-            </div>
             <div>
               <div className="font-mono font-bold text-lg text-white mb-1 flex items-center gap-2">
                 <Terminal className="w-4 h-4 text-[#1569EF]" /> DEV<span className="text-[#1569EF]">.</span> CRYSTIAN

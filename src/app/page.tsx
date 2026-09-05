@@ -89,7 +89,7 @@ export default function Portfolio() {
       
       {/* Configuração da Aba (Favicon e Título) */}
       <head>
-        <link rel="icon" href="/fivcon.png" type="image/png" />
+        <link rel="icon" href="/fivconq.png" type="image/png" />
       </head>
 
       {/* --- NAVBAR SUPERIOR (Centralizada) --- */}

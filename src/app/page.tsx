@@ -32,10 +32,10 @@ export default function Portfolio() {
   const [activeProject, setActiveProject] = useState(0);
 
   const formaturaImages = [
-    { src: "/formatura(1).jpeg", caption: "Formação em ADS - Unicesumar" },
-    { src: "/formatura(2).jpeg", caption: "Momento da Colação de Grau" },
-    { src: "/formatura(3).jpeg", caption: "Conquista e Dedicação à TI" },
-    { src: "/formatura(4).jpeg", caption: "Celebração e Marco Profissional" },
+    { src: "/formatura(1).jpeg", caption: "Momentos da Colação de Grau" },
+    { src: "/formatura(2).jpeg", caption: "Momentos da Colação de Grau" },
+    { src: "/formatura(3).jpeg", caption: "Momentos da Colação de Grau" },
+    { src: "/formatura(4).jpeg", caption: "Momentos da Colação de Grau" },
   ];
 
   const [currentSlide, setCurrentSlide] = useState(0);

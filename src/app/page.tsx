@@ -12,6 +12,7 @@ import {
   Layers,
   CheckCircle2,
   Monitor,
+  Smartphone,
   Code2,
   Terminal,
   ArrowRight,
@@ -23,21 +24,52 @@ import {
   Server,
   Zap,
   MessageSquare,
-  UserCheck,
-  BarChart3,
-  Activity,
-  Users
+  UserCheck
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 export default function Portfolio() {
   const [currentTab, setCurrentTab] = useState<'home' | 'projetos' | 'stack' | 'curriculo' | 'formatura'>('home');
+  
+  // Estados para navegação das galerias de imagens na aba projetos
+  const [hubViewMode, setHubViewMode] = useState<'desktop' | 'mobile'>('desktop');
+  const [ialeViewMode, setIaleViewMode] = useState<'desktop' | 'mobile'>('desktop');
+  
+  const [hubMobileIndex, setHubMobileIndex] = useState(0);
+  const [ialeDesktopIndex, setIaleDesktopIndex] = useState(0);
+  const [ialeMobileIndex, setIaleMobileIndex] = useState(0);
 
   const formaturaImages = [
     { src: "/formatura(1).jpeg", caption: "Momentos da Colação de Grau" },
     { src: "/formatura(2).jpeg", caption: "Momentos da Colação de Grau" },
     { src: "/formatura(3).jpeg", caption: "Momentos da Colação de Grau" },
     { src: "/formatura(4).jpeg", caption: "Momentos da Colação de Grau" },
+  ];
+
+  // Arrays de imagens baseadas exatamente nas pastas que você subiu
+  const hubMobilePrints = [
+    { src: "/projetohub_mobile/cadastrar_usuario.jpeg", title: "Cadastro de Usuário" },
+    { src: "/projetohub_mobile/dashboard.jpeg", title: "Dashboard Mobile" },
+    { src: "/projetohub_mobile/Headi_cabeçalho.jpeg", title: "Cabeçalho e Menu" },
+    { src: "/projetohub_mobile/tarefa.jpeg", title: "Gestão de Tarefas" },
+    { src: "/projetohub_mobile/torre.jpeg", title: "Torre de Controle Mobile" },
+  ];
+
+  const ialeDesktopPrints = [
+    { src: "/projetoiale_desktop/agenda.png", title: "Agenda da Comunidade" },
+    { src: "/projetoiale_desktop/comunicados.png", title: "Central de Comunicados" },
+    { src: "/projetoiale_desktop/curso_estudo.png", title: "Módulo de Estudos" },
+    { src: "/projetoiale_desktop/navbar.png", title: "Navegação Principal" },
+    { src: "/projetoiale_desktop/oracao.png", title: "Mural de Orações" },
+  ];
+
+  const ialeMobilePrints = [
+    { src: "/projetoiale_mobile/agenda.jpeg", title: "Agenda Mobile" },
+    { src: "/projetoiale_mobile/album.jpeg", title: "Álbum de Mídias" },
+    { src: "/projetoiale_mobile/comunicado.jpeg", title: "Comunicados Mobile" },
+    { src: "/projetoiale_mobile/comunidade.jpeg", title: "Painel da Comunidade" },
+    { src: "/projetoiale_mobile/louvor.jpeg", title: "Painel de Louvor e Repertório" },
+    { src: "/projetoiale_mobile/oracao.jpeg", title: "Orações Mobile" },
   ];
 
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -57,37 +89,6 @@ export default function Portfolio() {
     setCurrentSlide((prev) => (prev - 1 + formaturaImages.length) % formaturaImages.length);
   };
 
-  const projects = [
-    {
-      id: 0,
-      title: "IALE - Comunidade",
-      category: "Ecossistema Corporativo e Igreja",
-      description: "Plataforma completa para gestão integrada desenvolvida para a igreja que frequento. Contém painel de música, gestão de repertório, bate-papo em tempo real, central de comunicados e base de aniversariantes integrada via banco gerada por formulários.",
-      url: "https://iale.vercel.app/login",
-      githubUrl: "https://github.com/crystianjs/iale",
-      techs: ["Next.js", "Supabase", "Tailwind CSS", "TypeScript"],
-      features: [
-        "Painel de música e gestão avançada de repertório para cultos.",
-        "Bate-papo integrado e central de comunicados para a comunidade.",
-        "Módulo de aniversariantes integrado via banco a partir de formulários."
-      ]
-    },
-    {
-      id: 1,
-      title: "Hub Operacional - Pendencias e Gestão",
-      category: "Sistema de Missão Crítica",
-      description: "Ferramenta robusta para gerenciamento de grandes projetos onde você consegue adicionar pendências próprias ou de clientes, controlar o registro de horas trabalhadas por cada pessoa em cada subtarefa de uma tarefa principal, além de dashboards analíticos e barras de progresso.",
-      url: "https://analiza-ata.vercel.app/login",
-      githubUrl: "https://github.com/crystianjs/analiza-ata",
-      techs: ["Next.js", "PostgreSQL", "Tailwind CSS", "Node.js"],
-      features: [
-        "Controle detalhado de pendências individuais e de clientes em grandes projetos.",
-        "Registro e monitoramento do horário trabalhado por cada membro em subtarefas e tarefas principais.",
-        "Dashboard dinâmico com barra de progresso e métricas de produtividade."
-      ]
-    }
-  ];
-
   return (
     <div className="min-h-screen bg-white text-slate-900 font-sans antialiased selection:bg-[#1569EF]/20 selection:text-[#1569EF]">
       
@@ -100,7 +101,6 @@ export default function Portfolio() {
       <header className="fixed top-0 w-full z-50 bg-white/95 backdrop-blur-md border-b border-slate-100 shadow-sm">
         <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
           
-          {/* Logo em formato de tag */}
           <div 
             onClick={() => setCurrentTab('home')}
             className="font-mono font-extrabold text-base sm:text-lg text-slate-900 tracking-tight cursor-pointer flex items-center gap-1 hover:text-[#1569EF] transition-colors"
@@ -110,7 +110,6 @@ export default function Portfolio() {
             <span className="text-[#1569EF]">/&gt;</span>
           </div>
 
-          {/* Menu de Navegação Atualizado (Sem Funcionalidades separadas) */}
           <nav className="flex items-center gap-1 bg-slate-100/80 p-1.5 rounded-2xl border border-slate-200/60 overflow-x-auto max-w-full">
             <button 
               onClick={() => setCurrentTab('home')}
@@ -151,7 +150,7 @@ export default function Portfolio() {
       <main className="max-w-7xl mx-auto px-6 pt-36 pb-24 relative z-10 min-h-[75vh]">
         <AnimatePresence mode="wait">
           
-          {/* ABA: HOME COM BANNER E FOTO COM EFEITO HOVER */}
+          {/* ABA: HOME */}
           {currentTab === 'home' && (
             <motion.div 
               key="home"
@@ -197,7 +196,6 @@ export default function Portfolio() {
                   </div>
                 </div>
 
-                {/* Bloco da Foto com Efeito Hover */}
                 <div className="lg:col-span-5 flex justify-center lg:justify-end z-10 mt-10 lg:mt-0">
                   <div className="relative w-72 h-80 sm:w-80 sm:h-96 rounded-3xl overflow-hidden shadow-2xl group cursor-pointer">
                     <div className="absolute inset-0 bg-blue-400/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10 pointer-events-none"></div>
@@ -213,7 +211,7 @@ export default function Portfolio() {
             </motion.div>
           )}
 
-          {/* ABA: PROJETOS + MÓDULOS E FUNÇÕES REAIS */}
+          {/* ABA: PROJETOS COM GALERIAS DESKTOP E MOBILE */}
           {currentTab === 'projetos' && (
             <motion.div 
               key="projetos"
@@ -223,133 +221,248 @@ export default function Portfolio() {
               transition={{ duration: 0.3 }}
             >
               <div className="mb-12">
-                <div className="text-[#1569EF] font-mono text-xs uppercase tracking-widest mb-2 font-bold">// Portfólio de Soluções e Telas</div>
-                <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">Projetos e Módulos Operacionais</h2>
-                <p className="text-slate-600 mt-2">Explore os sistemas desenvolvidos e suas respectivas funções detalhadas.</p>
+                <div className="text-[#1569EF] font-mono text-xs uppercase tracking-widest mb-2 font-bold">// Portfólio de Soluções</div>
+                <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">Projetos, Telas Desktop e Mobile</h2>
+                <p className="text-slate-600 mt-2">Explore os sistemas desenvolvidos e alterne entre as visualizações Desktop e Mobile de cada projeto.</p>
               </div>
 
-              {/* Grid dos Cards de Projetos */}
-              <div className="grid md:grid-cols-2 gap-8 mb-16">
-                {projects.map((proj) => (
-                  <div 
-                    key={proj.id}
-                    className="group rounded-3xl bg-slate-50 border border-slate-200 hover:border-[#1569EF]/50 transition-all duration-300 relative overflow-hidden flex flex-col justify-between shadow-lg shadow-slate-100 hover:shadow-xl hover:-translate-y-1"
-                  >
-                    <div className="w-full h-56 bg-gradient-to-br from-slate-900 via-blue-950 to-slate-900 border-b border-slate-200 relative overflow-hidden flex flex-col items-center justify-center p-6 text-center">
-                      <div className="absolute top-4 left-4 flex gap-1.5">
-                        <div className="w-3 h-3 rounded-full bg-red-500/80"></div>
-                        <div className="w-3 h-3 rounded-full bg-amber-500/80"></div>
-                        <div className="w-3 h-3 rounded-full bg-emerald-500/80"></div>
-                      </div>
-                      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-blue-600/20 via-transparent to-transparent opacity-80 pointer-events-none"></div>
-                      
-                      <div className="relative z-10 group-hover:scale-105 transition-transform duration-500 flex flex-col items-center">
-                        <div className="p-3 bg-blue-600/20 border border-blue-400/30 rounded-2xl text-cyan-300 mb-3 shadow-lg backdrop-blur-md">
-                          <Monitor className="w-8 h-8" />
-                        </div>
-                        <span className="text-sm font-bold text-white tracking-wide">{proj.title}</span>
-                        <span className="text-xs font-mono text-blue-300 mt-1 bg-white/10 px-3 py-1 rounded-full backdrop-blur-md">Ambiente de Produção Ativo</span>
-                      </div>
+              {/* PROJETO 1: HUB OPERACIONAL / ANALIZA ATA */}
+              <div className="bg-slate-900 text-white rounded-3xl p-8 sm:p-12 shadow-2xl border border-slate-800 mb-16 relative overflow-hidden">
+                <div className="absolute right-0 top-0 w-96 h-96 bg-red-600/10 rounded-full blur-3xl pointer-events-none"></div>
 
-                      <div className="absolute top-4 right-4 z-20 flex gap-2">
-                        <a href={proj.url} target="_blank" rel="noopener noreferrer" className="p-2.5 bg-white text-slate-900 rounded-xl hover:bg-[#1569EF] hover:text-white transition-all shadow-lg">
-                          <ExternalLink className="w-4 h-4" />
-                        </a>
-                        <a href={proj.githubUrl} target="_blank" rel="noopener noreferrer" className="p-2.5 bg-white text-slate-900 rounded-xl hover:bg-[#1569EF] hover:text-white transition-all shadow-lg">
-                          <Github className="w-4 h-4" />
-                        </a>
+                <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 mb-8 border-b border-slate-800 pb-8">
+                  <div>
+                    <span className="text-xs font-mono text-red-400 bg-red-950/60 border border-red-500/30 px-3 py-1 rounded-full font-bold inline-block mb-3">
+                      Sistema de Missão Crítica
+                    </span>
+                    <h3 className="text-3xl font-black tracking-tight">Hub Operacional - Pendencias e Gestão</h3>
+                    <p className="text-slate-400 text-base mt-2 max-w-3xl leading-relaxed">
+                      Ferramenta robusta para gerenciamento de grandes projetos com controle de pendências, registro de horas por subtarefas, dashboards analíticos, torre ao vivo e painel de permissões.
+                    </p>
+                  </div>
+                  <div className="flex gap-3 shrink-0">
+                    <a 
+                      href="https://analiza-ata.vercel.app/login" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="px-6 py-3.5 bg-red-600 hover:bg-red-700 text-white font-bold rounded-2xl flex items-center gap-2 transition-all shadow-lg"
+                    >
+                      Acessar Online <ExternalLink className="w-4 h-4" />
+                    </a>
+                  </div>
+                </div>
+
+                {/* Seletor de visualização (Desktop vs Mobile) */}
+                <div className="flex items-center justify-between flex-wrap gap-4 mb-6 bg-slate-950 p-3 rounded-2xl border border-slate-800">
+                  <span className="text-xs font-mono text-slate-400 pl-2">// Alternar Visão do Sistema</span>
+                  <div className="flex gap-2">
+                    <button 
+                      onClick={() => setHubViewMode('desktop')}
+                      className={`px-4 py-2 rounded-xl text-xs font-semibold flex items-center gap-2 transition-all ${hubViewMode === 'desktop' ? 'bg-red-600 text-white shadow-md' : 'bg-slate-800 text-slate-400 hover:text-white'}`}
+                    >
+                      <Monitor className="w-4 h-4" /> Visão Desktop (Hub)
+                    </button>
+                    <button 
+                      onClick={() => setHubViewMode('mobile')}
+                      className={`px-4 py-2 rounded-xl text-xs font-semibold flex items-center gap-2 transition-all ${hubViewMode === 'mobile' ? 'bg-red-600 text-white shadow-md' : 'bg-slate-800 text-slate-400 hover:text-white'}`}
+                    >
+                      <Smartphone className="w-4 h-4" /> Visão Mobile (projetohub_mobile)
+                    </button>
+                  </div>
+                </div>
+
+                {/* Exibição da Galeria Baseada no Modo Selecionado */}
+                {hubViewMode === 'desktop' ? (
+                  <div className="space-y-12">
+                    <div className="grid lg:grid-cols-12 gap-8 items-center bg-slate-950/60 p-6 sm:p-8 rounded-3xl border border-slate-800">
+                      <div className="lg:col-span-5 space-y-4">
+                        <span className="text-xs font-mono text-red-400 bg-red-950/60 border border-red-500/30 px-3 py-1 rounded-full font-bold inline-block">Módulo Principal</span>
+                        <h4 className="text-2xl font-bold text-white">Tarefas, Subtarefas e Registro de Atividades</h4>
+                        <p className="text-slate-300 text-sm leading-relaxed">
+                          Gerenciamento completo onde cada tarefa principal possui subtarefas detalhadas, controle de tempo dedicado e anotações técnicas integradas via scripts Python.
+                        </p>
+                      </div>
+                      <div className="lg:col-span-7 bg-slate-900 rounded-2xl overflow-hidden border border-slate-800 shadow-xl">
+                        <img src="/projeto/headi_tarefa_subtaref_funcoes.png" alt="Hub Desktop Tarefas" className="w-full h-auto object-cover" />
                       </div>
                     </div>
 
-                    <div className="p-8">
-                      <span className="text-xs font-mono text-[#1569EF] bg-[#1569EF]/10 px-3 py-1 rounded-full font-semibold inline-block mb-4">
-                        {proj.category}
-                      </span>
-                      <h3 className="text-2xl font-bold text-slate-900 mb-3 group-hover:text-[#1569EF] transition-colors">{proj.title}</h3>
-                      <p className="text-slate-600 text-sm leading-relaxed mb-6">{proj.description}</p>
-                      <div className="flex flex-wrap gap-2">
-                        {proj.techs.map((tech, i) => (
-                          <span key={i} className="px-2.5 py-1 bg-white text-slate-700 text-xs font-mono font-medium rounded-md border border-slate-200 shadow-sm">
-                            {tech}
-                          </span>
-                        ))}
+                    <div className="grid lg:grid-cols-12 gap-8 items-center bg-slate-950/60 p-6 sm:p-8 rounded-3xl border border-slate-800">
+                      <div className="lg:col-span-7 lg:order-1 order-2 bg-slate-900 rounded-2xl overflow-hidden border border-slate-800 shadow-xl">
+                        <img src="/projeto/Dashboard_Projeto1.png" alt="Dashboard" className="w-full h-auto object-cover" />
+                      </div>
+                      <div className="lg:col-span-5 lg:order-2 order-1 space-y-4">
+                        <span className="text-xs font-mono text-red-400 bg-red-950/60 border border-red-500/30 px-3 py-1 rounded-full font-bold inline-block">Módulo Gerencial</span>
+                        <h4 className="text-2xl font-bold text-white">Dashboard Analítico e Evolução</h4>
+                        <p className="text-slate-300 text-sm leading-relaxed">
+                          Acompanhamento visual de status operacionais com barra de progresso, total de tarefas concluídas, em andamento e pendentes.
+                        </p>
                       </div>
                     </div>
 
-                    <div className="px-8 pb-8 pt-0">
-                      <a href={proj.url} target="_blank" rel="noopener noreferrer" className="w-full py-3 px-4 rounded-xl bg-white hover:bg-[#1569EF] hover:text-white text-slate-900 font-semibold text-sm flex items-center justify-center gap-2 transition-all border border-slate-200 shadow-sm">
-                        Acessar Projeto Online <ExternalLink className="w-4 h-4" />
-                      </a>
+                    <div className="grid lg:grid-cols-12 gap-8 items-center bg-slate-950/60 p-6 sm:p-8 rounded-3xl border border-slate-800">
+                      <div className="lg:col-span-5 space-y-4">
+                        <span className="text-xs font-mono text-red-400 bg-red-950/60 border border-red-500/30 px-3 py-1 rounded-full font-bold inline-block">Módulo de Campo</span>
+                        <h4 className="text-2xl font-bold text-white">Torre de Controle ao Vivo</h4>
+                        <p className="text-slate-300 text-sm leading-relaxed">
+                          Visão geral em tempo real da disponibilidade da equipe técnica em campo e escritórios.
+                        </p>
+                      </div>
+                      <div className="lg:col-span-7 bg-slate-900 rounded-2xl overflow-hidden border border-slate-800 shadow-xl">
+                        <img src="/projeto/torre_ao_vivo.png" alt="Torre ao Vivo" className="w-full h-auto object-cover" />
+                      </div>
                     </div>
                   </div>
-                ))}
+                ) : (
+                  /* Carrossel de Fotos Mobile do Hub (projetohub_mobile) */
+                  <div className="bg-slate-950 rounded-2xl p-6 border border-slate-800 text-center">
+                    <div className="flex justify-between items-center mb-4">
+                      <span className="text-xs font-mono text-red-400">// Pasta: projetohub_mobile</span>
+                      <span className="text-xs font-mono text-slate-400">{hubMobileIndex + 1} de {hubMobilePrints.length}</span>
+                    </div>
+
+                    <div className="relative w-full h-[400px] sm:h-[480px] bg-black rounded-xl overflow-hidden flex items-center justify-center border border-slate-800 mb-4">
+                      <img 
+                        src={hubMobilePrints[hubMobileIndex].src} 
+                        alt={hubMobilePrints[hubMobileIndex].title} 
+                        className="w-full h-full object-contain"
+                      />
+                      <div className="absolute bottom-4 inset-x-0 bg-slate-950/80 backdrop-blur-md py-2 px-4 mx-8 rounded-xl border border-slate-800">
+                        <p className="text-sm font-bold text-white">{hubMobilePrints[hubMobileIndex].title}</p>
+                      </div>
+                    </div>
+
+                    <div className="flex justify-center gap-4">
+                      <button 
+                        onClick={() => setHubMobileIndex((prev) => (prev - 1 + hubMobilePrints.length) % hubMobilePrints.length)}
+                        className="p-2.5 rounded-xl bg-slate-800 text-white hover:bg-red-600 transition-all border border-slate-700"
+                      >
+                        <ChevronLeft className="w-5 h-5" />
+                      </button>
+                      <button 
+                        onClick={() => setHubMobileIndex((prev) => (prev + 1) % hubMobilePrints.length)}
+                        className="p-2.5 rounded-xl bg-slate-800 text-white hover:bg-red-600 transition-all border border-slate-700"
+                      >
+                        <ChevronRight className="w-5 h-5" />
+                      </button>
+                    </div>
+                  </div>
+                )}
               </div>
 
-              {/* SEÇÃO DETALHADA DE FUNÇÕES COM AS IMAGENS DE PUBLIC/PROJETO/ */}
-              <div className="mt-12 bg-slate-900 text-white rounded-3xl p-8 sm:p-12 shadow-2xl border border-slate-800">
-                <div className="mb-10">
-                  <div className="text-[#1569EF] font-mono text-xs uppercase tracking-widest mb-2 font-bold">// Detalhamento de Regras de Negócio</div>
-                  <h3 className="text-2xl sm:text-3xl font-extrabold text-white">Hub Operacional - Funções e Telas</h3>
-                  <p className="text-slate-400 text-sm mt-1">Capturas reais das telas implementadas para gestão de missões críticas.</p>
-                </div>
+              {/* PROJETO 2: IALE - COMUNIDADE (Desktop vs Mobile) */}
+              <div className="bg-slate-900 text-white rounded-3xl p-8 sm:p-12 shadow-2xl border border-slate-800 relative overflow-hidden">
+                <div className="absolute right-0 top-0 w-96 h-96 bg-blue-600/10 rounded-full blur-3xl pointer-events-none"></div>
 
-                <div className="space-y-12">
-                  {/* Função 1 */}
-                  <div className="grid lg:grid-cols-12 gap-8 items-center bg-slate-950/60 p-6 sm:p-8 rounded-3xl border border-slate-800">
-                    <div className="lg:col-span-5 space-y-4">
-                      <span className="text-xs font-mono text-cyan-300 bg-cyan-950/60 border border-cyan-500/30 px-3 py-1 rounded-full font-bold inline-block">Módulo de Tarefas</span>
-                      <h4 className="text-2xl font-bold text-white">Tarefas, Subtarefas e Registro de Atividades</h4>
-                      <p className="text-slate-300 text-sm leading-relaxed">
-                        Gerenciamento completo onde cada tarefa principal possui subtarefas detalhadas. O sistema permite o registro de horários trabalhados por colaborador, anotações de procedimentos realizados via scripts Python e acompanhamento do progresso em tempo real.
-                      </p>
-                    </div>
-                    <div className="lg:col-span-7 bg-slate-900 rounded-2xl overflow-hidden border border-slate-800 shadow-xl">
-                      <img src="/projeto/headi_tarefa_subtaref_funcoes.png" alt="Tarefas e Subtarefas" className="w-full h-auto object-cover" />
-                    </div>
+                <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 mb-8 border-b border-slate-800 pb-8">
+                  <div>
+                    <span className="text-xs font-mono text-cyan-300 bg-cyan-950/60 border border-cyan-500/30 px-3 py-1 rounded-full font-bold inline-block mb-3">
+                      Ecossistema Corporativo e Igreja
+                    </span>
+                    <h3 className="text-3xl font-black tracking-tight">IALE - Comunidade</h3>
+                    <p className="text-slate-400 text-base mt-2 max-w-3xl leading-relaxed">
+                      Plataforma completa para gestão integrada com painel de música, repertório, bate-papo em tempo real, central de comunicados e base de aniversariantes gerada via formulários.
+                    </p>
                   </div>
-
-                  {/* Função 2 */}
-                  <div className="grid lg:grid-cols-12 gap-8 items-center bg-slate-950/60 p-6 sm:p-8 rounded-3xl border border-slate-800">
-                    <div className="lg:col-span-7 lg:order-1 order-2 bg-slate-900 rounded-2xl overflow-hidden border border-slate-800 shadow-xl">
-                      <img src="/projeto/Dashboard_Projeto1.png" alt="Dashboard de Evolução" className="w-full h-auto object-cover" />
-                    </div>
-                    <div className="lg:col-span-5 lg:order-2 order-1 space-y-4">
-                      <span className="text-xs font-mono text-cyan-300 bg-cyan-950/60 border border-cyan-500/30 px-3 py-1 rounded-full font-bold inline-block">Módulo de Métricas</span>
-                      <h4 className="text-2xl font-bold text-white">Dashboard de Evolução do Projeto</h4>
-                      <p className="text-slate-300 text-sm leading-relaxed">
-                        Acompanhamento visual de status operacionais com barra de progresso de conclusão, contagem total de tarefas, itens concluídos, em andamento e pendentes por projeto específico ou de forma consolidada.
-                      </p>
-                    </div>
-                  </div>
-
-                  {/* Função 3 */}
-                  <div className="grid lg:grid-cols-12 gap-8 items-center bg-slate-950/60 p-6 sm:p-8 rounded-3xl border border-slate-800">
-                    <div className="lg:col-span-5 space-y-4">
-                      <span className="text-xs font-mono text-cyan-300 bg-cyan-950/60 border border-cyan-500/30 px-3 py-1 rounded-full font-bold inline-block">Módulo de Monitoramento</span>
-                      <h4 className="text-2xl font-bold text-white">Torre de Controle ao Vivo</h4>
-                      <p className="text-slate-300 text-sm leading-relaxed">
-                        Visão geral em tempo real da disponibilidade da equipe, permitindo acompanhar quem está trabalhando, disponível ou em deslocamento para unidades corporativas de atendimento.
-                      </p>
-                    </div>
-                    <div className="lg:col-span-7 bg-slate-900 rounded-2xl overflow-hidden border border-slate-800 shadow-xl">
-                      <img src="/projeto/torre_ao_vivo.png" alt="Torre de Controle ao Vivo" className="w-full h-auto object-cover" />
-                    </div>
-                  </div>
-
-                  {/* Função 4 */}
-                  <div className="grid lg:grid-cols-12 gap-8 items-center bg-slate-950/60 p-6 sm:p-8 rounded-3xl border border-slate-800">
-                    <div className="lg:col-span-7 lg:order-1 order-2 bg-slate-900 rounded-2xl overflow-hidden border border-slate-800 shadow-xl">
-                      <img src="/projeto/Admin.png" alt="Painel Administrativo" className="w-full h-auto object-cover" />
-                    </div>
-                    <div className="lg:col-span-5 lg:order-2 order-1 space-y-4">
-                      <span className="text-xs font-mono text-cyan-300 bg-cyan-950/60 border border-cyan-500/30 px-3 py-1 rounded-full font-bold inline-block">Módulo Administrativo</span>
-                      <h4 className="text-2xl font-bold text-white">Gestão de Equipe e Permissões</h4>
-                      <p className="text-slate-300 text-sm leading-relaxed">
-                        Painel completo de administração para cadastro de novos usuários, definição de funções/setores e liberação granular de acesso aos diferentes projetos corporativos.
-                      </p>
-                    </div>
+                  <div className="flex gap-3 shrink-0">
+                    <a 
+                      href="https://iale.vercel.app/login" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="px-6 py-3.5 bg-[#1569EF] hover:bg-blue-700 text-white font-bold rounded-2xl flex items-center gap-2 transition-all shadow-lg"
+                    >
+                      Acessar Online <ExternalLink className="w-4 h-4" />
+                    </a>
                   </div>
                 </div>
+
+                {/* Seletor IALE (Desktop vs Mobile) */}
+                <div className="flex items-center justify-between flex-wrap gap-4 mb-6 bg-slate-950 p-3 rounded-2xl border border-slate-800">
+                  <span className="text-xs font-mono text-slate-400 pl-2">// Versões Disponíveis do IALE</span>
+                  <div className="flex gap-2">
+                    <button 
+                      onClick={() => setIaleViewMode('desktop')}
+                      className={`px-4 py-2 rounded-xl text-xs font-semibold flex items-center gap-2 transition-all ${ialeViewMode === 'desktop' ? 'bg-[#1569EF] text-white shadow-md' : 'bg-slate-800 text-slate-400 hover:text-white'}`}
+                    >
+                      <Monitor className="w-4 h-4" /> Versão Desktop (projetoiale_desktop)
+                    </button>
+                    <button 
+                      onClick={() => setIaleViewMode('mobile')}
+                      className={`px-4 py-2 rounded-xl text-xs font-semibold flex items-center gap-2 transition-all ${ialeViewMode === 'mobile' ? 'bg-[#1569EF] text-white shadow-md' : 'bg-slate-800 text-slate-400 hover:text-white'}`}
+                    >
+                      <Smartphone className="w-4 h-4" /> Versão Mobile (projetoiale_mobile)
+                    </button>
+                  </div>
+                </div>
+
+                {/* Galeria IALE Desktop vs Mobile */}
+                {ialeViewMode === 'desktop' ? (
+                  <div className="bg-slate-950 rounded-2xl p-6 border border-slate-800 text-center">
+                    <div className="flex justify-between items-center mb-4">
+                      <span className="text-xs font-mono text-cyan-300">// Pasta: projetoiale_desktop</span>
+                      <span className="text-xs font-mono text-slate-400">{ialeDesktopIndex + 1} de {ialeDesktopPrints.length}</span>
+                    </div>
+
+                    <div className="relative w-full h-[350px] sm:h-[450px] bg-black rounded-xl overflow-hidden flex items-center justify-center border border-slate-800 mb-4">
+                      <img 
+                        src={ialeDesktopPrints[ialeDesktopIndex].src} 
+                        alt={ialeDesktopPrints[ialeDesktopIndex].title} 
+                        className="w-full h-full object-contain"
+                      />
+                      <div className="absolute bottom-4 inset-x-0 bg-slate-950/80 backdrop-blur-md py-2 px-4 mx-8 rounded-xl border border-slate-800">
+                        <p className="text-sm font-bold text-white">{ialeDesktopPrints[ialeDesktopIndex].title}</p>
+                      </div>
+                    </div>
+
+                    <div className="flex justify-center gap-4">
+                      <button 
+                        onClick={() => setIaleDesktopIndex((prev) => (prev - 1 + ialeDesktopPrints.length) % ialeDesktopPrints.length)}
+                        className="p-2.5 rounded-xl bg-slate-800 text-white hover:bg-[#1569EF] transition-all border border-slate-700"
+                      >
+                        <ChevronLeft className="w-5 h-5" />
+                      </button>
+                      <button 
+                        onClick={() => setIaleDesktopIndex((prev) => (prev + 1) % ialeDesktopPrints.length)}
+                        className="p-2.5 rounded-xl bg-slate-800 text-white hover:bg-[#1569EF] transition-all border border-slate-700"
+                      >
+                        <ChevronRight className="w-5 h-5" />
+                      </button>
+                    </div>
+                  </div>
+                ) : (
+                  <div className="bg-slate-950 rounded-2xl p-6 border border-slate-800 text-center">
+                    <div className="flex justify-between items-center mb-4">
+                      <span className="text-xs font-mono text-cyan-300">// Pasta: projetoiale_mobile</span>
+                      <span className="text-xs font-mono text-slate-400">{ialeMobileIndex + 1} de {ialeMobilePrints.length}</span>
+                    </div>
+
+                    <div className="relative w-full h-[400px] sm:h-[480px] bg-black rounded-xl overflow-hidden flex items-center justify-center border border-slate-800 mb-4">
+                      <img 
+                        src={ialeMobilePrints[ialeMobileIndex].src} 
+                        alt={ialeMobilePrints[ialeMobileIndex].title} 
+                        className="w-full h-full object-contain"
+                      />
+                      <div className="absolute bottom-4 inset-x-0 bg-slate-950/80 backdrop-blur-md py-2 px-4 mx-8 rounded-xl border border-slate-800">
+                        <p className="text-sm font-bold text-white">{ialeMobilePrints[ialeMobileIndex].title}</p>
+                      </div>
+                    </div>
+
+                    <div className="flex justify-center gap-4">
+                      <button 
+                        onClick={() => setIaleMobileIndex((prev) => (prev - 1 + ialeMobilePrints.length) % ialeMobilePrints.length)}
+                        className="p-2.5 rounded-xl bg-slate-800 text-white hover:bg-[#1569EF] transition-all border border-slate-700"
+                      >
+                        <ChevronLeft className="w-5 h-5" />
+                      </button>
+                      <button 
+                        onClick={() => setIaleMobileIndex((prev) => (prev + 1) % ialeMobilePrints.length)}
+                        className="p-2.5 rounded-xl bg-slate-800 text-white hover:bg-[#1569EF] transition-all border border-slate-700"
+                      >
+                        <ChevronRight className="w-5 h-5" />
+                      </button>
+                    </div>
+                  </div>
+                )}
               </div>
 
             </motion.div>
@@ -401,7 +514,7 @@ export default function Portfolio() {
             >
               <div className="mb-12">
                 <div className="text-[#1569EF] font-mono text-xs uppercase tracking-widest mb-2 font-bold">// Perfil Profissional e Conquistas</div>
-                <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">Currículo Profissional</h2>
+                <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">Currículo e Formatura</h2>
                 <p className="text-slate-600 mt-2">Analista de TI e Dados | Formado em Análise e Desenvolvimento de Sistemas (ADS) pela Unicesumar.</p>
               </div>
 
@@ -539,7 +652,7 @@ export default function Portfolio() {
             </motion.div>
           )}
 
-          {/* ABA: FORMATURA (Carrossel Dedicado) */}
+          {/* ABA: FORMATURA (Carrossel com legendas atualizadas) */}
           {currentTab === 'formatura' && (
             <motion.div 
               key="formatura"

@@ -106,13 +106,13 @@ export default function Portfolio() {
               onClick={() => setCurrentTab('projetos')}
               className={`px-4 sm:px-5 py-2 rounded-xl text-sm font-semibold transition-all whitespace-nowrap ${currentTab === 'projetos' ? 'bg-[#1569EF] text-white shadow-md shadow-blue-500/20' : 'text-slate-600 hover:text-slate-900'}`}
             >
-              Projetos e Prints
+              Projetos
             </button>
             <button 
               onClick={() => setCurrentTab('funcionalidades')}
               className={`px-4 sm:px-5 py-2 rounded-xl text-sm font-semibold transition-all whitespace-nowrap ${currentTab === 'funcionalidades' ? 'bg-[#1569EF] text-white shadow-md shadow-blue-500/20' : 'text-slate-600 hover:text-slate-900'}`}
             >
-              Apresentação
+              Minhas Ideias
             </button>
             <button 
               onClick={() => setCurrentTab('stack')}
@@ -279,7 +279,7 @@ export default function Portfolio() {
             >
               <div className="mb-12">
                 <div className="text-[#1569EF] font-mono text-xs uppercase tracking-widest mb-2 font-bold">// Detalhes Técnicos</div>
-                <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">Apresentação de Funcionalidades</h2>
+                <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">Funcionalidades</h2>
                 <p className="text-slate-600 mt-2">Selecione o sistema para ver o detalhamento dinâmico das regras de negócio.</p>
               </div>
 

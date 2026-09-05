@@ -96,7 +96,7 @@ export default function Portfolio() {
       <main className="max-w-7xl mx-auto px-6 pt-36 pb-24 relative z-10 min-h-[75vh]">
         <AnimatePresence mode="wait">
           
-          {/* ABA: HOME COM BANNER E FOTO GEOMÉTRICA */}
+          {/* ABA: HOME COM BANNER E FOTO INTEGRADA */}
           {currentTab === 'home' && (
             <motion.div 
               key="home"
@@ -140,24 +140,22 @@ export default function Portfolio() {
                   </div>
                 </div>
 
-                {/* Bloco da Foto com Contraste Geométrico e Bordas Arredondadas */}
-                <div className="lg:col-span-5 flex justify-center z-10 lg:justify-end mt-10 lg:mt-0">
-                  <div className="relative group">
-                    <div className="absolute -inset-5 bg-white/10 rounded-full blur-2xl pointer-events-none group-hover:bg-white/20 transition-all duration-500"></div>
-                    <div className="absolute -bottom-8 -right-8 w-40 h-40 bg-cyan-400/20 rounded-full blur-3xl pointer-events-none"></div>
-
-                    <div className="w-72 h-80 sm:w-80 sm:h-96 rounded-[2.5rem] rounded-tr-[5rem] overflow-hidden bg-gradient-to-b from-blue-600/50 to-slate-900/80 border-2 border-white/30 shadow-2xl relative flex items-center justify-center transition-transform duration-500 group-hover:scale-[1.01]">
-                      <img 
-                        src="/avatar-fullstack.png" 
-                        alt="Foto Profissional Crystian FullStack" 
-                        className="w-full h-full object-cover object-top"
-                        onError={(e) => { e.currentTarget.style.display = 'none'; }}
-                      />
-                      <div className="absolute inset-0 flex flex-col items-center justify-center text-center p-6 text-slate-400">
-                        <Terminal className="w-12 h-12 text-cyan-300 mb-3" />
-                        <span className="text-xs font-mono text-slate-200 font-bold">Sua Foto Real (PNG)</span>
-                        <span className="text-[10px] text-slate-400 mt-1">Coloque a imagem em /public/avatar-fullstack.png</span>
-                      </div>
+                {/* Bloco da Foto Integrada Direto no Fundo Azul (Sem Card) */}
+                <div className="lg:col-span-5 flex justify-center lg:justify-end z-10 mt-10 lg:mt-0">
+                  <div className="relative w-72 h-80 sm:w-80 sm:h-96 rounded-3xl overflow-hidden shadow-2xl border border-white/20">
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950/50 via-transparent to-cyan-400/10 pointer-events-none z-10"></div>
+                    
+                    <img 
+                      src="/avatar-fullstack.png" 
+                      alt="Foto Profissional Crystian FullStack" 
+                      className="w-full h-full object-cover object-top relative z-0"
+                      onError={(e) => { e.currentTarget.style.display = 'none'; }}
+                    />
+                    
+                    <div className="absolute inset-0 flex flex-col items-center justify-center text-center p-6 text-slate-300 z-20">
+                      <Terminal className="w-10 h-10 text-cyan-300 mb-2" />
+                      <span className="text-xs font-mono font-bold">Coloque a imagem em</span>
+                      <span className="text-[10px] text-slate-300 mt-1 font-mono">/public/avatar-fullstack.png</span>
                     </div>
                   </div>
                 </div>

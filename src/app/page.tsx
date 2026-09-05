@@ -357,7 +357,7 @@ export default function Portfolio() {
             </motion.div>
           )}
 
-          {/* ABA: CURRÍCULO E CARROSSEL DE FORMATURA */}
+          {/* ABA: CURRÍCULO E FORMATURA (Estrutura Exata Solicitada) */}
           {currentTab === 'curriculo' && (
             <motion.div 
               key="curriculo"
@@ -372,10 +372,8 @@ export default function Portfolio() {
                 <p className="text-slate-600 mt-2">Analista de TI e Dados | Formado em Análise e Desenvolvimento de Sistemas (ADS) pela Unicesumar.</p>
               </div>
 
-              {/* Seção em Grid: Resumo Profissional + Carrossel Intuitivo de Formatura */}
+              {/* 1. TOPO: Card Formatura + Fotos em Slide */}
               <div className="grid lg:grid-cols-12 gap-8 mb-12 items-stretch">
-                
-                {/* Resumo Profissional (Esquerda) */}
                 <div className="lg:col-span-7 bg-gradient-to-br from-slate-900 to-blue-950 text-white rounded-3xl p-8 sm:p-10 shadow-xl flex flex-col justify-between relative overflow-hidden">
                   <div className="absolute right-0 top-0 w-80 h-80 bg-[#1569EF]/20 rounded-full blur-3xl pointer-events-none"></div>
                   <div>
@@ -383,22 +381,20 @@ export default function Portfolio() {
                       <div className="p-2.5 rounded-xl bg-[#1569EF]/30 text-cyan-300 border border-[#1569EF]/40">
                         <GraduationCap className="w-6 h-6" />
                       </div>
-                      <h3 className="text-2xl font-bold">Graduação e Trajetória</h3>
+                      <h3 className="text-2xl font-bold">Graduação e Marco Acadêmico</h3>
                     </div>
                     <p className="text-slate-300 text-base sm:text-lg leading-relaxed font-light mb-6">
-                      Sou Analista de TI e Dados formado em ADS pela Faculdade Unicesumar, com atuação focada em engenharia de dados, automação, sustentação de sistemas de missão crítica e integração entre bancos de dados e planilhas no setor de Saúde e Diagnósticos Laboratoriais (operações Brasil/Espanha).
+                      Formado em Análise e Desenvolvimento de Sistemas (ADS) pela Faculdade Unicesumar, consolidando a base acadêmica necessária para atuar com engenharia de dados, automação e sustentação de sistemas críticos em nível internacional.
                     </p>
                     <p className="text-slate-300 text-sm leading-relaxed font-light">
-                      No dia a dia, utilizo um excelente relacionamento interpessoal para colaborar com o time na resolução rápida de problemas, aplicando a metodologia Kanban para manter o fluxo de entregas ágil e organizado.
+                      Cada etapa desta jornada acadêmica reflete dedicação à tecnologia e busca constante por excelência técnica e resolução de problemas complexos.
                     </p>
                   </div>
                 </div>
 
-                {/* Carrossel Intuitivo de Formatura (Direita) */}
+                {/* Carrossel de Formatura */}
                 <div className="lg:col-span-5 bg-slate-900 rounded-3xl overflow-hidden shadow-xl border border-slate-200 relative flex flex-col justify-between group">
                   <div className="relative w-full h-72 sm:h-80 bg-slate-950 overflow-hidden flex items-center justify-center">
-                    
-                    {/* Imagens do Carrossel */}
                     {formaturaImages.map((img, idx) => (
                       <div 
                         key={idx}
@@ -421,7 +417,6 @@ export default function Portfolio() {
                       </div>
                     ))}
 
-                    {/* Botões de Navegação Manual Intuitivos */}
                     <button 
                       onClick={prevSlide}
                       className="absolute left-3 top-1/2 -translate-y-1/2 p-2 rounded-full bg-black/50 text-white hover:bg-[#1569EF] transition-all backdrop-blur-sm z-20"
@@ -438,7 +433,6 @@ export default function Portfolio() {
                     </button>
                   </div>
 
-                  {/* Indicadores de Pontos (Dots) */}
                   <div className="p-4 bg-slate-900 flex justify-center gap-2 items-center border-t border-slate-800">
                     {formaturaImages.map((_, idx) => (
                       <button 
@@ -450,10 +444,40 @@ export default function Portfolio() {
                     ))}
                   </div>
                 </div>
-
               </div>
 
-              {/* Grid de Competências e Especialidades */}
+              {/* 2. MEIO: Card "Sobre Mim" */}
+              <div className="bg-slate-900 text-white rounded-3xl p-8 sm:p-12 shadow-2xl relative overflow-hidden border border-slate-800 mb-12">
+                <div className="absolute -right-16 -bottom-16 w-80 h-80 bg-blue-600/10 rounded-full blur-3xl pointer-events-none"></div>
+                
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="p-3 rounded-2xl bg-[#1569EF]/20 text-[#1569EF] border border-[#1569EF]/30">
+                    <UserCheck className="w-6 h-6 text-cyan-300" />
+                  </div>
+                  <div>
+                    <span className="text-xs font-mono text-[#1569EF] uppercase tracking-wider font-bold">Apresentação Pessoal</span>
+                    <h3 className="text-2xl sm:text-3xl font-extrabold text-white">Sobre Mim</h3>
+                  </div>
+                </div>
+
+                <div className="space-y-6 text-slate-300 text-base sm:text-lg leading-relaxed font-light">
+                  <p>
+                    Olá! Sou o <strong className="text-white font-semibold">Crystian</strong>, um profissional apaixonado por tecnologia, dados e inovação, com forte atuação corporativa internacional (Brasil e Espanha) no exigente setor de Saúde e Diagnósticos Laboratoriais.
+                  </p>
+                  <p>
+                    Minha jornada é impulsionada pelo desejo constante de resolver problemas complexos e otimizar processos operacionais que antes pareciam engessados. Acredito que a combinação entre uma engenharia de dados sólida, automações inteligentes com ferramentas modernas e o uso estratégico de Inteligência Artificial é o segredo para entregar valor real aos negócios.
+                  </p>
+                  <p>
+                    Seja construindo ecossistemas web performáticos em Next.js, estruturando queries avançadas em PostgreSQL para sistemas de missão crítica (LIS), ou desenvolvendo fluxos automatizados em N8N e Python, meu compromisso é sempre unir alta técnica, empatia no trabalho em equipe e agilidade através do Kanban.
+                  </p>
+                </div>
+              </div>
+
+              {/* 3. ABAIXO: Cards de Manipulação de Dados, SQL e Competências */}
+              <div className="mb-8">
+                <h3 className="text-2xl font-bold text-slate-900 mb-6">// Competências e Atuação Técnica</h3>
+              </div>
+
               <div className="grid md:grid-cols-2 gap-8 mb-12">
                 
                 {/* Projetos e Automações */}
@@ -546,33 +570,6 @@ export default function Portfolio() {
                   </div>
                 </div>
 
-              </div>
-
-              {/* Seção "Sobre Mim" em forma de Apresentação Profissional Logo Abaixo */}
-              <div className="bg-slate-900 text-white rounded-3xl p-8 sm:p-12 shadow-2xl relative overflow-hidden border border-slate-800">
-                <div className="absolute -right-16 -bottom-16 w-80 h-80 bg-blue-600/10 rounded-full blur-3xl pointer-events-none"></div>
-                
-                <div className="flex items-center gap-3 mb-6">
-                  <div className="p-3 rounded-2xl bg-[#1569EF]/20 text-[#1569EF] border border-[#1569EF]/30">
-                    <UserCheck className="w-6 h-6 text-cyan-300" />
-                  </div>
-                  <div>
-                    <span className="text-xs font-mono text-[#1569EF] uppercase tracking-wider font-bold">Apresentação Pessoal</span>
-                    <h3 className="text-2xl sm:text-3xl font-extrabold text-white">Sobre Mim</h3>
-                  </div>
-                </div>
-
-                <div className="space-y-6 text-slate-300 text-base sm:text-lg leading-relaxed font-light">
-                  <p>
-                    Olá! Sou o <strong className="text-white font-semibold">Crystian</strong>, um profissional apaixonado por tecnologia, dados e inovação, com forte atuação corporativa internacional (Brasil e Espanha) no exigente setor de Saúde e Diagnósticos Laboratoriais.
-                  </p>
-                  <p>
-                    Minha jornada é impulsionada pelo desejo constante de resolver problemas complexos e otimizar processos operacionais que antes pareciam engessados. Acredito que a combinação entre uma engenharia de dados sólida, automações inteligentes com ferramentas modernas e o uso estratégico de Inteligência Artificial é o segredo para entregar valor real aos negócios.
-                    </p>
-                  <p>
-                    Seja construindo ecossistemas web performáticos em Next.js, estruturando queries avançadas em PostgreSQL para sistemas de missão crítica (LIS), ou desenvolvendo fluxos automatizados em N8N e Python, meu compromisso é sempre unir alta técnica, empatia no trabalho em equipe e agilidade através do Kanban.
-                  </p>
-                </div>
               </div>
 
             </motion.div>

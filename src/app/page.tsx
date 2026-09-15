@@ -52,7 +52,7 @@ export default function Portfolio() {
       desc: "Ambiente de desenvolvimento e testes de consultas em bancos relacionais, Supabase e tratamento de dados diários." 
     },
     { 
-      src: "/python.png", 
+      src: "/power_automate.png", 
       title: "Automação e Monitoramento", 
       desc: "Execução de rotinas automatizadas, scripts e acompanhamento de logs de integração em tempo real." 
     }

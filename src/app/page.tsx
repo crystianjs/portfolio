@@ -39,20 +39,20 @@ export default function Portfolio() {
     { src: "/formatura(4).jpeg", caption: "Registro Especial da Formatura" },
   ];
 
-  // Prints de Experiência salvos na pasta public (você pode ajustar os nomes dos arquivos conforme salvou)
+  // Prints de Experiência corrigidos para os arquivos reais em public/
   const experiencePrints = [
     { 
-      src: "/experiencia/experiencia_1.png", 
+      src: "/photo_cerba_1.png", 
       title: "Atuação em Sistemas e Suporte Técnico", 
       desc: "Registro de rotinas de atendimento, sistemas corporativos e chamados de alta criticidade no setor de tecnologia e saúde." 
     },
     { 
-      src: "/experiencia/experiencia_2.png", 
+      src: "/photo_cerba_2.png", 
       title: "Manipulação de Dados e Consultas SQL", 
       desc: "Ambiente de desenvolvimento e testes de consultas em bancos relacionais, Supabase e tratamento de dados diários." 
     },
     { 
-      src: "/experiencia/experiencia_3.png", 
+      src: "/photo_cerba_3.png", 
       title: "Automação e Monitoramento", 
       desc: "Execução de rotinas automatizadas, scripts e acompanhamento de logs de integração em tempo real." 
     }
@@ -173,7 +173,7 @@ export default function Portfolio() {
         </div>
       )}
 
-      {/* --- CONTEÚDO PRINCIPAL (PÁGINA ÚNICA) --- */}
+      {/* --- CONTEÚDO PRINCIPAL --- */}
       <main className="max-w-7xl mx-auto px-6 pt-32 pb-24 space-y-36 relative z-10">
 
         {/* 1. SEÇÃO INÍCIO (HERO) */}
@@ -382,7 +382,7 @@ export default function Portfolio() {
           </div>
         </section>
 
-        {/* 3. SEÇÃO STACK TECH (Com suporte a ícones PNG e Lucide) */}
+        {/* 3. SEÇÃO STACK TECH (Com ícones em PNG da pasta public) */}
         <section id="stack" className="scroll-mt-28">
           <div className="mb-12">
             <div className="text-[#FF7A00] font-mono text-xs uppercase tracking-widest mb-2 font-bold">// Ferramentas & Tecnologias</div>
@@ -395,7 +395,8 @@ export default function Portfolio() {
               <div>
                 <div className="flex items-center gap-3 mb-4">
                   <Layout className="w-8 h-8 text-[#FF7A00]" />
-                  {/* Exemplo de uso de ícone PNG opcional da pasta public se desejar: <img src="/icons/react.png" className="w-8 h-8 object-contain" alt="React" /> */}
+                  <img src="/claude.ia.png" alt="Claude AI" className="w-7 h-7 object-contain opacity-80" />
+                  <img src="/gemini.png" alt="Gemini" className="w-7 h-7 object-contain opacity-80" />
                 </div>
                 <h3 className="text-xl font-bold text-white mb-3">Front-end & Web</h3>
                 <p className="text-sm text-neutral-400 font-mono leading-relaxed">Next.js • React • TypeScript • Tailwind CSS • Framer Motion • Desenvolvimento Web moderno e responsivo.</p>
@@ -406,6 +407,7 @@ export default function Portfolio() {
               <div>
                 <div className="flex items-center gap-3 mb-4">
                   <Database className="w-8 h-8 text-[#FF7A00]" />
+                  <img src="/projeto/postman.png" alt="Postman" className="w-7 h-7 object-contain opacity-80" />
                 </div>
                 <h3 className="text-xl font-bold text-white mb-3">Dados, SQL & APIs</h3>
                 <p className="text-sm text-neutral-400 font-mono leading-relaxed">PostgreSQL • Supabase • Consultas SQL diárias • Modelagem relacional • Postman • Requisições HTTP e automações.</p>
@@ -416,6 +418,8 @@ export default function Portfolio() {
               <div>
                 <div className="flex items-center gap-3 mb-4">
                   <ShieldCheck className="w-8 h-8 text-[#FF7A00]" />
+                  <img src="/projeto/python.png" alt="Python" className="w-7 h-7 object-contain opacity-80" />
+                  <img src="/projeto/git_github.png" alt="Git & GitHub" className="w-7 h-7 object-contain opacity-80" />
                 </div>
                 <h3 className="text-xl font-bold text-white mb-3">Automação & Processos</h3>
                 <p className="text-sm text-neutral-400 font-mono leading-relaxed">Python (Robôs & Scripts) • Sistema de Logs de Integração • FileZilla Server • Git & GitHub CLI • PowerShell.</p>
@@ -465,7 +469,7 @@ export default function Portfolio() {
           </div>
         </section>
 
-        {/* 5. SEÇÃO CURRÍCULO (COM OS PRINTS DE EXPERIÊNCIA ADICIONADOS) */}
+        {/* 5. SEÇÃO CURRÍCULO (COM OS PRINTS CORRETOS photo_cerba_x.png) */}
         <section id="curriculo" className="scroll-mt-28">
           <div className="mb-10">
             <div className="text-[#FF7A00] font-mono text-xs uppercase tracking-widest mb-2 font-bold">// Perfil Profissional</div>
@@ -476,7 +480,6 @@ export default function Portfolio() {
           <div className="grid lg:grid-cols-12 gap-8 mb-16">
             <div className="lg:col-span-7 space-y-8">
               
-              {/* Resumo Executivo & Experiência de Mercado (+2 anos) */}
               <div className="bg-neutral-900 p-8 sm:p-10 rounded-3xl border border-neutral-800 shadow-xl space-y-6">
                 <h3 className="text-2xl font-bold text-white flex items-center gap-3">
                   <FileText className="w-6 h-6 text-[#FF7A00]" /> Resumo Executivo & Experiência de Mercado (+2 anos)
@@ -501,7 +504,6 @@ export default function Portfolio() {
                 </div>
               </div>
 
-              {/* Trabalhos Voluntários */}
               <div className="bg-neutral-900 p-8 sm:p-10 rounded-3xl border border-neutral-800 shadow-xl space-y-6">
                 <h3 className="text-2xl font-bold text-white flex items-center gap-3">
                   <HeartHandshake className="w-6 h-6 text-[#FF7A00]" /> Trabalhos Voluntários & Comunidade
@@ -519,7 +521,6 @@ export default function Portfolio() {
 
             <div className="lg:col-span-5 space-y-8">
               
-              {/* Formação, Cursos & Bagagem Extracurricular */}
               <div className="bg-neutral-900 p-8 sm:p-10 rounded-3xl border border-neutral-800 shadow-xl space-y-6">
                 <h3 className="text-2xl font-bold text-white flex items-center gap-3">
                   <GraduationCap className="w-6 h-6 text-[#FF7A00]" /> Formação & Extracurricular
@@ -551,7 +552,7 @@ export default function Portfolio() {
             </div>
           </div>
 
-          {/* GALERIA DE PRINTS DE EXPERIÊNCIA (ADICIONADA AQUI) */}
+          {/* GALERIA DE PRINTS DE EXPERIÊNCIA CORRIGIDA */}
           <div className="bg-neutral-900 border border-neutral-800 p-8 sm:p-12 rounded-3xl shadow-2xl">
             <div className="mb-8 border-b border-neutral-800 pb-6">
               <span className="text-xs font-mono text-[#FF7A00] bg-[#FF7A00]/10 border border-[#FF7A00]/30 px-3 py-1 rounded-full font-bold inline-block mb-3">Evidências Práticas</span>
@@ -579,7 +580,7 @@ export default function Portfolio() {
           </div>
         </section>
 
-        {/* 6. SEÇÃO SOLO DE PRINCIPAIS COMPETÊNCIAS */}
+        {/* 6. SEÇÃO COMPETÊNCIAS */}
         <section id="competencias" className="scroll-mt-28">
           <div className="mb-10">
             <div className="text-[#FF7A00] font-mono text-xs uppercase tracking-widest mb-2 font-bold">// Hard Skills & Domínio Técnico</div>

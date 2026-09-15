@@ -42,7 +42,7 @@ export default function Portfolio() {
   // Prints de Experiência atualizados com as imagens solicitadas
   const experiencePrints = [
     { 
-      src: "/photo_cerba_1.png", 
+      src: "/power_automate.png", 
       title: "Atuação em Sistemas e Suporte Técnico", 
       desc: "Registro de rotinas de atendimento, sistemas corporativos e chamados de alta criticidade no setor de tecnologia e saúde." 
     },
@@ -52,7 +52,7 @@ export default function Portfolio() {
       desc: "Ambiente de desenvolvimento e testes de consultas em bancos relacionais, Supabase e tratamento de dados diários." 
     },
     { 
-      src: "/power_automate.png", 
+      src: "/photo_cerba_1.png", 
       title: "Automação e Monitoramento", 
       desc: "Execução de rotinas automatizadas, scripts e acompanhamento de logs de integração em tempo real." 
     }
@@ -395,8 +395,6 @@ export default function Portfolio() {
               <div>
                 <div className="flex items-center gap-3 mb-4">
                   <Layout className="w-8 h-8 text-[#FF7A00]" />
-                  <img src="/claude.ia.png" alt="Claude AI" className="w-7 h-7 object-contain opacity-80" />
-                  <img src="/gemini.png" alt="Gemini" className="w-7 h-7 object-contain opacity-80" />
                 </div>
                 <h3 className="text-xl font-bold text-white mb-3">Front-end & Web</h3>
                 <p className="text-sm text-neutral-400 font-mono leading-relaxed">Next.js • React • TypeScript • Tailwind CSS • Framer Motion • Desenvolvimento Web moderno e responsivo.</p>
@@ -407,7 +405,6 @@ export default function Portfolio() {
               <div>
                 <div className="flex items-center gap-3 mb-4">
                   <Database className="w-8 h-8 text-[#FF7A00]" />
-                  <img src="/projeto/postman.png" alt="Postman" className="w-7 h-7 object-contain opacity-80" />
                 </div>
                 <h3 className="text-xl font-bold text-white mb-3">Dados, SQL & APIs</h3>
                 <p className="text-sm text-neutral-400 font-mono leading-relaxed">PostgreSQL • Supabase • Consultas SQL diárias • Modelagem relacional • Postman • Requisições HTTP e automações.</p>
@@ -418,8 +415,6 @@ export default function Portfolio() {
               <div>
                 <div className="flex items-center gap-3 mb-4">
                   <ShieldCheck className="w-8 h-8 text-[#FF7A00]" />
-                  <img src="/projeto/python.png" alt="Python" className="w-7 h-7 object-contain opacity-80" />
-                  <img src="/projeto/git_github.png" alt="Git & GitHub" className="w-7 h-7 object-contain opacity-80" />
                 </div>
                 <h3 className="text-xl font-bold text-white mb-3">Automação & Processos</h3>
                 <p className="text-sm text-neutral-400 font-mono leading-relaxed">Python (Robôs & Scripts) • Sistema de Logs de Integração • FileZilla Server • Git & GitHub CLI • PowerShell.</p>

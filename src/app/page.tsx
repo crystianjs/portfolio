@@ -42,7 +42,7 @@ export default function Portfolio() {
   // Prints de Experiência atualizados com as imagens solicitadas
   const experiencePrints = [
     { 
-      src: "/power_automate.png", 
+      src: "/photo_cerba_1.png", 
       title: "Atuação em Sistemas e Suporte Técnico", 
       desc: "Registro de rotinas de atendimento, sistemas corporativos e chamados de alta criticidade no setor de tecnologia e saúde." 
     },
@@ -52,7 +52,7 @@ export default function Portfolio() {
       desc: "Ambiente de desenvolvimento e testes de consultas em bancos relacionais, Supabase e tratamento de dados diários." 
     },
     { 
-      src: "/photo_cerba_1.png", 
+      src: "/projeto/python", 
       title: "Automação e Monitoramento", 
       desc: "Execução de rotinas automatizadas, scripts e acompanhamento de logs de integração em tempo real." 
     }

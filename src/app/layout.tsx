@@ -4,11 +4,6 @@ import './globals.css';
 export const metadata = {
   title: 'DevOps - Crystian',
   description: 'Desenvolvedor Full Stack & Soluções Corporativas',
-  icons: {
-    icon: [
-      { url: '/fivcon-logo.png', type: 'image/png' },
-    ],
-  },
 };
 
 export default function RootLayout({

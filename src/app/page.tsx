@@ -21,21 +21,11 @@ import {
   MessageSquare,
   X,
   Clock,
-  Filter,
-  CheckCircle2,
-  Cpu,
-  Layers,
   Send,
   FileText,
-  Award,
-  BookOpen,
-  Server,
-  Layers3,
   HeartHandshake,
-  TrendingUp,
-  Bot
+  Server
 } from 'lucide-react';
-import { motion } from 'framer-motion';
 
 export default function Portfolio() {
   const [hubViewMode, setHubViewMode] = useState<'desktop' | 'mobile'>('desktop');
@@ -47,6 +37,25 @@ export default function Portfolio() {
     { src: "/formatura(2).jpeg", caption: "Colação de Grau - Recebimento de Diploma" },
     { src: "/formatura(3).jpeg", caption: "Celebração de Conclusão de Curso Superior" },
     { src: "/formatura(4).jpeg", caption: "Registro Especial da Formatura" },
+  ];
+
+  // Prints de Experiência salvos na pasta public (você pode ajustar os nomes dos arquivos conforme salvou)
+  const experiencePrints = [
+    { 
+      src: "/experiencia/experiencia_1.png", 
+      title: "Atuação em Sistemas e Suporte Técnico", 
+      desc: "Registro de rotinas de atendimento, sistemas corporativos e chamados de alta criticidade no setor de tecnologia e saúde." 
+    },
+    { 
+      src: "/experiencia/experiencia_2.png", 
+      title: "Manipulação de Dados e Consultas SQL", 
+      desc: "Ambiente de desenvolvimento e testes de consultas em bancos relacionais, Supabase e tratamento de dados diários." 
+    },
+    { 
+      src: "/experiencia/experiencia_3.png", 
+      title: "Automação e Monitoramento", 
+      desc: "Execução de rotinas automatizadas, scripts e acompanhamento de logs de integração em tempo real." 
+    }
   ];
 
   const hubDesktopPrints = [
@@ -129,12 +138,13 @@ export default function Portfolio() {
           </div>
 
           <nav className="hidden lg:flex items-center gap-1 bg-neutral-900 p-1.5 rounded-2xl border border-neutral-800">
-            <button onClick={() => scrollToSection('home')} className="px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold text-neutral-300 hover:text-white hover:bg-neutral-800 transition-all">Início</button>
-            <button onClick={() => scrollToSection('projetos')} className="px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold text-neutral-300 hover:text-white hover:bg-neutral-800 transition-all">Projetos</button>
-            <button onClick={() => scrollToSection('stack')} className="px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold text-neutral-300 hover:text-white hover:bg-neutral-800 transition-all">Stack</button>
-            <button onClick={() => scrollToSection('servicos')} className="px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold text-neutral-300 hover:text-white hover:bg-neutral-800 transition-all">Serviços</button>
-            <button onClick={() => scrollToSection('curriculo')} className="px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold text-neutral-300 hover:text-white hover:bg-neutral-800 transition-all">Currículo</button>
-            <button onClick={() => scrollToSection('formatura')} className="px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold text-neutral-300 hover:text-white hover:bg-neutral-800 transition-all">Colação</button>
+            <button onClick={() => scrollToSection('home')} className="px-3 py-2 rounded-xl text-xs font-semibold text-neutral-300 hover:text-white hover:bg-neutral-800 transition-all">Início</button>
+            <button onClick={() => scrollToSection('projetos')} className="px-3 py-2 rounded-xl text-xs font-semibold text-neutral-300 hover:text-white hover:bg-neutral-800 transition-all">Projetos</button>
+            <button onClick={() => scrollToSection('stack')} className="px-3 py-2 rounded-xl text-xs font-semibold text-neutral-300 hover:text-white hover:bg-neutral-800 transition-all">Stack</button>
+            <button onClick={() => scrollToSection('servicos')} className="px-3 py-2 rounded-xl text-xs font-semibold text-neutral-300 hover:text-white hover:bg-neutral-800 transition-all">Serviços</button>
+            <button onClick={() => scrollToSection('curriculo')} className="px-3 py-2 rounded-xl text-xs font-semibold text-neutral-300 hover:text-white hover:bg-neutral-800 transition-all">Currículo</button>
+            <button onClick={() => scrollToSection('competencias')} className="px-3 py-2 rounded-xl text-xs font-semibold text-neutral-300 hover:text-white hover:bg-neutral-800 transition-all">Competências</button>
+            <button onClick={() => scrollToSection('formatura')} className="px-3 py-2 rounded-xl text-xs font-semibold text-neutral-300 hover:text-white hover:bg-neutral-800 transition-all">Colação</button>
           </nav>
 
           <a href="https://wa.me/5515981149404" target="_blank" rel="noopener noreferrer" className="px-5 py-2.5 bg-[#FF7A00] hover:bg-[#e06c00] text-white text-sm font-bold rounded-xl transition-all shadow-md flex items-center gap-2">
@@ -176,9 +186,9 @@ export default function Portfolio() {
                 <span className="w-2 h-2 rounded-full bg-[#FF7A00] animate-ping"></span>
                 <span>Disponível para novos projetos e contratos corporativos</span>
               </div>
-              <h1 className="text-4xl sm:text-6xl font-black tracking-tight mb-6 leading-[1.1]">Full Stack <br /><span className="text-[#FF7A00]">Developer & IA.</span></h1>
+              <h1 className="text-4xl sm:text-6xl font-black tracking-tight mb-6 leading-[1.1]">Desenvolvedor Web <br /><span className="text-[#FF7A00]">com IA e Dados.</span></h1>
               <p className="text-neutral-400 text-lg sm:text-xl font-light mb-10 max-w-xl leading-relaxed">
-                Especialista em construir ecossistemas web robustos, sites e sistemas integrados com IA para pequenas e médias empresas, unindo alta performance, automação e experiência de usuário impecável.
+                Especialista em construir ecossistemas web robustos, sites e sistemas corporativos. Utilizo Inteligência Artificial como ferramenta de suporte e aceleração de desenvolvimento, unindo alta performance, automação e experiência de usuário.
               </p>
               <div className="flex flex-wrap gap-4">
                 <button onClick={() => scrollToSection('projetos')} className="px-8 py-4 bg-[#FF7A00] hover:bg-[#e06c00] text-white font-bold rounded-2xl flex items-center gap-3 transition-all shadow-lg hover:scale-[1.02]">
@@ -372,7 +382,7 @@ export default function Portfolio() {
           </div>
         </section>
 
-        {/* 3. SEÇÃO STACK TECH */}
+        {/* 3. SEÇÃO STACK TECH (Com suporte a ícones PNG e Lucide) */}
         <section id="stack" className="scroll-mt-28">
           <div className="mb-12">
             <div className="text-[#FF7A00] font-mono text-xs uppercase tracking-widest mb-2 font-bold">// Ferramentas & Tecnologias</div>
@@ -381,62 +391,66 @@ export default function Portfolio() {
           </div>
 
           <div className="grid md:grid-cols-3 gap-6">
-            <div className="p-8 rounded-3xl bg-neutral-900 border border-neutral-800 shadow-xl hover:border-[#FF7A00]/50 transition-all">
-              <Layout className="w-8 h-8 text-[#FF7A00] mb-4" />
-              <h3 className="text-xl font-bold text-white mb-3">Front-end & IA</h3>
-              <p className="text-sm text-neutral-400 font-mono leading-relaxed">Next.js • React • TypeScript • Tailwind CSS • Framer Motion • Integrações com IA e Web Apps modernos.</p>
+            <div className="p-8 rounded-3xl bg-neutral-900 border border-neutral-800 shadow-xl hover:border-[#FF7A00]/50 transition-all flex flex-col justify-between">
+              <div>
+                <div className="flex items-center gap-3 mb-4">
+                  <Layout className="w-8 h-8 text-[#FF7A00]" />
+                  {/* Exemplo de uso de ícone PNG opcional da pasta public se desejar: <img src="/icons/react.png" className="w-8 h-8 object-contain" alt="React" /> */}
+                </div>
+                <h3 className="text-xl font-bold text-white mb-3">Front-end & Web</h3>
+                <p className="text-sm text-neutral-400 font-mono leading-relaxed">Next.js • React • TypeScript • Tailwind CSS • Framer Motion • Desenvolvimento Web moderno e responsivo.</p>
+              </div>
             </div>
-            <div className="p-8 rounded-3xl bg-neutral-900 border border-neutral-800 shadow-xl hover:border-[#FF7A00]/50 transition-all">
-              <Database className="w-8 h-8 text-[#FF7A00] mb-4" />
-              <h3 className="text-xl font-bold text-white mb-3">Back-end, Dados & APIs</h3>
-              <p className="text-sm text-neutral-400 font-mono leading-relaxed">Supabase • PostgreSQL • Modelagem relacional • Node.js • Postman • Requisições HTTP e Power Automate.</p>
+
+            <div className="p-8 rounded-3xl bg-neutral-900 border border-neutral-800 shadow-xl hover:border-[#FF7A00]/50 transition-all flex flex-col justify-between">
+              <div>
+                <div className="flex items-center gap-3 mb-4">
+                  <Database className="w-8 h-8 text-[#FF7A00]" />
+                </div>
+                <h3 className="text-xl font-bold text-white mb-3">Dados, SQL & APIs</h3>
+                <p className="text-sm text-neutral-400 font-mono leading-relaxed">PostgreSQL • Supabase • Consultas SQL diárias • Modelagem relacional • Postman • Requisições HTTP e automações.</p>
+              </div>
             </div>
-            <div className="p-8 rounded-3xl bg-neutral-900 border border-neutral-800 shadow-xl hover:border-[#FF7A00]/50 transition-all">
-              <ShieldCheck className="w-8 h-8 text-[#FF7A00] mb-4" />
-              <h3 className="text-xl font-bold text-white mb-3">Infraestrutura & Processos</h3>
-              <p className="text-sm text-neutral-400 font-mono leading-relaxed">Vercel Deployment • FileZilla Server Management • Python Scripting • Git & GitHub CLI • PowerShell.</p>
+
+            <div className="p-8 rounded-3xl bg-neutral-900 border border-neutral-800 shadow-xl hover:border-[#FF7A00]/50 transition-all flex flex-col justify-between">
+              <div>
+                <div className="flex items-center gap-3 mb-4">
+                  <ShieldCheck className="w-8 h-8 text-[#FF7A00]" />
+                </div>
+                <h3 className="text-xl font-bold text-white mb-3">Automação & Processos</h3>
+                <p className="text-sm text-neutral-400 font-mono leading-relaxed">Python (Robôs & Scripts) • Sistema de Logs de Integração • FileZilla Server • Git & GitHub CLI • PowerShell.</p>
+              </div>
             </div>
           </div>
         </section>
 
-        {/* 4. SEÇÃO SERVIÇOS & CONTATO DIRETO */}
+        {/* 4. SEÇÃO SERVIÇOS */}
         <section id="servicos" className="scroll-mt-28">
           <div className="mb-12">
             <div className="text-[#FF7A00] font-mono text-xs uppercase tracking-widest mb-2 font-bold">// Trabalhe Comigo</div>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">Serviços e Contato Direto</h2>
-            <p className="text-neutral-400 mt-2">Soluções sob medida, automações e integração com inteligência artificial para otimizar o seu negócio.</p>
+            <p className="text-neutral-400 mt-2">Soluções sob medida, automações e inteligência aplicada ao seu negócio.</p>
           </div>
 
-          <div className="grid lg:grid-cols-3 gap-8 mb-12">
-            <div className="bg-neutral-900 border border-neutral-800 p-8 rounded-3xl shadow-xl flex flex-col justify-between hover:border-[#FF7A00] transition-all">
+          <div className="grid lg:grid-cols-2 gap-8 mb-12">
+            <div className="bg-neutral-900 border border-neutral-800 p-8 sm:p-10 rounded-3xl shadow-xl flex flex-col justify-between hover:border-[#FF7A00] transition-all">
               <div>
-                <span className="text-xs font-mono text-[#FF7A00] bg-[#FF7A00]/10 border border-[#FF7A00]/30 px-3 py-1 rounded-full font-bold inline-block mb-4">Web & Sistemas com IA</span>
-                <h3 className="text-xl font-bold text-white mb-3">Sites e Sistemas com IA (PMEs)</h3>
-                <p className="text-neutral-400 text-sm leading-relaxed mb-6">Desenvolvimento de sites e sistemas inteligentes utilizando Next.js, Vercel e Supabase direcionados a pequenas e médias empresas (PMEs), com total domínio e entendimento do processo de ponta a ponta.</p>
+                <span className="text-xs font-mono text-[#FF7A00] bg-[#FF7A00]/10 border border-[#FF7A00]/30 px-3 py-1 rounded-full font-bold inline-block mb-4">Desenvolvimento Web</span>
+                <h3 className="text-2xl font-bold text-white mb-3">Sites e Sistemas</h3>
+                <p className="text-neutral-400 text-base leading-relaxed mb-6">Desenvolvimento de sites profissionais e sistemas web modernos utilizando Next.js, Vercel e Supabase. Foco total em alta performance, usabilidade e entrega de ponta a ponta.</p>
               </div>
-              <a href="https://wa.me/5515981149404?text=Olá%20Crystian,%20gostaria%20de%20um%20orçamento%20para%20desenvolvimento%20de%20sites%20e%20sistemas%20com%20IA." target="_blank" rel="noopener noreferrer" className="w-full py-3.5 bg-neutral-800 hover:bg-[#FF7A00] text-white font-semibold rounded-xl text-center text-sm transition-all flex items-center justify-center gap-2 shadow-md">
+              <a href="https://wa.me/5515981149404?text=Olá%20Crystian,%20gostaria%20de%20um%20orçamento%20para%20desenvolvimento%20de%20sites%20e%20sistemas." target="_blank" rel="noopener noreferrer" className="w-full py-4 bg-neutral-800 hover:bg-[#FF7A00] text-white font-semibold rounded-xl text-center text-sm transition-all flex items-center justify-center gap-2 shadow-md">
                 Solicitar Orçamento <Send className="w-4 h-4" />
               </a>
             </div>
 
-            <div className="bg-neutral-900 border border-neutral-800 p-8 rounded-3xl shadow-xl flex flex-col justify-between hover:border-[#FF7A00] transition-all">
+            <div className="bg-neutral-900 border border-neutral-800 p-8 sm:p-10 rounded-3xl shadow-xl flex flex-col justify-between hover:border-[#FF7A00] transition-all">
               <div>
-                <span className="text-xs font-mono text-[#FF7A00] bg-[#FF7A00]/10 border border-[#FF7A00]/30 px-3 py-1 rounded-full font-bold inline-block mb-4">Dados & Integração</span>
-                <h3 className="text-xl font-bold text-white mb-3">Bancos de Dados & APIs</h3>
-                <p className="text-neutral-400 text-sm leading-relaxed mb-6">Criação, modelagem e manipulação de bancos de dados relacionais (PostgreSQL/Supabase), testes de APIs via Postman e automações com Power Automate.</p>
+                <span className="text-xs font-mono text-[#FF7A00] bg-[#FF7A00]/10 border border-[#FF7A00]/30 px-3 py-1 rounded-full font-bold inline-block mb-4">Engenharia de Dados & Automação</span>
+                <h3 className="text-2xl font-bold text-white mb-3">Dados, SQL & Automações</h3>
+                <p className="text-neutral-400 text-base leading-relaxed mb-6">Criação e manipulação de consultas SQL, modelagem de banco de dados, desenvolvimento de sistemas de logs para captação de erros de integração e robôs em Python para eliminação de tarefas repetitivas.</p>
               </div>
-              <a href="https://wa.me/5515981149404?text=Olá%20Crystian,%20tenho%20interesse%20em%20serviços%20de%20banco%20de%20dados%20e%20integrações." target="_blank" rel="noopener noreferrer" className="w-full py-3.5 bg-neutral-800 hover:bg-[#FF7A00] text-white font-semibold rounded-xl text-center text-sm transition-all flex items-center justify-center gap-2 shadow-md">
-                Solicitar Orçamento <Send className="w-4 h-4" />
-              </a>
-            </div>
-
-            <div className="bg-neutral-900 border border-neutral-800 p-8 rounded-3xl shadow-xl flex flex-col justify-between hover:border-[#FF7A00] transition-all">
-              <div>
-                <span className="text-xs font-mono text-[#FF7A00] bg-[#FF7A00]/10 border border-[#FF7A00]/30 px-3 py-1 rounded-full font-bold inline-block mb-4">Automações</span>
-                <h3 className="text-xl font-bold text-white mb-3">Scripts & Processos</h3>
-                <p className="text-neutral-400 text-sm leading-relaxed mb-6">Desenvolvimento de rotinas automatizadas em Python, robôs para tarefas repetitivas (disparos e requisições), gerenciamento de servidores e otimização de fluxos corporativos.</p>
-              </div>
-              <a href="https://wa.me/5515981149404?text=Olá%20Crystian,%20gostaria%20de%20conversar%20sobre%20automação%20e%20processos." target="_blank" rel="noopener noreferrer" className="w-full py-3.5 bg-neutral-800 hover:bg-[#FF7A00] text-white font-semibold rounded-xl text-center text-sm transition-all flex items-center justify-center gap-2 shadow-md">
+              <a href="https://wa.me/5515981149404?text=Olá%20Crystian,%20tenho%20interesse%20em%20serviços%20de%20banco%20de%20dados,%20SQL%20e%20automações." target="_blank" rel="noopener noreferrer" className="w-full py-4 bg-neutral-800 hover:bg-[#FF7A00] text-white font-semibold rounded-xl text-center text-sm transition-all flex items-center justify-center gap-2 shadow-md">
                 Solicitar Orçamento <Send className="w-4 h-4" />
               </a>
             </div>
@@ -451,15 +465,15 @@ export default function Portfolio() {
           </div>
         </section>
 
-        {/* 5. SEÇÃO CURRÍCULO */}
+        {/* 5. SEÇÃO CURRÍCULO (COM OS PRINTS DE EXPERIÊNCIA ADICIONADOS) */}
         <section id="curriculo" className="scroll-mt-28">
           <div className="mb-10">
             <div className="text-[#FF7A00] font-mono text-xs uppercase tracking-widest mb-2 font-bold">// Perfil Profissional</div>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">Currículo Resumido</h2>
-            <p className="text-neutral-400 mt-2">Analista de TI, Dados e Desenvolvedor Full Stack | Graduado em ADS.</p>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">Currículo Resumido & Experiência</h2>
+            <p className="text-neutral-400 mt-2">Analista de TI, Dados e Desenvolvedor Web | Graduado em ADS com vivência prática diária.</p>
           </div>
 
-          <div className="grid lg:grid-cols-12 gap-8">
+          <div className="grid lg:grid-cols-12 gap-8 mb-16">
             <div className="lg:col-span-7 space-y-8">
               
               {/* Resumo Executivo & Experiência de Mercado (+2 anos) */}
@@ -468,32 +482,21 @@ export default function Portfolio() {
                   <FileText className="w-6 h-6 text-[#FF7A00]" /> Resumo Executivo & Experiência de Mercado (+2 anos)
                 </h3>
                 <p className="text-neutral-300 leading-relaxed text-base">
-                  Profissional de tecnologia com atuação sólida no setor de saúde (incluindo suporte e integração com o <strong>Sistema de Saúde SIL</strong>), desenvolvimento full-stack com IA, automações e engenharia de dados.
+                  Profissional de tecnologia com atuação sólida no setor de saúde (incluindo suporte e integração com o <strong>Sistema de Saúde SIL</strong>), desenvolvimento web, automações e engenharia de dados.
                 </p>
                 
                 <div className="space-y-3 pt-2 text-sm text-neutral-300 font-mono">
                   <div className="flex items-start gap-2">
                     <span className="text-[#FF7A00] mt-1">▸</span>
-                    <span><strong>Monitoramento de Erros e Logs:</strong> Desenvolvimento de um sistema robusto de logs dedicado a captar falhas de integração e garantir a integridade dos dados em tempo real.</span>
+                    <span><strong>Sistema de Logs e Erros:</strong> Desenvolvimento de um sistema próprio de logs focado em captar falhas de integração e garantir confiabilidade e rastreabilidade dos dados.</span>
                   </div>
                   <div className="flex items-start gap-2">
                     <span className="text-[#FF7A00] mt-1">▸</span>
-                    <span><strong>Automação com Robôs Python:</strong> Criação de scripts e robôs em Python voltados a eliminar tarefas repetitivas da empresa (disparos de informativos, execução de requisições e rotinas programadas).</span>
+                    <span><strong>Robôs em Python:</strong> Criação de scripts e robôs automatizados em Python para eliminar tarefas repetitivas (disparos de informativos, requisições HTTP e rotinas).</span>
                   </div>
                   <div className="flex items-start gap-2">
                     <span className="text-[#FF7A00] mt-1">▸</span>
-                    <span><strong>Ferramentas de Mercado:</strong> Utilização diária de FileZilla para gestão de arquivos remotos, Postman e requisições HTTP para testes rigorosos de APIs.</span>
-                  </div>
-                </div>
-
-                <div className="pt-4 border-t border-neutral-800 space-y-4">
-                  <h4 className="text-lg font-bold text-white">Principais Competências</h4>
-                  <div className="flex flex-wrap gap-2">
-                    {['Next.js', 'React', 'TypeScript', 'Node.js', 'PostgreSQL / Supabase', 'Python (Automação / Robôs)', 'Sistema de Logs', 'Postman', 'FileZilla', 'Sistema SIL', 'Git / GitHub'].map((skill, idx) => (
-                      <span key={idx} className="px-3.5 py-1.5 rounded-xl bg-neutral-800 text-neutral-300 text-xs font-mono border border-neutral-700">
-                        {skill}
-                      </span>
-                    ))}
+                    <span><strong>SQL e Manipulação de Dados:</strong> Sólida vivência prática diária na criação de consultas SQL, manipulação de bancos relacionais e integração com Supabase/PostgreSQL.</span>
                   </div>
                 </div>
               </div>
@@ -507,7 +510,7 @@ export default function Portfolio() {
                   <span className="text-xs font-mono text-[#FF7A00] font-bold">Colaboração & Open Source</span>
                   <h4 className="text-lg font-bold text-white">DIO.ME (Digital Innovation One)</h4>
                   <p className="text-neutral-400 text-sm leading-relaxed">
-                    Atuação em desafios de código, projetos colaborativos e imersões técnicas na comunidade de desenvolvedores, participando ativamente de code reviews e compartilhamento de conhecimento em ecossistemas de tecnologia.
+                    Atuação em desafios de código, projetos colaborativos e imersões técnicas na comunidade de desenvolvedores, participando ativamente de code reviews e compartilhamento de conhecimento.
                   </p>
                 </div>
               </div>
@@ -528,12 +531,12 @@ export default function Portfolio() {
                     <p className="text-neutral-400 text-sm mt-1">Ensino Superior Completo — Unicesumar</p>
                   </div>
                   <div className="relative pl-6 border-l-2 border-orange-400">
-                    <span className="text-xs font-mono text-orange-400 font-bold">Extracurricular</span>
-                    <h4 className="text-lg font-bold text-white mt-1">HTML, CSS e JavaScript</h4>
-                    <p className="text-neutral-400 text-sm mt-1">Curso Extracurricular — DIO.ME</p>
+                    <span className="text-xs font-mono text-orange-400 font-bold">Curso Especializado</span>
+                    <h4 className="text-lg font-bold text-white mt-1">Banco de Dados & SQL</h4>
+                    <p className="text-neutral-400 text-sm mt-1">Capacitação teórica e prática com experiência diária em consultas e manipulação de dados.</p>
                   </div>
                   <div className="relative pl-6 border-l-2 border-cyan-400">
-                    <span className="text-xs font-mono text-cyan-400 font-bold">Bagagem de Negócios</span>
+                    <span className="text-xs font-mono text-cyan-400 font-bold">Bagagem de Negócios (Extracurricular)</span>
                     <h4 className="text-lg font-bold text-white mt-1">Marketing para Negócios & E-commerce</h4>
                     <p className="text-neutral-400 text-sm mt-1">Visão estratégica aplicada a conversão, posicionamento digital e vendas para pequenas e médias empresas.</p>
                   </div>
@@ -547,9 +550,71 @@ export default function Portfolio() {
 
             </div>
           </div>
+
+          {/* GALERIA DE PRINTS DE EXPERIÊNCIA (ADICIONADA AQUI) */}
+          <div className="bg-neutral-900 border border-neutral-800 p-8 sm:p-12 rounded-3xl shadow-2xl">
+            <div className="mb-8 border-b border-neutral-800 pb-6">
+              <span className="text-xs font-mono text-[#FF7A00] bg-[#FF7A00]/10 border border-[#FF7A00]/30 px-3 py-1 rounded-full font-bold inline-block mb-3">Evidências Práticas</span>
+              <h3 className="text-2xl sm:text-3xl font-black text-white">Registros e Prints de Experiência</h3>
+              <p className="text-neutral-400 text-sm sm:text-base mt-2">Imagens de sistemas, rotinas de dados e ambientes de trabalho reais. Clique em qualquer imagem para ampliar.</p>
+            </div>
+
+            <div className="grid md:grid-cols-3 gap-6">
+              {experiencePrints.map((item, idx) => (
+                <div key={idx} className="bg-neutral-950/80 border border-neutral-800 rounded-2xl overflow-hidden shadow-xl flex flex-col justify-between group">
+                  <div className="p-4 cursor-pointer overflow-hidden" onClick={() => setSelectedImage(item.src)}>
+                    <img 
+                      src={item.src} 
+                      alt={item.title} 
+                      className="w-full h-48 object-cover rounded-xl group-hover:scale-105 transition-transform duration-300 border border-neutral-800" 
+                    />
+                  </div>
+                  <div className="p-6 pt-2">
+                    <h4 className="text-base font-bold text-white mb-2">{item.title}</h4>
+                    <p className="text-xs text-neutral-400 leading-relaxed">{item.desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
         </section>
 
-        {/* 6. SEÇÃO COLAÇÃO DE GRAU */}
+        {/* 6. SEÇÃO SOLO DE PRINCIPAIS COMPETÊNCIAS */}
+        <section id="competencias" className="scroll-mt-28">
+          <div className="mb-10">
+            <div className="text-[#FF7A00] font-mono text-xs uppercase tracking-widest mb-2 font-bold">// Hard Skills & Domínio Técnico</div>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">Principais Competências</h2>
+            <p className="text-neutral-400 mt-2">Visão consolidada das tecnologias e ferramentas dominadas no dia a dia profissional.</p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="bg-neutral-900 border border-neutral-800 p-8 rounded-3xl shadow-xl hover:border-[#FF7A00] transition-all">
+              <Code2 className="w-8 h-8 text-[#FF7A00] mb-4" />
+              <h3 className="text-lg font-bold text-white mb-2">Desenvolvimento Web</h3>
+              <p className="text-xs text-neutral-400 font-mono leading-relaxed">Next.js, React, TypeScript, Tailwind CSS, HTML5 e JavaScript moderno.</p>
+            </div>
+
+            <div className="bg-neutral-900 border border-neutral-800 p-8 rounded-3xl shadow-xl hover:border-[#FF7A00] transition-all">
+              <Database className="w-8 h-8 text-[#FF7A00] mb-4" />
+              <h3 className="text-lg font-bold text-white mb-2">Dados & SQL</h3>
+              <p className="text-xs text-neutral-400 font-mono leading-relaxed">Consultas SQL diárias, manipulação de dados, PostgreSQL e banco de dados Supabase.</p>
+            </div>
+
+            <div className="bg-neutral-900 border border-neutral-800 p-8 rounded-3xl shadow-xl hover:border-[#FF7A00] transition-all">
+              <Terminal className="w-8 h-8 text-[#FF7A00] mb-4" />
+              <h3 className="text-lg font-bold text-white mb-2">Automação & Python</h3>
+              <p className="text-xs text-neutral-400 font-mono leading-relaxed">Desenvolvimento de robôs em Python, scripts de tarefas repetitivas e requisições.</p>
+            </div>
+
+            <div className="bg-neutral-900 border border-neutral-800 p-8 rounded-3xl shadow-xl hover:border-[#FF7A00] transition-all">
+              <Server className="w-8 h-8 text-[#FF7A00] mb-4" />
+              <h3 className="text-lg font-bold text-white mb-2">Sistemas & Infra</h3>
+              <p className="text-xs text-neutral-400 font-mono leading-relaxed">Sistema de logs de integração, FileZilla, Postman, Git/GitHub CLI e Sistema SIL.</p>
+            </div>
+          </div>
+        </section>
+
+        {/* 7. SEÇÃO COLAÇÃO DE GRAU */}
         <section id="formatura" className="scroll-mt-28">
           <div className="mb-10">
             <div className="text-[#FF7A00] font-mono text-xs uppercase tracking-widest mb-2 font-bold">// Conquista Acadêmica</div>
@@ -607,7 +672,7 @@ export default function Portfolio() {
             <span className="text-[#FF7A00]">&lt;</span> Crystian.Dev <span className="text-[#FF7A00]">/&gt;</span>
           </div>
           <p className="text-neutral-500 text-xs font-mono">© 2026 Crystian. Todos os direitos reservados.</p>
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-5">
             <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="p-2.5 rounded-xl bg-neutral-900 border border-neutral-800 text-neutral-400 hover:text-white hover:border-[#FF7A00] transition-all">
               <Github className="w-4 h-4" />
             </a>

@@ -4,6 +4,9 @@ import './globals.css';
 export const metadata = {
   title: 'DevOps - Crystian',
   description: 'Desenvolvedor Full Stack & Soluções Corporativas',
+  icons: {
+    icon: '/favicon-logo.png', // O Next.js busca automaticamente na pasta public
+  },
 };
 
 export default function RootLayout({

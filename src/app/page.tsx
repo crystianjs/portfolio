@@ -33,16 +33,16 @@ export default function Portfolio() {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
   const formaturaImages = [
-    { src: "/formatura(1).jpeg", caption: "Momentos da Colação de Grau - ADS Unicesumar" },
-    { src: "/formatura(2).jpeg", caption: "Colação de Grau - Recebimento de Diploma" },
-    { src: "/formatura(3).jpeg", caption: "Celebração de Conclusão de Curso Superior" },
-    { src: "/formatura(4).jpeg", caption: "Registro Especial da Formatura" },
+    { src: "/formatura(1).jpeg", caption: "Colação de Grau - ADS Unicesumar" },
+    { src: "/formatura(2).jpeg", caption: "Colação de Grau - ADS Unicesumar" },
+    { src: "/formatura(3).jpeg", caption: "Colação de Grau - ADS Unicesumar" },
+    { src: "/formatura(4).jpeg", caption: "Colação de Grau - ADS Unicesumar" },
   ];
 
   // Prints de Experiência atualizados com as imagens solicitadas
   const experiencePrints = [
     { 
-      src: "/photo_cerba_1.png", 
+      src: "/photo_cerba_2.png", 
       title: "Atuação em Sistemas e Suporte Técnico", 
       desc: "Registro de rotinas de atendimento, sistemas corporativos e chamados de alta criticidade no setor de tecnologia e saúde." 
     },
@@ -52,7 +52,7 @@ export default function Portfolio() {
       desc: "Ambiente de desenvolvimento e testes de consultas em bancos relacionais, Supabase e tratamento de dados diários." 
     },
     { 
-      src: "/projeto/python", 
+      src: "/projeto/power_automation.png", 
       title: "Automação e Monitoramento", 
       desc: "Execução de rotinas automatizadas, scripts e acompanhamento de logs de integração em tempo real." 
     }

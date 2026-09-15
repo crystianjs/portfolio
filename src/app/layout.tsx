@@ -6,7 +6,7 @@ export const metadata = {
   description: 'Desenvolvedor Full Stack & Soluções Corporativas',
   icons: {
     icon: [
-      { url: '/favicon-logo.png', type: 'image/png' },
+      { url: '/fivcon-logo.png', type: 'image/png' },
     ],
   },
 };

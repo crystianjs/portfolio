@@ -20,17 +20,20 @@ import {
   ChevronRight,
   MessageSquare,
   X,
+  Menu,
   Clock,
   Send,
   FileText,
   HeartHandshake,
-  Server
+  Server,
+  Users
 } from 'lucide-react';
 
 export default function Portfolio() {
   const [hubViewMode, setHubViewMode] = useState<'desktop' | 'mobile'>('desktop');
   const [ialeViewMode, setIaleViewMode] = useState<'desktop' | 'mobile'>('desktop');
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const formaturaImages = [
     { src: "/formatura(1).jpeg", caption: "Colação de Grau - ADS Unicesumar" },
@@ -39,7 +42,6 @@ export default function Portfolio() {
     { src: "/formatura(4).jpeg", caption: "Colação de Grau - ADS Unicesumar" },
   ];
 
-  // Prints de Experiência atualizados com as suas novas diretrizes
   const experiencePrints = [
     { 
       src: "/photo_cerba_2.png", 
@@ -137,6 +139,7 @@ export default function Portfolio() {
             <span className="text-[#FF7A00]">/&gt;</span>
           </div>
 
+          {/* Navegação Desktop */}
           <nav className="hidden lg:flex items-center gap-1 bg-neutral-900 p-1.5 rounded-2xl border border-neutral-800">
             <button onClick={() => scrollToSection('home')} className="px-3 py-2 rounded-xl text-xs font-semibold text-neutral-300 hover:text-white hover:bg-neutral-800 transition-all">Início</button>
             <button onClick={() => scrollToSection('projetos')} className="px-3 py-2 rounded-xl text-xs font-semibold text-neutral-300 hover:text-white hover:bg-neutral-800 transition-all">Projetos</button>
@@ -147,10 +150,37 @@ export default function Portfolio() {
             <button onClick={() => scrollToSection('formatura')} className="px-3 py-2 rounded-xl text-xs font-semibold text-neutral-300 hover:text-white hover:bg-neutral-800 transition-all">Colação</button>
           </nav>
 
-          <a href="https://wa.me/5515981149404" target="_blank" rel="noopener noreferrer" className="px-5 py-2.5 bg-[#FF7A00] hover:bg-[#e06c00] text-white text-sm font-bold rounded-xl transition-all shadow-md flex items-center gap-2">
-            <MessageSquare className="w-4 h-4" /> Contato Direto
-          </a>
+          {/* Botões do Topo (Contato + Menu Mobile) */}
+          <div className="flex items-center gap-3">
+            <a href="https://wa.me/5515981149404" target="_blank" rel="noopener noreferrer" className="px-4 sm:px-5 py-2.5 bg-[#FF7A00] hover:bg-[#e06c00] text-white text-sm font-bold rounded-xl transition-all shadow-md flex items-center gap-2">
+              <MessageSquare className="w-4 h-4" /> 
+              <span className="hidden sm:inline">Contato Direto</span>
+              <span className="sm:hidden">Contato</span>
+            </a>
+
+            {/* Botão Navbar Mobile */}
+            <button 
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="lg:hidden p-2.5 bg-neutral-900 border border-neutral-800 text-white rounded-xl hover:border-[#FF7A00] transition-all shadow-md"
+              aria-label="Abrir Menu"
+            >
+              {mobileMenuOpen ? <X className="w-5 h-5 text-[#FF7A00]" /> : <Menu className="w-5 h-5" />}
+            </button>
+          </div>
         </div>
+
+        {/* Menu Dropdown Mobile */}
+        {mobileMenuOpen && (
+          <div className="lg:hidden bg-neutral-950/95 backdrop-blur-xl border-b border-neutral-800 px-6 py-4 flex flex-col gap-2 shadow-2xl">
+            <button onClick={() => { scrollToSection('home'); setMobileMenuOpen(false); }} className="text-left px-4 py-3 rounded-xl text-sm font-semibold text-neutral-300 hover:text-white hover:bg-neutral-900 transition-all">Início</button>
+            <button onClick={() => { scrollToSection('projetos'); setMobileMenuOpen(false); }} className="text-left px-4 py-3 rounded-xl text-sm font-semibold text-neutral-300 hover:text-white hover:bg-neutral-900 transition-all">Projetos</button>
+            <button onClick={() => { scrollToSection('stack'); setMobileMenuOpen(false); }} className="text-left px-4 py-3 rounded-xl text-sm font-semibold text-neutral-300 hover:text-white hover:bg-neutral-900 transition-all">Stack</button>
+            <button onClick={() => { scrollToSection('servicos'); setMobileMenuOpen(false); }} className="text-left px-4 py-3 rounded-xl text-sm font-semibold text-neutral-300 hover:text-white hover:bg-neutral-900 transition-all">Serviços</button>
+            <button onClick={() => { scrollToSection('curriculo'); setMobileMenuOpen(false); }} className="text-left px-4 py-3 rounded-xl text-sm font-semibold text-neutral-300 hover:text-white hover:bg-neutral-900 transition-all">Currículo</button>
+            <button onClick={() => { scrollToSection('competencias'); setMobileMenuOpen(false); }} className="text-left px-4 py-3 rounded-xl text-sm font-semibold text-neutral-300 hover:text-white hover:bg-neutral-900 transition-all">Competências</button>
+            <button onClick={() => { scrollToSection('formatura'); setMobileMenuOpen(false); }} className="text-left px-4 py-3 rounded-xl text-sm font-semibold text-neutral-300 hover:text-white hover:bg-neutral-900 transition-all">Colação</button>
+          </div>
+        )}
       </header>
 
       {/* --- MODAL DE ZOOM DE IMAGENS --- */}
@@ -205,12 +235,12 @@ export default function Portfolio() {
                   <p className="text-xs sm:text-sm text-neutral-400 mt-1">Anos em Tech</p>
                 </div>
                 <div>
-                  <h4 className="text-2xl sm:text-3xl font-black text-white">2+</h4>
+                  <h4 className="text-2xl sm:text-3xl font-black text-white">10+</h4>
                   <p className="text-xs sm:text-sm text-neutral-400 mt-1">Sistemas Desenvolvidos</p>
                 </div>
                 <div>
                   <h4 className="text-2xl sm:text-3xl font-black text-white">100%</h4>
-                  <p className="text-xs sm:text-sm text-neutral-400 mt-1">Satisfação do Cliente e Qualidade</p>
+                  <p className="text-xs sm:text-sm text-neutral-400 mt-1">Foco no Processo</p>
                 </div>
               </div>
             </div>
@@ -483,11 +513,11 @@ export default function Portfolio() {
         <section id="competencias" className="scroll-mt-28">
           <div className="mb-12">
             <div className="text-[#FF7A00] font-mono text-xs uppercase tracking-widest mb-2 font-bold">// Habilidades & Soft Skills</div>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">Competências Técnicas</h2>
-            <p className="text-neutral-400 mt-2">Pilares que fundamentam minha entrega diária no desenvolvimento de software e suporte.</p>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">Competências Técnicas e Profissionais</h2>
+            <p className="text-neutral-400 mt-2">Pilares técnicos e comportamentais que fundamentam minha entrega diária no desenvolvimento de software e suporte.</p>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             <div className="bg-neutral-900 border border-neutral-800 p-6 rounded-3xl shadow-xl">
               <Terminal className="w-8 h-8 text-[#FF7A00] mb-4" />
               <h3 className="text-lg font-bold text-white mb-2">Desenvolvimento Full-Stack</h3>
@@ -507,6 +537,11 @@ export default function Portfolio() {
               <ShieldCheck className="w-8 h-8 text-[#FF7A00] mb-4" />
               <h3 className="text-lg font-bold text-white mb-2">Resolução de Alta Criticidade</h3>
               <p className="text-sm text-neutral-400">Atendimento rápido e assertivo a chamados corporativos e suporte técnico avançado.</p>
+            </div>
+            <div className="bg-neutral-900 border border-neutral-800 p-6 rounded-3xl shadow-xl">
+              <Users className="w-8 h-8 text-[#FF7A00] mb-4" />
+              <h3 className="text-lg font-bold text-white mb-2">Trabalho em Equipe</h3>
+              <p className="text-sm text-neutral-400">Colaboração sinérgica, comunicação clara e alinhamento contínuo para atingir objetivos comuns em projetos.</p>
             </div>
           </div>
         </section>

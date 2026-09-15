@@ -235,12 +235,12 @@ export default function Portfolio() {
                   <p className="text-xs sm:text-sm text-neutral-400 mt-1">Anos em Tech</p>
                 </div>
                 <div>
-                  <h4 className="text-2xl sm:text-3xl font-black text-white">10+</h4>
+                  <h4 className="text-2xl sm:text-3xl font-black text-white">3+</h4>
                   <p className="text-xs sm:text-sm text-neutral-400 mt-1">Sistemas Desenvolvidos</p>
                 </div>
                 <div>
                   <h4 className="text-2xl sm:text-3xl font-black text-white">100%</h4>
-                  <p className="text-xs sm:text-sm text-neutral-400 mt-1">Foco no Processo</p>
+                  <p className="text-xs sm:text-sm text-neutral-400 mt-1">Segurança e Qualidade</p>
                 </div>
               </div>
             </div>

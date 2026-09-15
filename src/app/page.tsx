@@ -26,7 +26,8 @@ import {
   FileText,
   HeartHandshake,
   Server,
-  Users
+  Users,
+  Palette
 } from 'lucide-react';
 
 export default function Portfolio() {
@@ -444,10 +445,10 @@ export default function Portfolio() {
             <div className="p-8 rounded-3xl bg-neutral-900 border border-neutral-800 shadow-xl hover:border-[#FF7A00]/50 transition-all flex flex-col justify-between">
               <div>
                 <div className="flex items-center gap-3 mb-4">
-                  <ShieldCheck className="w-8 h-8 text-[#FF7A00]" />
+                  <Server className="w-8 h-8 text-[#FF7A00]" />
                 </div>
-                <h3 className="text-xl font-bold text-white mb-3">Automação e Processos</h3>
-                <p className="text-sm text-neutral-400 font-mono leading-relaxed">Python (Robôs e Scripts) • Sistema de Logs de Integração • FileZilla Server • Git e GitHub CLI • PowerShell.</p>
+                <h3 className="text-xl font-bold text-white mb-3">Automação e Infra</h3>
+                <p className="text-sm text-neutral-400 font-mono leading-relaxed">Power Automate • n8n • Python • Git & GitHub • Vercel • Deploy contínuo e suporte técnico avançado.</p>
               </div>
             </div>
           </div>
@@ -456,53 +457,48 @@ export default function Portfolio() {
         {/* 4. SEÇÃO SERVIÇOS */}
         <section id="servicos" className="scroll-mt-28">
           <div className="mb-12">
-            <div className="text-[#FF7A00] font-mono text-xs uppercase tracking-widest mb-2 font-bold">// Trabalhe Comigo</div>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">Serviços e Contato Direto</h2>
-            <p className="text-neutral-400 mt-2">Soluções sob medida, automações e inteligência aplicada ao seu negócio.</p>
+            <div className="text-[#FF7A00] font-mono text-xs uppercase tracking-widest mb-2 font-bold">// O Que Posso Fazer Por Você</div>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">Serviços Especializados</h2>
+            <p className="text-neutral-400 mt-2">Soluções sob medida para otimizar processos, automatizar fluxos e elevar a presença digital de negócios.</p>
           </div>
 
-          <div className="grid lg:grid-cols-2 gap-8 mb-12">
-            <div className="bg-neutral-900 border border-neutral-800 p-8 sm:p-10 rounded-3xl shadow-xl flex flex-col justify-between hover:border-[#FF7A00] transition-all">
-              <div>
-                <span className="text-xs font-mono text-[#FF7A00] bg-[#FF7A00]/10 border border-[#FF7A00]/30 px-3 py-1 rounded-full font-bold inline-block mb-4">Desenvolvimento Web</span>
-                <h3 className="text-2xl font-bold text-white mb-3">Sites e Sistemas</h3>
-                <p className="text-neutral-400 text-base leading-relaxed mb-6">Desenvolvimento de sites profissionais e sistemas web modernos utilizando Next.js, Vercel e Supabase. Foco total em alta performance, usabilidade e entrega de ponta a ponta.</p>
+          <div className="grid md:grid-cols-2 gap-8">
+            <div className="bg-neutral-900 p-8 rounded-3xl border border-neutral-800 shadow-xl">
+              <div className="w-12 h-12 rounded-2xl bg-[#FF7A00]/15 flex items-center justify-center text-[#FF7A00] mb-6">
+                <Code2 className="w-6 h-6" />
               </div>
-              <a href="https://wa.me/5515981149404?text=Olá%20Crystian,%20gostaria%20de%20um%20orçamento%20para%20desenvolvimento%20de%20sites%20e%20sistemas." target="_blank" rel="noopener noreferrer" className="w-full py-4 bg-neutral-800 hover:bg-[#FF7A00] text-white font-semibold rounded-xl text-center text-sm transition-all flex items-center justify-center gap-2 shadow-md">
-                Solicitar Orçamento <Send className="w-4 h-4" />
-              </a>
+              <h3 className="text-2xl font-bold text-white mb-3">Desenvolvimento Web & Sistemas</h3>
+              <p className="text-neutral-400 leading-relaxed">Criação de landing pages de alta conversão, portais corporativos, dashboards analíticos e sistemas web completos utilizando Next.js, React e TypeScript.</p>
             </div>
 
-            <div className="bg-neutral-900 border border-neutral-800 p-8 sm:p-10 rounded-3xl shadow-xl flex flex-col justify-between hover:border-[#FF7A00] transition-all">
-              <div>
-                <span className="text-xs font-mono text-[#FF7A00] bg-[#FF7A00]/10 border border-[#FF7A00]/30 px-3 py-1 rounded-full font-bold inline-block mb-4">Automação e Dados</span>
-                <h3 className="text-2xl font-bold text-white mb-3">Automações com Python e n8n</h3>
-                <p className="text-neutral-400 text-base leading-relaxed mb-6">Criação de robôs, rotinas de integração de dados com PostgreSQL, fluxos automatizados com n8n e Power Automate para otimização do seu fluxo de trabalho corporativo.</p>
+            <div className="bg-neutral-900 p-8 rounded-3xl border border-neutral-800 shadow-xl">
+              <div className="w-12 h-12 rounded-2xl bg-[#FF7A00]/15 flex items-center justify-center text-[#FF7A00] mb-6">
+                <Database className="w-6 h-6" />
               </div>
-              <a href="https://wa.me/5515981149404?text=Olá%20Crystian,%20gostaria%20de%20um%20orçamento%20para%20automações%20e%20gestão%20de%20dados." target="_blank" rel="noopener noreferrer" className="w-full py-4 bg-neutral-800 hover:bg-[#FF7A00] text-white font-semibold rounded-xl text-center text-sm transition-all flex items-center justify-center gap-2 shadow-md">
-                Solicitar Automação <Send className="w-4 h-4" />
-              </a>
+              <h3 className="text-2xl font-bold text-white mb-3">Automação de Processos & Dados</h3>
+              <p className="text-neutral-400 leading-relaxed">Integração de sistemas, criação de robôs de automação com Power Automate, n8n e Python, além de consultas SQL avançadas e estruturação de bancos de dados.</p>
             </div>
           </div>
         </section>
 
-        {/* 5. SEÇÃO CURRÍCULO & EXPERIÊNCIA */}
+        {/* 5. SEÇÃO CURRÍCULO */}
         <section id="curriculo" className="scroll-mt-28">
           <div className="mb-12">
-            <div className="text-[#FF7A00] font-mono text-xs uppercase tracking-widest mb-2 font-bold">// Trajetória Profissional</div>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">Experiência e Atuação</h2>
-            <p className="text-neutral-400 mt-2">Visão geral das minhas frentes de atuação com sistemas, banco de dados e automações.</p>
+            <div className="text-[#FF7A00] font-mono text-xs uppercase tracking-widest mb-2 font-bold">// Experiência & Trajetória</div>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">Currículo Profissional</h2>
+            <p className="text-neutral-400 mt-2">Histórico de atuação técnica, suporte avançado e manuseio de dados corporativos.</p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="space-y-8">
             {experiencePrints.map((item, idx) => (
-              <div key={idx} className="bg-neutral-900 border border-neutral-800 rounded-3xl p-6 flex flex-col justify-between shadow-xl hover:border-[#FF7A00]/50 transition-all">
-                <div>
-                  <div className="h-48 rounded-2xl overflow-hidden bg-neutral-950 mb-6 border border-neutral-800 cursor-pointer group" onClick={() => setSelectedImage(item.src)}>
-                    <img src={item.src} alt={item.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
-                  </div>
-                  <h3 className="text-xl font-bold text-white mb-3">{item.title}</h3>
-                  <p className="text-neutral-400 text-sm leading-relaxed">{item.desc}</p>
+              <div key={idx} className="grid lg:grid-cols-12 gap-8 items-center bg-neutral-900 p-8 rounded-3xl border border-neutral-800 shadow-xl">
+                <div className="lg:col-span-5 space-y-3">
+                  <span className="text-xs font-mono text-[#FF7A00] bg-[#FF7A00]/10 border border-[#FF7A00]/30 px-3 py-1 rounded-full font-bold inline-block">Experiência Profissional</span>
+                  <h3 className="text-2xl font-bold text-white">{item.title}</h3>
+                  <p className="text-neutral-300 text-base leading-relaxed">{item.desc}</p>
+                </div>
+                <div className="lg:col-span-7 bg-neutral-950 rounded-2xl overflow-hidden border border-neutral-800 shadow-xl flex justify-center p-4 cursor-pointer group" onClick={() => setSelectedImage(item.src)}>
+                  <img src={item.src} alt={item.title} className="max-h-[300px] w-auto object-contain group-hover:scale-105 transition-transform duration-300 rounded-xl" />
                 </div>
               </div>
             ))}
@@ -512,36 +508,59 @@ export default function Portfolio() {
         {/* 6. SEÇÃO COMPETÊNCIAS */}
         <section id="competencias" className="scroll-mt-28">
           <div className="mb-12">
-            <div className="text-[#FF7A00] font-mono text-xs uppercase tracking-widest mb-2 font-bold">// Habilidades & Soft Skills</div>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">Competências Técnicas e Profissionais</h2>
-            <p className="text-neutral-400 mt-2">Pilares técnicos e comportamentais que fundamentam minha entrega diária no desenvolvimento de software e suporte.</p>
+            <div className="text-[#FF7A00] font-mono text-xs uppercase tracking-widest mb-2 font-bold">// Habilidades & Aptidões</div>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">Competências</h2>
+            <p className="text-neutral-400 mt-2">Principais competências técnicas e interpessoais aplicadas aos projetos e rotinas corporativas.</p>
           </div>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            <div className="bg-neutral-900 border border-neutral-800 p-6 rounded-3xl shadow-xl">
-              <Terminal className="w-8 h-8 text-[#FF7A00] mb-4" />
-              <h3 className="text-lg font-bold text-white mb-2">Desenvolvimento Full-Stack</h3>
-              <p className="text-sm text-neutral-400">Criação de aplicações web escaláveis do planejamento ao deploy em produção.</p>
+            <div className="bg-neutral-900 p-6 rounded-3xl border border-neutral-800 flex items-center gap-4">
+              <div className="p-3 bg-[#FF7A00]/10 text-[#FF7A00] rounded-2xl"><Code2 className="w-6 h-6" /></div>
+              <div>
+                <h4 className="text-lg font-bold text-white">Desenvolvimento Full-Stack</h4>
+                <p className="text-xs text-neutral-400 mt-1">Web apps modernos e escaláveis</p>
+              </div>
             </div>
-            <div className="bg-neutral-900 border border-neutral-800 p-6 rounded-3xl shadow-xl">
-              <Database className="w-8 h-8 text-[#FF7A00] mb-4" />
-              <h3 className="text-lg font-bold text-white mb-2">Banco de Dados e Queries</h3>
-              <p className="text-sm text-neutral-400">Consultas complexas, modelagem relacional, PostgreSQL e Supabase.</p>
+
+            <div className="bg-neutral-900 p-6 rounded-3xl border border-neutral-800 flex items-center gap-4">
+              <div className="p-3 bg-[#FF7A00]/10 text-[#FF7A00] rounded-2xl"><Database className="w-6 h-6" /></div>
+              <div>
+                <h4 className="text-lg font-bold text-white">Banco de Dados & SQL</h4>
+                <p className="text-xs text-neutral-400 mt-1">PostgreSQL, Supabase e Queries</p>
+              </div>
             </div>
-            <div className="bg-neutral-900 border border-neutral-800 p-6 rounded-3xl shadow-xl">
-              <Server className="w-8 h-8 text-[#FF7A00] mb-4" />
-              <h3 className="text-lg font-bold text-white mb-2">Automação de Processos</h3>
-              <p className="text-sm text-neutral-400">Uso de Python, n8n, Power Automate e Excel para ganho de eficiência operacional.</p>
+
+            <div className="bg-neutral-900 p-6 rounded-3xl border border-neutral-800 flex items-center gap-4">
+              <div className="p-3 bg-[#FF7A00]/10 text-[#FF7A00] rounded-2xl"><Terminal className="w-6 h-6" /></div>
+              <div>
+                <h4 className="text-lg font-bold text-white">Automação de Processos</h4>
+                <p className="text-xs text-neutral-400 mt-1">Power Automate, n8n e Python</p>
+              </div>
             </div>
-            <div className="bg-neutral-900 border border-neutral-800 p-6 rounded-3xl shadow-xl">
-              <ShieldCheck className="w-8 h-8 text-[#FF7A00] mb-4" />
-              <h3 className="text-lg font-bold text-white mb-2">Resolução de Alta Criticidade</h3>
-              <p className="text-sm text-neutral-400">Atendimento rápido e assertivo a chamados corporativos e suporte técnico avançado.</p>
+
+            <div className="bg-neutral-900 p-6 rounded-3xl border border-neutral-800 flex items-center gap-4">
+              <div className="p-3 bg-[#FF7A00]/10 text-[#FF7A00] rounded-2xl"><ShieldCheck className="w-6 h-6" /></div>
+              <div>
+                <h4 className="text-lg font-bold text-white">Suporte Técnico & Infra</h4>
+                <p className="text-xs text-neutral-400 mt-1">Atendimento e resolução de chamados</p>
+              </div>
             </div>
-            <div className="bg-neutral-900 border border-neutral-800 p-6 rounded-3xl shadow-xl">
-              <Users className="w-8 h-8 text-[#FF7A00] mb-4" />
-              <h3 className="text-lg font-bold text-white mb-2">Trabalho em Equipe</h3>
-              <p className="text-sm text-neutral-400">Colaboração sinérgica, comunicação clara e alinhamento contínuo para atingir objetivos comuns em projetos.</p>
+
+            <div className="bg-neutral-900 p-6 rounded-3xl border border-neutral-800 flex items-center gap-4">
+              <div className="p-3 bg-[#FF7A00]/10 text-[#FF7A00] rounded-2xl"><Users className="w-6 h-6" /></div>
+              <div>
+                <h4 className="text-lg font-bold text-white">Trabalho em Equipe</h4>
+                <p className="text-xs text-neutral-400 mt-1">Colaboração e comunicação efetiva</p>
+              </div>
+            </div>
+
+            {/* Inserido por último nas competências conforme solicitado */}
+            <div className="bg-neutral-900 p-6 rounded-3xl border border-neutral-800 flex items-center gap-4">
+              <div className="p-3 bg-[#FF7A00]/10 text-[#FF7A00] rounded-2xl"><Palette className="w-6 h-6" /></div>
+              <div>
+                <h4 className="text-lg font-bold text-white">Marketing Voluntário & Design</h4>
+                <p className="text-xs text-neutral-400 mt-1">2 anos de experiência em e-commerce, paleta de cores, identidade visual e brand</p>
+              </div>
             </div>
           </div>
         </section>
@@ -551,43 +570,44 @@ export default function Portfolio() {
           <div className="mb-12">
             <div className="text-[#FF7A00] font-mono text-xs uppercase tracking-widest mb-2 font-bold">// Conquista Acadêmica</div>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">Colação de Grau - ADS Unicesumar</h2>
-            <p className="text-neutral-400 mt-2">Marcos da conclusão da graduação em Análise e Desenvolvimento de Sistemas.</p>
+            <p className="text-neutral-400 mt-2">Registro oficial da formatura em Análise e Desenvolvimento de Sistemas.</p>
           </div>
 
-          <div className="bg-neutral-900 border border-neutral-800 rounded-3xl p-6 sm:p-10 shadow-2xl relative overflow-hidden">
-            <div className="relative h-[350px] sm:h-[450px] rounded-2xl overflow-hidden bg-neutral-950 border border-neutral-800 flex items-center justify-center cursor-pointer group" onClick={() => setSelectedImage(formaturaImages[currentSlide].src)}>
+          <div className="bg-neutral-900 p-8 rounded-3xl border border-neutral-800 shadow-2xl">
+            <div className="relative overflow-hidden rounded-2xl mb-6 bg-neutral-950 flex justify-center items-center min-h-[350px]">
               <img 
                 src={formaturaImages[currentSlide].src} 
                 alt={formaturaImages[currentSlide].caption} 
-                className="w-full h-full object-contain group-hover:scale-105 transition-all duration-500"
+                className="max-h-[450px] w-auto object-contain cursor-pointer rounded-xl transition-all duration-500"
+                onClick={() => setSelectedImage(formaturaImages[currentSlide].src)}
               />
-              <div className="absolute bottom-4 left-4 right-4 bg-black/70 backdrop-blur-md px-4 py-3 rounded-xl border border-white/10 text-center">
-                <p className="text-white text-sm font-medium">{formaturaImages[currentSlide].caption}</p>
+              <div className="absolute bottom-4 left-4 bg-black/70 backdrop-blur-md px-4 py-2 rounded-xl border border-white/10 text-white text-sm font-medium">
+                {formaturaImages[currentSlide].caption}
               </div>
-            </div>
 
-            <div className="flex justify-between items-center mt-6">
+              {/* Botões do Carrossel */}
               <button 
-                onClick={() => setCurrentSlide((prev) => (prev - 1 + formaturaImages.length) % formaturaImages.length)}
-                className="p-3 bg-neutral-800 hover:bg-[#FF7A00] text-white rounded-xl transition-all shadow-md"
+                onClick={() => setCurrentSlide((prev) => (prev === 0 ? formaturaImages.length - 1 : prev - 1))}
+                className="absolute left-4 top-1/2 -translate-y-1/2 p-3 rounded-full bg-black/60 text-white hover:bg-[#FF7A00] transition-all border border-white/10"
               >
-                <ChevronLeft className="w-5 h-5" />
+                <ChevronLeft className="w-6 h-6" />
               </button>
-              <div className="flex gap-2">
-                {formaturaImages.map((_, idx) => (
-                  <button 
-                    key={idx} 
-                    onClick={() => setCurrentSlide(idx)}
-                    className={`w-3 h-3 rounded-full transition-all ${currentSlide === idx ? 'bg-[#FF7A00] w-6' : 'bg-neutral-700 hover:bg-neutral-500'}`}
-                  />
-                ))}
-              </div>
               <button 
                 onClick={() => setCurrentSlide((prev) => (prev + 1) % formaturaImages.length)}
-                className="p-3 bg-neutral-800 hover:bg-[#FF7A00] text-white rounded-xl transition-all shadow-md"
+                className="absolute right-4 top-1/2 -translate-y-1/2 p-3 rounded-full bg-black/60 text-white hover:bg-[#FF7A00] transition-all border border-white/10"
               >
-                <ChevronRight className="w-5 h-5" />
+                <ChevronRight className="w-6 h-6" />
               </button>
+            </div>
+
+            <div className="flex justify-center gap-2">
+              {formaturaImages.map((_, idx) => (
+                <button 
+                  key={idx}
+                  onClick={() => setCurrentSlide(idx)}
+                  className={`w-3 h-3 rounded-full transition-all ${currentSlide === idx ? 'bg-[#FF7A00] w-8' : 'bg-neutral-700 hover:bg-neutral-500'}`}
+                />
+              ))}
             </div>
           </div>
         </section>
@@ -595,28 +615,31 @@ export default function Portfolio() {
       </main>
 
       {/* --- RODAPÉ --- */}
-      <footer className="border-t border-neutral-800 bg-[#0d0d0d] py-12 text-center text-neutral-500 text-sm">
-        <div className="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-6">
+      <footer className="border-t border-neutral-800 bg-neutral-950 py-12 px-6 text-neutral-400">
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
           <div className="font-mono font-bold text-white tracking-tight flex items-center gap-1">
             <span className="text-[#FF7A00]">&lt;</span>
             <span>Crystian.Dev</span>
             <span className="text-[#FF7A00]">/&gt;</span>
           </div>
-          <p>© {new Date().getFullYear()} Crystian. Todos os direitos reservados.</p>
+
+          <p className="text-xs text-center md:text-left">
+            © {new Date().getFullYear()} Crystian. Todos os direitos reservados. Desenvolvido com Next.js, TypeScript e Tailwind CSS.
+          </p>
+
           <div className="flex items-center gap-4">
-            <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="p-2.5 bg-neutral-900 border border-neutral-800 rounded-xl text-neutral-300 hover:text-[#FF7A00] hover:border-[#FF7A00]/50 transition-all">
-              <Github className="w-4 h-4" />
+            <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="p-2.5 rounded-xl bg-neutral-900 border border-neutral-800 text-white hover:text-[#FF7A00] hover:border-[#FF7A00] transition-all">
+              <Github className="w-5 h-5" />
             </a>
-            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="p-2.5 bg-neutral-900 border border-neutral-800 rounded-xl text-neutral-300 hover:text-[#FF7A00] hover:border-[#FF7A00]/50 transition-all">
-              <Linkedin className="w-4 h-4" />
+            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="p-2.5 rounded-xl bg-neutral-900 border border-neutral-800 text-white hover:text-[#FF7A00] hover:border-[#FF7A00] transition-all">
+              <Linkedin className="w-5 h-5" />
             </a>
-            <a href="mailto:contato@crystian.dev" className="p-2.5 bg-neutral-900 border border-neutral-800 rounded-xl text-neutral-300 hover:text-[#FF7A00] hover:border-[#FF7A00]/50 transition-all">
-              <Mail className="w-4 h-4" />
+            <a href="https://wa.me/5515981149404" target="_blank" rel="noopener noreferrer" className="p-2.5 rounded-xl bg-neutral-900 border border-neutral-800 text-white hover:text-[#FF7A00] hover:border-[#FF7A00] transition-all">
+              <MessageSquare className="w-5 h-5" />
             </a>
           </div>
         </div>
       </footer>
-
     </div>
   );
 }

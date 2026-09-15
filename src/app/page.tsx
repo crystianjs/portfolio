@@ -39,20 +39,20 @@ export default function Portfolio() {
     { src: "/formatura(4).jpeg", caption: "Registro Especial da Formatura" },
   ];
 
-  // Prints de Experiência corrigidos para os arquivos reais em public/
+  // Prints de Experiência atualizados com as imagens solicitadas
   const experiencePrints = [
     { 
-      src: "/photo_cerba_1.png", 
+      src: "/power_automate.png", 
       title: "Atuação em Sistemas e Suporte Técnico", 
       desc: "Registro de rotinas de atendimento, sistemas corporativos e chamados de alta criticidade no setor de tecnologia e saúde." 
     },
     { 
-      src: "/photo_cerba_2.png", 
+      src: "/PostgreSQL-Logo.jpg", 
       title: "Manipulação de Dados e Consultas SQL", 
       desc: "Ambiente de desenvolvimento e testes de consultas em bancos relacionais, Supabase e tratamento de dados diários." 
     },
     { 
-      src: "/photo_cerba_3.png", 
+      src: "/photo_cerba_1.png", 
       title: "Automação e Monitoramento", 
       desc: "Execução de rotinas automatizadas, scripts e acompanhamento de logs de integração em tempo real." 
     }
@@ -382,7 +382,7 @@ export default function Portfolio() {
           </div>
         </section>
 
-        {/* 3. SEÇÃO STACK TECH (Com ícones em PNG da pasta public) */}
+        {/* 3. SEÇÃO STACK TECH */}
         <section id="stack" className="scroll-mt-28">
           <div className="mb-12">
             <div className="text-[#FF7A00] font-mono text-xs uppercase tracking-widest mb-2 font-bold">// Ferramentas & Tecnologias</div>
@@ -469,7 +469,7 @@ export default function Portfolio() {
           </div>
         </section>
 
-        {/* 5. SEÇÃO CURRÍCULO (COM OS PRINTS CORRETOS photo_cerba_x.png) */}
+        {/* 5. SEÇÃO CURRÍCULO (COM OS PRINTS ATUALIZADOS) */}
         <section id="curriculo" className="scroll-mt-28">
           <div className="mb-10">
             <div className="text-[#FF7A00] font-mono text-xs uppercase tracking-widest mb-2 font-bold">// Perfil Profissional</div>
@@ -552,7 +552,7 @@ export default function Portfolio() {
             </div>
           </div>
 
-          {/* GALERIA DE PRINTS DE EXPERIÊNCIA CORRIGIDA */}
+          {/* GALERIA DE PRINTS DE EXPERIÊNCIA ATUALIZADA */}
           <div className="bg-neutral-900 border border-neutral-800 p-8 sm:p-12 rounded-3xl shadow-2xl">
             <div className="mb-8 border-b border-neutral-800 pb-6">
               <span className="text-xs font-mono text-[#FF7A00] bg-[#FF7A00]/10 border border-[#FF7A00]/30 px-3 py-1 rounded-full font-bold inline-block mb-3">Evidências Práticas</span>
@@ -563,14 +563,14 @@ export default function Portfolio() {
             <div className="grid md:grid-cols-3 gap-6">
               {experiencePrints.map((item, idx) => (
                 <div key={idx} className="bg-neutral-950/80 border border-neutral-800 rounded-2xl overflow-hidden shadow-xl flex flex-col justify-between group">
-                  <div className="p-4 cursor-pointer overflow-hidden" onClick={() => setSelectedImage(item.src)}>
+                  <div className="p-4 cursor-pointer overflow-hidden flex justify-center items-center bg-black/40 h-48" onClick={() => setSelectedImage(item.src)}>
                     <img 
                       src={item.src} 
                       alt={item.title} 
-                      className="w-full h-48 object-cover rounded-xl group-hover:scale-105 transition-transform duration-300 border border-neutral-800" 
+                      className="max-h-full max-w-full object-contain rounded-xl group-hover:scale-105 transition-transform duration-300" 
                     />
                   </div>
-                  <div className="p-6 pt-2">
+                  <div className="p-6 pt-4">
                     <h4 className="text-base font-bold text-white mb-2">{item.title}</h4>
                     <p className="text-xs text-neutral-400 leading-relaxed">{item.desc}</p>
                   </div>

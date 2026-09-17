@@ -416,7 +416,7 @@ export default function Portfolio() {
           </div>
         </section>
 
-        {/* 3. SEÇÃO DE PREVIEWS INTERATIVOS POR NICHO (NOVA SEÇÃO) */}
+        {/* 3. SEÇÃO DE PREVIEWS INTERATIVOS POR NICHO */}
         <section id="nichos" className="scroll-mt-28">
           <div className="mb-10 text-center">
             <div className="text-[#FF7A00] font-mono text-xs uppercase tracking-widest mb-2 font-bold">// Demonstração Prática</div>
@@ -435,7 +435,7 @@ export default function Portfolio() {
                 onClick={() => setActiveTab('turismo')}
                 className={`px-5 py-2.5 rounded-full font-medium transition-all ${activeTab === 'turismo' ? 'bg-[#FF7A00] text-white shadow-lg shadow-[#FF7A00]/20' : 'bg-neutral-900 text-neutral-300 hover:bg-neutral-800 border border-neutral-800'}`}
               >
-                ✈️ Turismo & Reservas
+                ✈️ Turismo & Pousada
               </button>
               <button 
                 onClick={() => setActiveTab('custom')}
@@ -455,10 +455,12 @@ export default function Portfolio() {
                 <div className="w-3 h-3 rounded-full bg-green-500"></div>
               </div>
               <span className="text-xs text-neutral-400 font-mono bg-neutral-900 px-4 py-1 rounded-md border border-neutral-800">
-                {activeTab === 'custom' ? 'projetos.sob-medida.dev' : `preview.${activeTab}.projeto.dev`}
+                {activeTab === 'ecommerce' && 'preview.ecommerce.projeto.dev'}
+                {activeTab === 'turismo' && 'pousada-inky.vercel.app'}
+                {activeTab === 'custom' && 'projetos.sob-medida.dev'}
               </span>
               <div className="text-xs text-[#FF7A00] font-semibold">
-                {activeTab === 'custom' ? '💡 Desenvolvemos sua ideia' : '🟢 Modo Interativo'}
+                {activeTab === 'custom' ? '💡 Desenvolvemos sua ideia' : '🟢 Modo Interativo ao Vivo'}
               </div>
             </div>
 
@@ -472,8 +474,8 @@ export default function Portfolio() {
                 )}
                 {activeTab === 'turismo' && (
                   <>
-                    <h3 className="text-lg font-bold text-white">Portal de Turismo & Reservas</h3>
-                    <p className="text-sm text-neutral-400">Sistema completo para agendamento de passeios, pacotes e destinos.</p>
+                    <h3 className="text-lg font-bold text-white">Portal de Turismo & Pousada (Live Preview)</h3>
+                    <p className="text-sm text-neutral-400">Sistema completo rodando em tempo real integrado via Vercel.</p>
                   </>
                 )}
                 {activeTab === 'custom' && (
@@ -484,7 +486,7 @@ export default function Portfolio() {
                 )}
               </div>
               <span className="text-xs bg-[#FF7A00]/10 text-[#FF7A00] border border-[#FF7A00]/20 px-3 py-1 rounded-full">
-                {activeTab === 'custom' ? '✨ Sob Encomenda' : 'Role para testar o design 👇'}
+                {activeTab === 'custom' ? '✨ Sob Encomenda' : 'Navegue diretamente abaixo 👇'}
               </span>
             </div>
 
@@ -499,11 +501,22 @@ export default function Portfolio() {
               )}
 
               {activeTab === 'turismo' && (
-                <div className="w-full h-full flex flex-col items-center justify-center p-8 text-center bg-neutral-950">
-                  <img 
-                    src="/portfolio/turismo-modelo.png" 
-                    alt="Turismo Preview" 
-                    className="w-full h-auto object-cover rounded-xl shadow-lg border border-neutral-800 max-w-4xl"
+                <div className="w-full h-full relative">
+                  <div className="absolute top-4 right-4 z-20">
+                    <a 
+                      href="https://pousada-inky.vercel.app/" 
+                      target="_blank" 
+                      rel="noopener noreferrer" 
+                      className="px-4 py-2 bg-[#FF7A00] hover:bg-[#e06c00] text-white text-xs font-bold rounded-xl shadow-xl flex items-center gap-2 transition-all border border-neutral-700 backdrop-blur-md"
+                    >
+                      Abrir em Tela Cheia <ExternalLink className="w-3.5 h-3.5" />
+                    </a>
+                  </div>
+                  <iframe 
+                    src="https://pousada-inky.vercel.app/"
+                    className="w-full h-full border-0"
+                    allowFullScreen
+                    title="Turismo Live Preview"
                   />
                 </div>
               )}

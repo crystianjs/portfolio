@@ -522,8 +522,8 @@ export default function Portfolio() {
               )}
 
               {activeTab === 'custom' && (
-                <div className="w-full h-full flex flex-col items-center justify-center p-8 text-center bg-neutral-950">
-                  <div className="max-w-2xl mx-auto space-y-4">
+                <div className="w-full h-full flex flex-col items-center justify-center p-8 text-center bg-neutral-950 overflow-y-auto">
+                  <div className="max-w-2xl mx-auto space-y-4 w-full">
                     <span className="text-xs font-semibold uppercase tracking-wider text-[#FF7A00] bg-[#FF7A00]/10 px-3 py-1 rounded-full border border-[#FF7A00]/20">
                       Flexibilidade Total
                     </span>
@@ -531,14 +531,17 @@ export default function Portfolio() {
                     <p className="text-neutral-400 text-sm leading-relaxed">
                       Não importa se o seu negócio é prestação de serviços, advocacia, construção, gastronomia ou tecnologia. Estruturamos a identidade visual, a arquitetura de alta performance em Next.js e o layout focado em conversão sob medida para você.
                     </p>
-                    <div className="pt-4">
+                    
+                    {/* Container com rolagem para a imagem longa imagem-websites2 */}
+                    <div className="pt-4 max-h-[380px] overflow-y-auto rounded-xl border border-neutral-800 shadow-2xl bg-neutral-900">
                       <img 
-                        src="/imagem-websites.jpg" 
+                        src="/imagem-websites2.jpg" 
                         alt="Projetos em diversos nichos" 
-                        className="w-full h-auto max-h-[380px] object-cover rounded-xl shadow-2xl border border-neutral-800 cursor-pointer"
-                        onClick={() => setSelectedImage("/imagem-websites.jpg")}
+                        className="w-full h-auto object-cover cursor-pointer hover:opacity-95 transition-opacity"
+                        onClick={() => setSelectedImage("/imagem-websites2.jpg")}
                       />
                     </div>
+                    <p className="text-xs text-neutral-500 font-mono">// Role para visualizar o conteúdo completo</p>
                   </div>
                 </div>
               )}

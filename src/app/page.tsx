@@ -201,11 +201,11 @@ export default function Portfolio() {
 
               <div className="grid grid-cols-3 gap-6 mt-12 pt-8 border-t border-neutral-800/80">
                 <div>
-                  <h4 className="text-2xl sm:text-3xl font-black text-white">3+</h4>
+                  <h4 className="text-2xl sm:text-3xl font-black text-white">2+</h4>
                   <p className="text-xs sm:text-sm text-neutral-400 mt-1">Anos em Tech</p>
                 </div>
                 <div>
-                  <h4 className="text-2xl sm:text-3xl font-black text-white">3+</h4>
+                  <h4 className="text-2xl sm:text-3xl font-black text-white">5+</h4>
                   <p className="text-xs sm:text-sm text-neutral-400 mt-1">Sistemas Desenvolvidos</p>
                 </div>
                 <div>

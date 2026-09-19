@@ -27,13 +27,15 @@ import {
   HeartHandshake,
   Server,
   Users,
-  Palette
+  Palette,
+  Lock,
+  Key,
+  CheckCircle2
 } from 'lucide-react';
 
 export default function Portfolio() {
   const [hubViewMode, setHubViewMode] = useState<'desktop' | 'mobile'>('desktop');
   const [ialeViewMode, setIaleViewMode] = useState<'desktop' | 'mobile'>('desktop');
-  const [activeTab, setActiveTab] = useState<'ecommerce' | 'turismo' | 'custom'>('ecommerce');
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -145,7 +147,7 @@ export default function Portfolio() {
           <nav className="hidden lg:flex items-center gap-1 bg-neutral-900 p-1.5 rounded-2xl border border-neutral-800">
             <button onClick={() => scrollToSection('home')} className="px-3 py-2 rounded-xl text-xs font-semibold text-neutral-300 hover:text-white hover:bg-neutral-800 transition-all">Início</button>
             <button onClick={() => scrollToSection('projetos')} className="px-3 py-2 rounded-xl text-xs font-semibold text-neutral-300 hover:text-white hover:bg-neutral-800 transition-all">Projetos</button>
-            <button onClick={() => scrollToSection('nichos')} className="px-3 py-2 rounded-xl text-xs font-semibold text-neutral-300 hover:text-white hover:bg-neutral-800 transition-all">Nichos</button>
+            <button onClick={() => scrollToSection('estudo-de-caso')} className="px-3 py-2 rounded-xl text-xs font-semibold text-neutral-300 hover:text-white hover:bg-neutral-800 transition-all">Estudo de Caso</button>
             <button onClick={() => scrollToSection('stack')} className="px-3 py-2 rounded-xl text-xs font-semibold text-neutral-300 hover:text-white hover:bg-neutral-800 transition-all">Stack</button>
             <button onClick={() => scrollToSection('servicos')} className="px-3 py-2 rounded-xl text-xs font-semibold text-neutral-300 hover:text-white hover:bg-neutral-800 transition-all">Serviços</button>
             <button onClick={() => scrollToSection('curriculo')} className="px-3 py-2 rounded-xl text-xs font-semibold text-neutral-300 hover:text-white hover:bg-neutral-800 transition-all">Currículo</button>
@@ -177,7 +179,7 @@ export default function Portfolio() {
           <div className="lg:hidden bg-neutral-950/95 backdrop-blur-xl border-b border-neutral-800 px-6 py-4 flex flex-col gap-2 shadow-2xl">
             <button onClick={() => { scrollToSection('home'); setMobileMenuOpen(false); }} className="text-left px-4 py-3 rounded-xl text-sm font-semibold text-neutral-300 hover:text-white hover:bg-neutral-900 transition-all">Início</button>
             <button onClick={() => { scrollToSection('projetos'); setMobileMenuOpen(false); }} className="text-left px-4 py-3 rounded-xl text-sm font-semibold text-neutral-300 hover:text-white hover:bg-neutral-900 transition-all">Projetos</button>
-            <button onClick={() => { scrollToSection('nichos'); setMobileMenuOpen(false); }} className="text-left px-4 py-3 rounded-xl text-sm font-semibold text-neutral-300 hover:text-white hover:bg-neutral-900 transition-all">Nichos</button>
+            <button onClick={() => { scrollToSection('estudo-de-caso'); setMobileMenuOpen(false); }} className="text-left px-4 py-3 rounded-xl text-sm font-semibold text-neutral-300 hover:text-white hover:bg-neutral-900 transition-all">Estudo de Caso</button>
             <button onClick={() => { scrollToSection('stack'); setMobileMenuOpen(false); }} className="text-left px-4 py-3 rounded-xl text-sm font-semibold text-neutral-300 hover:text-white hover:bg-neutral-900 transition-all">Stack</button>
             <button onClick={() => { scrollToSection('servicos'); setMobileMenuOpen(false); }} className="text-left px-4 py-3 rounded-xl text-sm font-semibold text-neutral-300 hover:text-white hover:bg-neutral-900 transition-all">Serviços</button>
             <button onClick={() => { scrollToSection('curriculo'); setMobileMenuOpen(false); }} className="text-left px-4 py-3 rounded-xl text-sm font-semibold text-neutral-300 hover:text-white hover:bg-neutral-900 transition-all">Currículo</button>
@@ -416,136 +418,106 @@ export default function Portfolio() {
           </div>
         </section>
 
-        {/* 3. SEÇÃO DE PREVIEWS INTERATIVOS POR NICHO */}
-        <section id="nichos" className="scroll-mt-28">
-          <div className="mb-10 text-center">
-            <div className="text-[#FF7A00] font-mono text-xs uppercase tracking-widest mb-2 font-bold">// Demonstração Prática</div>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">Soluções Digitais por Nicho</h2>
-            <p className="text-neutral-400 mt-2 max-w-2xl mx-auto">Teste interativamente os modelos prontos ou solicite um projeto sob medida para o seu negócio.</p>
-            
-            {/* Abas de Navegação */}
-            <div className="flex justify-center gap-3 mt-6 flex-wrap">
-              <button 
-                onClick={() => setActiveTab('ecommerce')}
-                className={`px-5 py-2.5 rounded-full font-medium transition-all ${activeTab === 'ecommerce' ? 'bg-[#FF7A00] text-white shadow-lg shadow-[#FF7A00]/20' : 'bg-neutral-900 text-neutral-300 hover:bg-neutral-800 border border-neutral-800'}`}
-              >
-                🛒 E-commerce & Marketplace
-              </button>
-              <button 
-                onClick={() => setActiveTab('turismo')}
-                className={`px-5 py-2.5 rounded-full font-medium transition-all ${activeTab === 'turismo' ? 'bg-[#FF7A00] text-white shadow-lg shadow-[#FF7A00]/20' : 'bg-neutral-900 text-neutral-300 hover:bg-neutral-800 border border-neutral-800'}`}
-              >
-                ✈️ Turismo & Pousada
-              </button>
-              <button 
-                onClick={() => setActiveTab('custom')}
-                className={`px-5 py-2.5 rounded-full font-medium transition-all ${activeTab === 'custom' ? 'bg-[#FF7A00] text-white shadow-lg shadow-[#FF7A00]/20' : 'bg-neutral-900 text-neutral-300 hover:bg-neutral-800 border border-neutral-800'}`}
-              >
-                🚀 Qualquer Nicho / Sob Medida
-              </button>
-            </div>
+        {/* 3. SEÇÃO ESTUDO DE CASO / IDEIAS MINHAS: UPQUEST-ES */}
+        <section id="estudo-de-caso" className="scroll-mt-28">
+          <div className="mb-12">
+            <div className="text-red-500 font-mono text-xs uppercase tracking-widest mb-2 font-bold">// Estudo de Caso & Ideias Minhas</div>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">UpQuest-es - Portal de Estudos TJSP</h2>
+            <p className="text-neutral-400 mt-2">Plataforma de alta performance desenvolvida para acompanhamento de questões, desempenho analítico e treinamento focado em concursos públicos.</p>
           </div>
 
-          {/* Janela de Navegador Estilizada */}
-          <div className="rounded-3xl border border-neutral-800 bg-neutral-900 overflow-hidden shadow-2xl">
-            <div className="flex items-center justify-between px-4 py-3 bg-neutral-950 border-b border-neutral-800">
-              <div className="flex items-center gap-2">
-                <div className="w-3 h-3 rounded-full bg-red-500"></div>
-                <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
-                <div className="w-3 h-3 rounded-full bg-green-500"></div>
-              </div>
-              <span className="text-xs text-neutral-400 font-mono bg-neutral-900 px-4 py-1 rounded-md border border-neutral-800">
-                {activeTab === 'ecommerce' && 'preview.ecommerce.projeto.dev'}
-                {activeTab === 'turismo' && 'pousada-inky.vercel.app'}
-                {activeTab === 'custom' && 'projetos.sob-medida.dev'}
-              </span>
-              <div className="text-xs text-[#FF7A00] font-semibold">
-                {activeTab === 'custom' ? '💡 Desenvolvemos sua ideia' : '🟢 Modo Interativo ao Vivo'}
-              </div>
-            </div>
+          <div className="bg-neutral-900 border border-neutral-800 rounded-3xl p-8 sm:p-12 shadow-2xl space-y-10 relative overflow-hidden">
+            <div className="absolute top-0 right-0 w-80 h-80 bg-red-600/10 rounded-full blur-3xl pointer-events-none"></div>
 
-            <div className="p-4 bg-neutral-900/90 border-b border-neutral-800 flex justify-between items-center flex-wrap gap-4">
-              <div>
-                {activeTab === 'ecommerce' && (
-                  <>
-                    <h3 className="text-lg font-bold text-white">E-commerce & Marketplace de Alta Performance</h3>
-                    <p className="text-sm text-neutral-400">Vitrine de produtos, carrinho dinâmico e experiência de compra otimizada.</p>
-                  </>
-                )}
-                {activeTab === 'turismo' && (
-                  <>
-                    <h3 className="text-lg font-bold text-white">Portal de Turismo & Pousada (Live Preview)</h3>
-                    <p className="text-sm text-neutral-400">Sistema completo rodando em tempo real integrado via Vercel.</p>
-                  </>
-                )}
-                {activeTab === 'custom' && (
-                  <>
-                    <h3 className="text-lg font-bold text-white">Sistemas e Landing Pages para Qualquer Nicho</h3>
-                    <p className="text-neutral-400 text-sm">Precisa de algo único? Desenvolvemos sob medida para a sua regra de negócio.</p>
-                  </>
-                )}
-              </div>
-              <span className="text-xs bg-[#FF7A00]/10 text-[#FF7A00] border border-[#FF7A00]/20 px-3 py-1 rounded-full">
-                {activeTab === 'custom' ? '✨ Sob Encomenda' : 'Navegue diretamente abaixo 👇'}
-              </span>
-            </div>
+            <div className="grid lg:grid-cols-12 gap-8 items-center">
+              <div className="lg:col-span-6 space-y-6">
+                <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-red-950/80 text-red-400 text-xs font-mono border border-red-500/30">
+                  <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>
+                  <span>Interface Dark Mode Exclusiva (Vermelho e Preto)</span>
+                </div>
+                <h3 className="text-2xl sm:text-3xl font-black text-white">Sobre o Sistema & Funcionalidades</h3>
+                <p className="text-neutral-300 text-sm sm:text-base leading-relaxed">
+                  O <strong className="text-white">UpQuest-es</strong> nasceu da necessidade de criar um ecossistema focado na preparação para o concurso de Escrevente do TJSP. A aplicação conta com recursos avançados de rastreamento de estudos, contagem de acertos/erros e treinamento de redação com temporizador.
+                </p>
 
-            <div className="w-full h-[650px] bg-neutral-950 relative overflow-y-auto">
-              {activeTab === 'ecommerce' && (
-                <iframe 
-                  src="https://embed.figma.com/proto/0bG05mteGKQ5BfJSiaQrsW/Clicon---eCommerce-Marketplace-Website-Figma-Template--Community---Community-?node-id=305-2004&p=f&scaling=scale-down-width&content-scaling=fixed&page-id=2502%3A15108&embed-host=share"
-                  className="w-full h-full border-0"
-                  allowFullScreen
-                  title="E-commerce Preview"
-                />
-              )}
-
-              {activeTab === 'turismo' && (
-                <div className="w-full h-full relative">
-                  <div className="absolute top-4 right-4 z-20">
-                    <a 
-                      href="https://pousada-inky.vercel.app/" 
-                      target="_blank" 
-                      rel="noopener noreferrer" 
-                      className="px-4 py-2 bg-[#FF7A00] hover:bg-[#e06c00] text-white text-xs font-bold rounded-xl shadow-xl flex items-center gap-2 transition-all border border-neutral-700 backdrop-blur-md"
-                    >
-                      Abrir em Tela Cheia <ExternalLink className="w-3.5 h-3.5" />
-                    </a>
+                <div className="space-y-3 pt-2">
+                  <div className="flex items-start gap-3 bg-neutral-950/60 p-4 rounded-2xl border border-neutral-800">
+                    <CheckCircle2 className="w-5 h-5 text-red-500 shrink-0 mt-0.5" />
+                    <div>
+                      <h4 className="text-sm font-bold text-white">Registro de Questões por Matéria</h4>
+                      <p className="text-xs text-neutral-400 mt-1">Lançamento diário de blocos de estudo com contagem de acertos, erros e apontamento rigoroso de pontos de melhoria.</p>
+                    </div>
                   </div>
-                  <iframe 
-                    src="https://pousada-inky.vercel.app/"
-                    className="w-full h-full border-0"
-                    allowFullScreen
-                    title="Turismo Live Preview"
+
+                  <div className="flex items-start gap-3 bg-neutral-950/60 p-4 rounded-2xl border border-neutral-800">
+                    <CheckCircle2 className="w-5 h-5 text-red-500 shrink-0 mt-0.5" />
+                    <div>
+                      <h4 className="text-sm font-bold text-white">Painel de Desempenho Analítico</h4>
+                      <p className="text-xs text-neutral-400 mt-1">Gráficos e indicadores consolidados com filtro dinâmico por disciplina do edital.</p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start gap-3 bg-neutral-950/60 p-4 rounded-2xl border border-neutral-800">
+                    <CheckCircle2 className="w-5 h-5 text-red-500 shrink-0 mt-0.5" />
+                    <div>
+                      <h4 className="text-sm font-bold text-white">Treinador de Redação</h4>
+                      <p className="text-xs text-neutral-400 mt-1">Módulo de redação cronometrado com contagem de palavras e salvamento automatizado em banco de dados.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Mídia: Vídeo (Loop 3s) e Imagem de Preview */}
+              <div className="lg:col-span-6 space-y-4">
+                <div className="bg-neutral-950 p-3 rounded-2xl border border-neutral-800 shadow-xl overflow-hidden group">
+                  <p className="text-xs font-mono text-neutral-400 mb-2">// Demonstração em Vídeo</p>
+                  <video 
+                    src="/video.mp4" 
+                    autoPlay 
+                    loop 
+                    muted 
+                    playsInline 
+                    className="w-full h-auto rounded-xl object-cover shadow-md border border-neutral-800"
                   />
                 </div>
-              )}
 
-              {activeTab === 'custom' && (
-                <div className="w-full h-full flex flex-col items-center justify-center p-8 text-center bg-neutral-950 overflow-y-auto">
-                  <div className="max-w-2xl mx-auto space-y-4 w-full">
-                    <span className="text-xs font-semibold uppercase tracking-wider text-[#FF7A00] bg-[#FF7A00]/10 px-3 py-1 rounded-full border border-[#FF7A00]/20">
-                      Flexibilidade Total
-                    </span>
-                    <h4 className="text-2xl font-bold text-white">Sua empresa em qualquer setor do mercado</h4>
-                    <p className="text-neutral-400 text-sm leading-relaxed">
-                      Não importa se o seu negócio é prestação de serviços, advocacia, construção, gastronomia ou tecnologia. Estruturamos a identidade visual, a arquitetura de alta performance em Next.js e o layout focado em conversão sob medida para você.
-                    </p>
-                    
-                    {/* Container com rolagem para a imagem longa imagem-websites2 */}
-                    <div className="pt-4 max-h-[380px] overflow-y-auto rounded-xl border border-neutral-800 shadow-2xl bg-neutral-900">
-                      <img 
-                        src="/imagem-websites2.jpg" 
-                        alt="Projetos em diversos nichos" 
-                        className="w-full h-auto object-cover cursor-pointer hover:opacity-95 transition-opacity"
-                        onClick={() => setSelectedImage("/imagem-websites2.jpg")}
-                      />
-                    </div>
-                    <p className="text-xs text-neutral-500 font-mono">// Role para visualizar o conteúdo completo</p>
-                  </div>
+                <div className="bg-neutral-950 p-3 rounded-2xl border border-neutral-800 shadow-xl overflow-hidden group cursor-pointer" onClick={() => setSelectedImage("/imagem-upquestoes.jpg")}>
+                  <p className="text-xs font-mono text-neutral-400 mb-2">// Tela de Acesso e Interface (Clique para ampliar)</p>
+                  <img 
+                    src="/imagem-upquestoes.jpg" 
+                    alt="UpQuest-es Preview" 
+                    className="w-full h-auto rounded-xl object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
                 </div>
-              )}
+              </div>
             </div>
+
+            {/* CALLOUT DE ACESSO E TESTE DO USUÁRIO */}
+            <div className="bg-red-950/30 border border-red-500/40 rounded-2xl p-6 sm:p-8 flex flex-col md:flex-row items-center justify-between gap-6">
+              <div className="space-y-2 text-center md:text-left">
+                <div className="inline-flex items-center gap-2 text-red-400 text-xs font-mono font-bold uppercase tracking-wider">
+                  <Key className="w-4 h-4" /> Acesso de Testes Disponível para Visitantes
+                </div>
+                <h4 className="text-lg sm:text-xl font-bold text-white">Teste o sistema agora mesmo com usuário dedicado!</h4>
+                <p className="text-neutral-300 text-xs sm:text-sm max-w-xl">
+                  Criamos um usuário e senha exclusivos para que qualquer avaliador ou visitante possa entrar, navegar e testar todas as funcionalidades do UpQuest-es antes de fazer o login principal.
+                </p>
+                <div className="flex flex-wrap items-center justify-center md:justify-start gap-4 pt-2 text-xs font-mono text-neutral-300">
+                  <span className="bg-neutral-900 px-3 py-1.5 rounded-xl border border-neutral-800">👤 Usuário de Teste: <strong className="text-white">visitante@upquestoes.com</strong></span>
+                  <span className="bg-neutral-900 px-3 py-1.5 rounded-xl border border-neutral-800">🔑 Senha: <strong className="text-white">tjsp2026</strong></span>
+                </div>
+              </div>
+
+              <a 
+                href="https://upquestoes.vercel.app/" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="px-6 py-4 bg-red-600 hover:bg-red-500 text-white font-bold rounded-2xl flex items-center gap-3 transition-all shadow-lg hover:scale-105 shrink-0"
+              >
+                Acessar UpQuest-es <ExternalLink className="w-4 h-4" />
+              </a>
+            </div>
+
           </div>
         </section>
 

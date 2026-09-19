@@ -186,7 +186,7 @@ export default function Portfolio() {
                 <span className="w-2 h-2 rounded-full bg-[#FF7A00] animate-ping"></span>
                 <span>Disponível para novos projetos e contratos corporativos</span>
               </div>
-              <h1 className="text-4xl sm:text-6xl font-black tracking-tight mb-6 leading-[1.1]">Desenvolvedor Web <br /><span className="text-[#FF7A00]">com IA e Dados.</span></h1>
+              <h1 className="text-4xl sm:text-6xl font-black tracking-tight mb-6 leading-[1.1]">Desenvolvedor Web <br /><span className="text-[#FF7A00]">com IA🤖</span></h1>
               <p className="text-neutral-300 text-lg sm:text-xl font-light mb-10 max-w-xl leading-relaxed">
                 Especialista em construir ecossistemas web robustos, sites e sistemas corporativos. Utilizo Inteligência Artificial como ferramenta de suporte e aceleração de desenvolvimento, unindo alta performance, automação e experiência de usuário.
               </p>

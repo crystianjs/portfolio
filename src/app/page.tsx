@@ -359,7 +359,7 @@ export default function Portfolio() {
                     <CheckCircle2 className="w-5 h-5 text-red-500 shrink-0 mt-0.5" />
                     <div>
                       <h4 className="text-sm font-bold text-white">Painel de Desempenho Analítico</h4>
-                      <p className="text-xs text-neutral-400 mt-1">Gráficos e indicadores consolidados com filtro dinâmico por disciplina do edital.</p>
+                      <p className="text-xs text-neutral-400 mt-1">Gráficos e indicadores com filtro dinâmico por disciplina do edital.</p>
                     </div>
                   </div>
 
@@ -367,7 +367,7 @@ export default function Portfolio() {
                     <CheckCircle2 className="w-5 h-5 text-red-500 shrink-0 mt-0.5" />
                     <div>
                       <h4 className="text-sm font-bold text-white">Treinador de Redação</h4>
-                      <p className="text-xs text-neutral-400 mt-1">Módulo de redação cronometrado com contagem de palavras e salvamento automatizado em banco de dados.</p>
+                      <p className="text-xs text-neutral-400 mt-1">Módulo de redação com cronometragem para feedback para prova. </p>
                     </div>
                   </div>
                 </div>

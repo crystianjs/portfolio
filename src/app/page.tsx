@@ -186,7 +186,7 @@ export default function Portfolio() {
                 <span className="w-2 h-2 rounded-full bg-[#FF7A00] animate-ping"></span>
                 <span>Disponível para novos projetos e contratos corporativos</span>
               </div>
-              <h1 className="text-4xl sm:text-6xl font-black tracking-tight mb-6 leading-[1.1]">Desenvolvedor Web <br /><span className="text-[#FF7A00]">com IA🤖</span></h1>
+              <h1 className="text-4xl sm:text-6xl font-black tracking-tight mb-6 leading-[1.1]">Desenvolvedor Web <br /><span className="text-[#FF7A00]">com IA e Dados.</span></h1>
               <p className="text-neutral-300 text-lg sm:text-xl font-light mb-10 max-w-xl leading-relaxed">
                 Especialista em construir ecossistemas web robustos, sites e sistemas corporativos. Utilizo Inteligência Artificial como ferramenta de suporte e aceleração de desenvolvimento, unindo alta performance, automação e experiência de usuário.
               </p>
@@ -216,7 +216,7 @@ export default function Portfolio() {
             </div>
 
             <div className="lg:col-span-5 flex justify-center lg:justify-end z-10 mt-10 lg:mt-0">
-              <div className="relative w-72 h-80 sm:w-80 sm:h-96 rounded-3xl overflow-hidden shadow-2xl border-2 border-neutral-800 group cursor-pointer" onClick={() => setSelectedImage("/avatar-fullstack.jpg")}>
+              <div className="relative w-72 h-80 sm:w-80 sm:h-96 rounded-3xl overflow-hidden shadow-2xl border-2 border-[#FF7A00] shadow-[0_0_25px_rgba(255,122,0,0.4)] group cursor-pointer" onClick={() => setSelectedImage("/avatar-fullstack.jpg")}>
                 <img src="/avatar-fullstack.jpg" alt="Crystian Foto" className="w-full h-full object-cover object-top transition-all duration-500 group-hover:scale-105 filter grayscale hover:grayscale-0" />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#0d0d0d] via-transparent to-transparent opacity-60"></div>
               </div>
@@ -395,8 +395,8 @@ export default function Portfolio() {
                   Criamos um usuário e senha exclusivos para que qualquer avaliador ou visitante possa entrar, navegar e testar todas as funcionalidades do Upquestoes.
                 </p>
                 <div className="flex flex-wrap items-center justify-center md:justify-start gap-4 pt-2 text-xs font-mono text-neutral-300">
-                  <span className="bg-neutral-950 px-3 py-1.5 rounded-xl border border-neutral-800">👤 Usuário: <strong className="text-red-400">teste@gmail.com</strong></span>
-                  <span className="bg-neutral-950 px-3 py-1.5 rounded-xl border border-neutral-800">🔑 Senha: <strong className="text-red-400">teste123</strong></span>
+                  <span className="bg-neutral-950 px-3 py-1.5 rounded-xl border border-neutral-800">👤 Usuário: <strong className="text-red-500">teste@gmail.com</strong></span>
+                  <span className="bg-neutral-950 px-3 py-1.5 rounded-xl border border-neutral-800">🔑 Senha: <strong className="text-red-500">teste123</strong></span>
                 </div>
               </div>
 

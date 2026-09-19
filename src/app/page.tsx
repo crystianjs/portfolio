@@ -385,7 +385,7 @@ export default function Portfolio() {
               </div>
             </div>
 
-            <div className="bg-red-950/30 border border-red-500/40 rounded-2xl p-6 sm:p-8 flex flex-col md:flex-row items-center justify-between gap-6">
+            <div className="bg-neutral-900 border border-neutral-800 rounded-2xl p-6 sm:p-8 flex flex-col md:flex-row items-center justify-between gap-6">
               <div className="space-y-2 text-center md:text-left">
                 <div className="inline-flex items-center gap-2 text-red-400 text-xs font-mono font-bold uppercase tracking-wider">
                   <Key className="w-4 h-4" /> Acesso de Testes Disponível para Visitantes
@@ -395,8 +395,8 @@ export default function Portfolio() {
                   Criamos um usuário e senha exclusivos para que qualquer avaliador ou visitante possa entrar, navegar e testar todas as funcionalidades do Upquestoes.
                 </p>
                 <div className="flex flex-wrap items-center justify-center md:justify-start gap-4 pt-2 text-xs font-mono text-neutral-300">
-                  <span className="bg-neutral-900 px-3 py-1.5 rounded-xl border border-neutral-800">👤 Usuário: <strong className="text-white">visitante@upquestoes.com</strong></span>
-                  <span className="bg-neutral-900 px-3 py-1.5 rounded-xl border border-neutral-800">🔑 Senha: <strong className="text-white">tjsp2026</strong></span>
+                  <span className="bg-neutral-950 px-3 py-1.5 rounded-xl border border-neutral-800">👤 Usuário: <strong className="text-red-400">teste@gmail.com</strong></span>
+                  <span className="bg-neutral-950 px-3 py-1.5 rounded-xl border border-neutral-800">🔑 Senha: <strong className="text-red-400">teste123</strong></span>
                 </div>
               </div>
 

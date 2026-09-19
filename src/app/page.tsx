@@ -22,20 +22,15 @@ import {
   X,
   Menu,
   Clock,
-  Send,
-  FileText,
-  HeartHandshake,
   Server,
   Users,
-  Palette,
-  Lock,
   Key,
-  CheckCircle2
+  CheckCircle2,
+  Cpu
 } from 'lucide-react';
 
 export default function Portfolio() {
   const [hubViewMode, setHubViewMode] = useState<'desktop' | 'mobile'>('desktop');
-  const [ialeViewMode, setIaleViewMode] = useState<'desktop' | 'mobile'>('desktop');
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -44,24 +39,6 @@ export default function Portfolio() {
     { src: "/formatura(2).jpeg", caption: "Colação de Grau - ADS Unicesumar" },
     { src: "/formatura(3).jpeg", caption: "Colação de Grau - ADS Unicesumar" },
     { src: "/formatura(4).jpeg", caption: "Colação de Grau - ADS Unicesumar" },
-  ];
-
-  const experiencePrints = [
-    { 
-      src: "/photo_cerba_2.png", 
-      title: "Atuação em Sistemas e Suporte Técnico", 
-      desc: "Atuação em sistemas corporativos, suporte técnico e desenvolvimento de consultas complexas utilizando query e inner join para extração e análise de dados no setor de tecnologia e saúde." 
-    },
-    { 
-      src: "/PostgreSQL-Logo.jpg", 
-      title: "Manipulação de Dados e Consultas SQL", 
-      desc: "Manipulação de dados utilizando Excel e PostgreSQL, além de automações de processos com Power Automate, n8n e Python." 
-    },
-    { 
-      src: "/projeto/power_automate.png", 
-      title: "Automação e Monitoramento", 
-      desc: "Execução de rotinas automatizadas, scripts e acompanhamento de logs de integração em tempo real." 
-    }
   ];
 
   const hubDesktopPrints = [
@@ -83,28 +60,11 @@ export default function Portfolio() {
   ];
 
   const hubMobilePrints = [
-    { src: "/projetohub_mobile/cadastrar_usuario.jpeg", title: "Cadastro de Usuário", desc: "Fluxo simplificado e responsivo para cadastro e gestão de novos colaboradores no sistema HEADI." },
+    { src: "/projetohub_mobile/cadastrar_usuario.jpeg", title: "Cadastro de Usuário", desc: "Fluxo simplificado e responsivo para cadastro e gestão de novos colaboradores no sistema." },
     { src: "/projetohub_mobile/dashboard.jpeg", title: "Dashboard Mobile", desc: "Visão geral e resumida das métricas de produtividade e status de projetos na palma da mão." },
     { src: "/projetohub_mobile/Headi_cabeçalho.jpeg", title: "Cabeçalho e Menu Principal", desc: "Navegação adaptada para telas touch, garantindo acesso rápido aos módulos operacionais em campo." },
     { src: "/projetohub_mobile/tarefa.jpeg", title: "Gestão de Tarefas e Apontamento", desc: "Interface otimizada para abertura e apontamento de horas em tarefas e subtarefas por dispositivos móveis." },
     { src: "/projetohub_mobile/torre.jpeg", title: "Torre de Controle Mobile", desc: "Monitoramento da equipe em tempo real adaptado para visualização vertical em smartphones." },
-  ];
-
-  const ialeDesktopPrints = [
-    { src: "/projetoiale_desktop/agenda.png", title: "Agenda da Comunidade", desc: "Gestão unificada de eventos, cultos e reuniões com visualização interativa em calendário corporativo." },
-    { src: "/projetoiale_desktop/comunicados.png", title: "Central de Comunicados", desc: "Módulo robusto para envio e leitura de notícias, diretrizes e avisos importantes para os membros." },
-    { src: "/projetoiale_desktop/curso_estudo.png", title: "Módulo de Estudos Bíblicos", desc: "Plataforma para disponibilização de materiais didáticos, cursos e estudos teológicos online." },
-    { src: "/projetoiale_desktop/navbar.png", title: "Navbar de Navegação", desc: "Barra lateral intuitiva para acesso rápido a todos os módulos do ecossistema IALE." },
-    { src: "/projetoiale_desktop/oracao.png", title: "Mural de Orações", desc: "Espaço colaborativo e seguro para pedidos e agradecimentos da comunidade em tempo real." },
-  ];
-
-  const ialeMobilePrints = [
-    { src: "/projetoiale_mobile/agenda.jpeg", title: "Agenda Mobile", desc: "Eventos e programações da igreja organizados para acesso rápido e fluido no celular." },
-    { src: "/projetoiale_mobile/album.jpeg", title: "Álbum de Mídias", desc: "Galeria de fotos e vídeos dos principais eventos, batismos e atividades da comunidade." },
-    { src: "/projetoiale_mobile/comunicado.jpeg", title: "Comunicados Mobile", desc: "Visualização otimizada de avisos institucionais e mensagens pastorais em formato responsivo." },
-    { src: "/projetoiale_mobile/comunidade.jpeg", title: "Painel da Comunidade", desc: "Visão geral da área do membro com acesso a aniversariantes do mês e mural interativo." },
-    { src: "/projetoiale_mobile/louvor.jpeg", title: "Painel de Louvor", desc: "Repertório de músicas, cifras e arquivos de áudio para o ministério de música da igreja." },
-    { src: "/projetoiale_mobile/oracao.jpeg", title: "Orações Mobile", desc: "Mural de orações interativo adaptado para toque e engajamento em dispositivos móveis." },
   ];
 
   const dashboardPrints = [
@@ -131,7 +91,7 @@ export default function Portfolio() {
   return (
     <div className="min-h-screen bg-[#0d0d0d] text-slate-100 font-sans antialiased selection:bg-[#FF7A00]/20 selection:text-[#FF7A00]">
       
-      {/* --- NAVBAR FIXA COM ÂNCORAS --- */}
+      {/* --- NAVBAR FIXA --- */}
       <header className="fixed top-0 w-full z-50 bg-[#0d0d0d]/90 backdrop-blur-md border-b border-neutral-800/80 shadow-lg">
         <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
           <div 
@@ -143,19 +103,16 @@ export default function Portfolio() {
             <span className="text-[#FF7A00]">/&gt;</span>
           </div>
 
-          {/* Navegação Desktop */}
           <nav className="hidden lg:flex items-center gap-1 bg-neutral-900 p-1.5 rounded-2xl border border-neutral-800">
             <button onClick={() => scrollToSection('home')} className="px-3 py-2 rounded-xl text-xs font-semibold text-neutral-300 hover:text-white hover:bg-neutral-800 transition-all">Início</button>
             <button onClick={() => scrollToSection('projetos')} className="px-3 py-2 rounded-xl text-xs font-semibold text-neutral-300 hover:text-white hover:bg-neutral-800 transition-all">Projetos</button>
             <button onClick={() => scrollToSection('estudo-de-caso')} className="px-3 py-2 rounded-xl text-xs font-semibold text-neutral-300 hover:text-white hover:bg-neutral-800 transition-all">Estudo de Caso</button>
             <button onClick={() => scrollToSection('stack')} className="px-3 py-2 rounded-xl text-xs font-semibold text-neutral-300 hover:text-white hover:bg-neutral-800 transition-all">Stack</button>
-            <button onClick={() => scrollToSection('servicos')} className="px-3 py-2 rounded-xl text-xs font-semibold text-neutral-300 hover:text-white hover:bg-neutral-800 transition-all">Serviços</button>
-            <button onClick={() => scrollToSection('curriculo')} className="px-3 py-2 rounded-xl text-xs font-semibold text-neutral-300 hover:text-white hover:bg-neutral-800 transition-all">Currículo</button>
+            <button onClick={() => scrollToSection('servicos')} className="px-3 py-2 rounded-xl text-xs font-semibold text-neutral-300 hover:text-white hover:bg-neutral-800 transition-all">Serviços & Nicho</button>
             <button onClick={() => scrollToSection('competencias')} className="px-3 py-2 rounded-xl text-xs font-semibold text-neutral-300 hover:text-white hover:bg-neutral-800 transition-all">Competências</button>
             <button onClick={() => scrollToSection('formatura')} className="px-3 py-2 rounded-xl text-xs font-semibold text-neutral-300 hover:text-white hover:bg-neutral-800 transition-all">Colação</button>
           </nav>
 
-          {/* Botões do Topo (Contato + Menu Mobile) */}
           <div className="flex items-center gap-3">
             <a href="https://wa.me/5515981149404" target="_blank" rel="noopener noreferrer" className="px-4 sm:px-5 py-2.5 bg-[#FF7A00] hover:bg-[#e06c00] text-white text-sm font-bold rounded-xl transition-all shadow-md flex items-center gap-2">
               <MessageSquare className="w-4 h-4" /> 
@@ -163,7 +120,6 @@ export default function Portfolio() {
               <span className="sm:hidden">Contato</span>
             </a>
 
-            {/* Botão Navbar Mobile */}
             <button 
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className="lg:hidden p-2.5 bg-neutral-900 border border-neutral-800 text-white rounded-xl hover:border-[#FF7A00] transition-all shadow-md"
@@ -174,15 +130,13 @@ export default function Portfolio() {
           </div>
         </div>
 
-        {/* Menu Dropdown Mobile */}
         {mobileMenuOpen && (
           <div className="lg:hidden bg-neutral-950/95 backdrop-blur-xl border-b border-neutral-800 px-6 py-4 flex flex-col gap-2 shadow-2xl">
             <button onClick={() => { scrollToSection('home'); setMobileMenuOpen(false); }} className="text-left px-4 py-3 rounded-xl text-sm font-semibold text-neutral-300 hover:text-white hover:bg-neutral-900 transition-all">Início</button>
             <button onClick={() => { scrollToSection('projetos'); setMobileMenuOpen(false); }} className="text-left px-4 py-3 rounded-xl text-sm font-semibold text-neutral-300 hover:text-white hover:bg-neutral-900 transition-all">Projetos</button>
             <button onClick={() => { scrollToSection('estudo-de-caso'); setMobileMenuOpen(false); }} className="text-left px-4 py-3 rounded-xl text-sm font-semibold text-neutral-300 hover:text-white hover:bg-neutral-900 transition-all">Estudo de Caso</button>
             <button onClick={() => { scrollToSection('stack'); setMobileMenuOpen(false); }} className="text-left px-4 py-3 rounded-xl text-sm font-semibold text-neutral-300 hover:text-white hover:bg-neutral-900 transition-all">Stack</button>
-            <button onClick={() => { scrollToSection('servicos'); setMobileMenuOpen(false); }} className="text-left px-4 py-3 rounded-xl text-sm font-semibold text-neutral-300 hover:text-white hover:bg-neutral-900 transition-all">Serviços</button>
-            <button onClick={() => { scrollToSection('curriculo'); setMobileMenuOpen(false); }} className="text-left px-4 py-3 rounded-xl text-sm font-semibold text-neutral-300 hover:text-white hover:bg-neutral-900 transition-all">Currículo</button>
+            <button onClick={() => { scrollToSection('servicos'); setMobileMenuOpen(false); }} className="text-left px-4 py-3 rounded-xl text-sm font-semibold text-neutral-300 hover:text-white hover:bg-neutral-900 transition-all">Serviços & Nicho</button>
             <button onClick={() => { scrollToSection('competencias'); setMobileMenuOpen(false); }} className="text-left px-4 py-3 rounded-xl text-sm font-semibold text-neutral-300 hover:text-white hover:bg-neutral-900 transition-all">Competências</button>
             <button onClick={() => { scrollToSection('formatura'); setMobileMenuOpen(false); }} className="text-left px-4 py-3 rounded-xl text-sm font-semibold text-neutral-300 hover:text-white hover:bg-neutral-900 transition-all">Colação</button>
           </div>
@@ -212,10 +166,20 @@ export default function Portfolio() {
       {/* --- CONTEÚDO PRINCIPAL --- */}
       <main className="max-w-7xl mx-auto px-6 pt-32 pb-24 space-y-36 relative z-10">
 
-        {/* 1. SEÇÃO INÍCIO (HERO) */}
+        {/* 1. SEÇÃO INÍCIO (HERO COM VÍDEO DE FUNDO) */}
         <section id="home" className="pt-8 scroll-mt-28">
           <div className="grid lg:grid-cols-12 gap-8 items-center bg-neutral-900 border border-neutral-800 rounded-3xl p-8 sm:p-14 lg:p-16 text-white shadow-2xl relative overflow-hidden">
-            <div className="absolute top-0 right-0 w-96 h-96 bg-[#FF7A00]/10 rounded-full blur-3xl pointer-events-none"></div>
+            
+            <video 
+              src="/video.mp4" 
+              autoPlay 
+              loop 
+              muted 
+              playsInline 
+              className="absolute inset-0 w-full h-full object-cover opacity-25 z-0 pointer-events-none"
+            />
+            <div className="absolute inset-0 bg-neutral-950/75 z-0"></div>
+            <div className="absolute top-0 right-0 w-96 h-96 bg-[#FF7A00]/10 rounded-full blur-3xl pointer-events-none z-0"></div>
             
             <div className="lg:col-span-7 z-10">
               <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FF7A00]/15 text-[#FF7A00] text-xs font-mono mb-6 border border-[#FF7A00]/30">
@@ -223,19 +187,19 @@ export default function Portfolio() {
                 <span>Disponível para novos projetos e contratos corporativos</span>
               </div>
               <h1 className="text-4xl sm:text-6xl font-black tracking-tight mb-6 leading-[1.1]">Desenvolvedor Web <br /><span className="text-[#FF7A00]">com IA e Dados.</span></h1>
-              <p className="text-neutral-400 text-lg sm:text-xl font-light mb-10 max-w-xl leading-relaxed">
+              <p className="text-neutral-300 text-lg sm:text-xl font-light mb-10 max-w-xl leading-relaxed">
                 Especialista em construir ecossistemas web robustos, sites e sistemas corporativos. Utilizo Inteligência Artificial como ferramenta de suporte e aceleração de desenvolvimento, unindo alta performance, automação e experiência de usuário.
               </p>
               <div className="flex flex-wrap gap-4">
                 <button onClick={() => scrollToSection('projetos')} className="px-8 py-4 bg-[#FF7A00] hover:bg-[#e06c00] text-white font-bold rounded-2xl flex items-center gap-3 transition-all shadow-lg hover:scale-[1.02]">
                   Ver Projetos <ArrowRight className="w-4 h-4" />
                 </button>
-                <button onClick={() => scrollToSection('servicos')} className="px-8 py-4 bg-neutral-800 hover:bg-neutral-700 text-white font-semibold rounded-2xl flex items-center gap-3 transition-all border border-neutral-700">
+                <button onClick={() => scrollToSection('servicos')} className="px-8 py-4 bg-neutral-800/90 hover:bg-neutral-700 text-white font-semibold rounded-2xl flex items-center gap-3 transition-all border border-neutral-700">
                   <Briefcase className="w-4 h-4 text-[#FF7A00]" /> Contratar Serviços
                 </button>
               </div>
 
-              <div className="grid grid-cols-3 gap-6 mt-12 pt-8 border-t border-neutral-800">
+              <div className="grid grid-cols-3 gap-6 mt-12 pt-8 border-t border-neutral-800/80">
                 <div>
                   <h4 className="text-2xl sm:text-3xl font-black text-white">3+</h4>
                   <p className="text-xs sm:text-sm text-neutral-400 mt-1">Anos em Tech</p>
@@ -260,12 +224,12 @@ export default function Portfolio() {
           </div>
         </section>
 
-        {/* 2. SEÇÃO PROJETOS */}
+        {/* 2. SEÇÃO PROJETOS (APENAS HUB E DASHBOARD) */}
         <section id="projetos" className="scroll-mt-28">
           <div className="mb-10">
             <div className="text-[#FF7A00] font-mono text-xs uppercase tracking-widest mb-2 font-bold">// Portfólio de Soluções</div>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">Projetos em Destaque</h2>
-            <p className="text-neutral-400 mt-2">Documentação visual completa das telas Desktop e Mobile de sistemas reais em produção. Clique em qualquer imagem para ampliar.</p>
+            <p className="text-neutral-400 mt-2">Documentação visual das soluções principais em produção. Clique em qualquer imagem para ampliar.</p>
           </div>
 
           <div className="space-y-20">
@@ -357,72 +321,14 @@ export default function Portfolio() {
               </div>
             </div>
 
-            {/* IALE COMUNIDADE */}
-            <div className="bg-neutral-900 text-white rounded-3xl p-8 sm:p-12 shadow-2xl border border-neutral-800 relative overflow-hidden">
-              <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 mb-8 border-b border-neutral-800 pb-8">
-                <div>
-                  <span className="text-xs font-mono text-cyan-300 bg-cyan-950/60 border border-cyan-500/30 px-3 py-1 rounded-full font-bold inline-block mb-3">Ecossistema Web e Comunidade</span>
-                  <h3 className="text-3xl font-black tracking-tight">IALE - Comunidade</h3>
-                  <p className="text-neutral-400 text-base mt-2 max-w-3xl leading-relaxed">Plataforma de gestão integrada com painel de música, repertório, bate-papo, central de comunicados, base de aniversariantes e agenda.</p>
-                </div>
-                <a href="https://iale.vercel.app/login" target="_blank" rel="noopener noreferrer" className="px-6 py-3.5 bg-[#FF7A00] hover:bg-[#e06c00] text-white font-bold rounded-2xl flex items-center gap-2 transition-all shadow-lg shrink-0">
-                  Acessar Online <ExternalLink className="w-4 h-4" />
-                </a>
-              </div>
-
-              <div className="flex items-center justify-between flex-wrap gap-4 mb-8 bg-neutral-950 p-3 rounded-2xl border border-neutral-800">
-                <span className="text-xs font-mono text-neutral-400 pl-2">// Versões Disponíveis do IALE</span>
-                <div className="flex gap-2">
-                  <button onClick={() => setIaleViewMode('desktop')} className={`px-4 py-2 rounded-xl text-xs font-semibold flex items-center gap-2 transition-all ${ialeViewMode === 'desktop' ? 'bg-[#FF7A00] text-white shadow-md' : 'bg-neutral-800 text-neutral-400 hover:text-white'}`}>
-                    <Monitor className="w-4 h-4" /> Desktop ({ialeDesktopPrints.length})
-                  </button>
-                  <button onClick={() => setIaleViewMode('mobile')} className={`px-4 py-2 rounded-xl text-xs font-semibold flex items-center gap-2 transition-all ${ialeViewMode === 'mobile' ? 'bg-[#FF7A00] text-white shadow-md' : 'bg-neutral-800 text-neutral-400 hover:text-white'}`}>
-                    <Smartphone className="w-4 h-4" /> Mobile ({ialeMobilePrints.length})
-                  </button>
-                </div>
-              </div>
-
-              {ialeViewMode === 'desktop' ? (
-                <div className="space-y-10">
-                  {ialeDesktopPrints.map((item, idx) => (
-                    <div key={idx} className="grid lg:grid-cols-12 gap-8 items-center bg-neutral-950/60 p-6 sm:p-8 rounded-3xl border border-neutral-800">
-                      <div className="lg:col-span-5 space-y-3">
-                        <span className="text-xs font-mono text-cyan-300 bg-cyan-950/60 border border-cyan-500/30 px-3 py-1 rounded-full font-bold inline-block">Visão Desktop</span>
-                        <h4 className="text-xl font-bold text-white">{item.title}</h4>
-                        <p className="text-neutral-300 text-sm leading-relaxed">{item.desc}</p>
-                      </div>
-                      <div className="lg:col-span-7 bg-black rounded-2xl overflow-hidden border border-neutral-800 shadow-xl flex justify-center p-4 cursor-pointer group" onClick={() => setSelectedImage(item.src)}>
-                        <img src={item.src} alt={item.title} className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-300 rounded-xl" />
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              ) : (
-                <div className="space-y-10">
-                  {ialeMobilePrints.map((item, idx) => (
-                    <div key={idx} className="grid lg:grid-cols-12 gap-8 items-center bg-neutral-950/60 p-6 sm:p-8 rounded-3xl border border-neutral-800">
-                      <div className="lg:col-span-5 space-y-3">
-                        <span className="text-xs font-mono text-cyan-300 bg-cyan-950/60 border border-cyan-500/30 px-3 py-1 rounded-full font-bold inline-block">Visão Mobile</span>
-                        <h4 className="text-xl font-bold text-white">{item.title}</h4>
-                        <p className="text-neutral-300 text-sm leading-relaxed">{item.desc}</p>
-                      </div>
-                      <div className="lg:col-span-7 bg-black rounded-2xl overflow-hidden border border-neutral-800 shadow-xl flex justify-center p-4 cursor-pointer group" onClick={() => setSelectedImage(item.src)}>
-                        <img src={item.src} alt={item.title} className="max-h-[380px] w-auto object-contain group-hover:scale-105 transition-transform duration-300 rounded-xl" />
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              )}
-            </div>
-
           </div>
         </section>
 
-        {/* 3. SEÇÃO ESTUDO DE CASO / IDEIAS MINHAS: UPQUEST-ES */}
+        {/* 3. SEÇÃO ESTUDO DE CASO: UPQUESTOES */}
         <section id="estudo-de-caso" className="scroll-mt-28">
           <div className="mb-12">
             <div className="text-red-500 font-mono text-xs uppercase tracking-widest mb-2 font-bold">// Estudo de Caso & Ideias Minhas</div>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">UpQuest-es - Portal de Estudos TJSP</h2>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">Upquestoes - Portal de Estudos TJSP</h2>
             <p className="text-neutral-400 mt-2">Plataforma de alta performance desenvolvida para acompanhamento de questões, desempenho analítico e treinamento focado em concursos públicos.</p>
           </div>
 
@@ -430,14 +336,14 @@ export default function Portfolio() {
             <div className="absolute top-0 right-0 w-80 h-80 bg-red-600/10 rounded-full blur-3xl pointer-events-none"></div>
 
             <div className="grid lg:grid-cols-12 gap-8 items-center">
-              <div className="lg:col-span-6 space-y-6">
+              <div className="lg:col-span-7 space-y-6">
                 <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-red-950/80 text-red-400 text-xs font-mono border border-red-500/30">
                   <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>
                   <span>Interface Dark Mode Exclusiva (Vermelho e Preto)</span>
                 </div>
                 <h3 className="text-2xl sm:text-3xl font-black text-white">Sobre o Sistema & Funcionalidades</h3>
                 <p className="text-neutral-300 text-sm sm:text-base leading-relaxed">
-                  O <strong className="text-white">UpQuest-es</strong> nasceu da necessidade de criar um ecossistema focado na preparação para o concurso de Escrevente do TJSP. A aplicação conta com recursos avançados de rastreamento de estudos, contagem de acertos/erros e treinamento de redação com temporizador.
+                  O <strong className="text-white">Upquestoes</strong> nasceu da necessidade de criar um ecossistema focado na preparação para o concurso de Escrevente do TJSP. A aplicação conta com recursos avançados de rastreamento de estudos, contagem de acertos/erros e treinamento de redação com temporizador.
                 </p>
 
                 <div className="space-y-3 pt-2">
@@ -467,32 +373,18 @@ export default function Portfolio() {
                 </div>
               </div>
 
-              {/* Mídia: Vídeo (Loop 3s) e Imagem de Preview */}
-              <div className="lg:col-span-6 space-y-4">
-                <div className="bg-neutral-950 p-3 rounded-2xl border border-neutral-800 shadow-xl overflow-hidden group">
-                  <p className="text-xs font-mono text-neutral-400 mb-2">// Demonstração em Vídeo</p>
-                  <video 
-                    src="/video.mp4" 
-                    autoPlay 
-                    loop 
-                    muted 
-                    playsInline 
-                    className="w-full h-auto rounded-xl object-cover shadow-md border border-neutral-800"
-                  />
-                </div>
-
+              <div className="lg:col-span-5 space-y-4">
                 <div className="bg-neutral-950 p-3 rounded-2xl border border-neutral-800 shadow-xl overflow-hidden group cursor-pointer" onClick={() => setSelectedImage("/imagem-upquestoes.jpg")}>
                   <p className="text-xs font-mono text-neutral-400 mb-2">// Tela de Acesso e Interface (Clique para ampliar)</p>
                   <img 
                     src="/imagem-upquestoes.jpg" 
-                    alt="UpQuest-es Preview" 
+                    alt="Upquestoes Preview" 
                     className="w-full h-auto rounded-xl object-cover group-hover:scale-105 transition-transform duration-300"
                   />
                 </div>
               </div>
             </div>
 
-            {/* CALLOUT DE ACESSO E TESTE DO USUÁRIO */}
             <div className="bg-red-950/30 border border-red-500/40 rounded-2xl p-6 sm:p-8 flex flex-col md:flex-row items-center justify-between gap-6">
               <div className="space-y-2 text-center md:text-left">
                 <div className="inline-flex items-center gap-2 text-red-400 text-xs font-mono font-bold uppercase tracking-wider">
@@ -500,10 +392,10 @@ export default function Portfolio() {
                 </div>
                 <h4 className="text-lg sm:text-xl font-bold text-white">Teste o sistema agora mesmo com usuário dedicado!</h4>
                 <p className="text-neutral-300 text-xs sm:text-sm max-w-xl">
-                  Criamos um usuário e senha exclusivos para que qualquer avaliador ou visitante possa entrar, navegar e testar todas as funcionalidades do UpQuest-es antes de fazer o login principal.
+                  Criamos um usuário e senha exclusivos para que qualquer avaliador ou visitante possa entrar, navegar e testar todas as funcionalidades do Upquestoes.
                 </p>
                 <div className="flex flex-wrap items-center justify-center md:justify-start gap-4 pt-2 text-xs font-mono text-neutral-300">
-                  <span className="bg-neutral-900 px-3 py-1.5 rounded-xl border border-neutral-800">👤 Usuário de Teste: <strong className="text-white">visitante@upquestoes.com</strong></span>
+                  <span className="bg-neutral-900 px-3 py-1.5 rounded-xl border border-neutral-800">👤 Usuário: <strong className="text-white">visitante@upquestoes.com</strong></span>
                   <span className="bg-neutral-900 px-3 py-1.5 rounded-xl border border-neutral-800">🔑 Senha: <strong className="text-white">tjsp2026</strong></span>
                 </div>
               </div>
@@ -514,7 +406,7 @@ export default function Portfolio() {
                 rel="noopener noreferrer" 
                 className="px-6 py-4 bg-red-600 hover:bg-red-500 text-white font-bold rounded-2xl flex items-center gap-3 transition-all shadow-lg hover:scale-105 shrink-0"
               >
-                Acessar UpQuest-es <ExternalLink className="w-4 h-4" />
+                Acessar Upquestoes <ExternalLink className="w-4 h-4" />
               </a>
             </div>
 
@@ -562,12 +454,12 @@ export default function Portfolio() {
           </div>
         </section>
 
-        {/* 5. SEÇÃO SERVIÇOS */}
+        {/* 5. SEÇÃO SERVIÇOS & NICHO */}
         <section id="servicos" className="scroll-mt-28">
           <div className="mb-12">
-            <div className="text-[#FF7A00] font-mono text-xs uppercase tracking-widest mb-2 font-bold">// Como Posso Ajudar</div>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">Serviços Especializados</h2>
-            <p className="text-neutral-400 mt-2">Soluções focadas em transformar processos manuais em sistemas escaláveis e eficientes.</p>
+            <div className="text-[#FF7A00] font-mono text-xs uppercase tracking-widest mb-2 font-bold">// Foco de Atuação e Nichos</div>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">Serviços & Nicho</h2>
+            <p className="text-neutral-400 mt-2">Soluções direcionadas para o setor de saúde, sistemas corporativos e automação de alta performance.</p>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -575,16 +467,16 @@ export default function Portfolio() {
               <div className="w-12 h-12 rounded-2xl bg-[#FF7A00]/10 border border-[#FF7A00]/30 flex items-center justify-center text-[#FF7A00] mb-6">
                 <Code2 className="w-6 h-6" />
               </div>
-              <h3 className="text-xl font-bold text-white mb-3">Desenvolvimento Full-Stack</h3>
-              <p className="text-neutral-400 text-sm leading-relaxed">Criação de sistemas web sob medida, landing pages de alta conversão e aplicações robustas usando Next.js, React e TypeScript.</p>
+              <h3 className="text-xl font-bold text-white mb-3">Sistemas Corporativos & Web</h3>
+              <p className="text-neutral-400 text-sm leading-relaxed">Criação de web apps sob medida, portais institucionais e painéis de controle robustos focados em eficiência e escalabilidade.</p>
             </div>
 
             <div className="p-8 rounded-3xl bg-neutral-900 border border-neutral-800 shadow-xl">
               <div className="w-12 h-12 rounded-2xl bg-[#FF7A00]/10 border border-[#FF7A00]/30 flex items-center justify-center text-[#FF7A00] mb-6">
                 <Database className="w-6 h-6" />
               </div>
-              <h3 className="text-xl font-bold text-white mb-3">Banco de Dados & SQL</h3>
-              <p className="text-neutral-400 text-sm leading-relaxed">Modelagem relacional, estruturação de tabelas, otimização de consultas complexas e suporte a bancos de dados PostgreSQL e Supabase.</p>
+              <h3 className="text-xl font-bold text-white mb-3">Tecnologia em Saúde (Health Tech)</h3>
+              <p className="text-neutral-400 text-sm leading-relaxed">Experiência prática no setor de saúde, desenvolvendo ferramentas para laboratórios e suporte a operações críticas de dados e diagnósticos.</p>
             </div>
 
             <div className="p-8 rounded-3xl bg-neutral-900 border border-neutral-800 shadow-xl">
@@ -592,40 +484,17 @@ export default function Portfolio() {
                 <Server className="w-6 h-6" />
               </div>
               <h3 className="text-xl font-bold text-white mb-3">Automação de Processos</h3>
-              <p className="text-neutral-400 text-sm leading-relaxed">Integração de sistemas, criação de fluxos automatizados com Power Automate, n8n, Python e scripts para ganho de produtividade.</p>
+              <p className="text-neutral-400 text-sm leading-relaxed">Eliminação de tarefas manuais através de scripts, integração de sistemas e fluxos automatizados com Python, RMM e ferramentas modernas.</p>
             </div>
           </div>
         </section>
 
-        {/* 6. SEÇÃO CURRÍCULO E EXPERIÊNCIA */}
-        <section id="curriculo" className="scroll-mt-28">
-          <div className="mb-12">
-            <div className="text-[#FF7A00] font-mono text-xs uppercase tracking-widest mb-2 font-bold">// Experiência Profissional</div>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">Trajetória e Experiência</h2>
-            <p className="text-neutral-400 mt-2">Atuação técnica em ambientes corporativos e de saúde, unindo suporte avançado, análise de dados e desenvolvimento.</p>
-          </div>
-
-          <div className="grid lg:grid-cols-3 gap-6">
-            {experiencePrints.map((exp, idx) => (
-              <div key={idx} className="bg-neutral-900 border border-neutral-800 rounded-3xl p-6 flex flex-col justify-between shadow-xl">
-                <div>
-                  <div className="h-48 rounded-2xl overflow-hidden bg-neutral-950 mb-6 border border-neutral-800 cursor-pointer group" onClick={() => setSelectedImage(exp.src)}>
-                    <img src={exp.src} alt={exp.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
-                  </div>
-                  <h3 className="text-lg font-bold text-white mb-2">{exp.title}</h3>
-                  <p className="text-neutral-400 text-sm leading-relaxed">{exp.desc}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* 7. SEÇÃO COMPETÊNCIAS */}
+        {/* 6. SEÇÃO COMPETÊNCIAS & EXPERIÊNCIA */}
         <section id="competencias" className="scroll-mt-28">
           <div className="mb-12">
-            <div className="text-[#FF7A00] font-mono text-xs uppercase tracking-widest mb-2 font-bold">// Habilidades Técnicas</div>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">Competências Corporativas</h2>
-            <p className="text-neutral-400 mt-2">Pilares de atuação que garantem entregas de alto nível e confiabilidade em projetos.</p>
+            <div className="text-[#FF7A00] font-mono text-xs uppercase tracking-widest mb-2 font-bold">// Habilidades & Trajetória</div>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">Competências & Experiência</h2>
+            <p className="text-neutral-400 mt-2">Pilares de atuação técnica e bagagem profissional unidas em um só lugar.</p>
           </div>
 
           <div className="grid md:grid-cols-2 gap-6">
@@ -635,7 +504,17 @@ export default function Portfolio() {
               </div>
               <div>
                 <h3 className="text-lg font-bold text-white mb-1">Resolução de Problemas Complexos</h3>
-                <p className="text-neutral-400 text-sm leading-relaxed">Diagnóstico rápido de falhas em sistemas de missão crítica, mitigação de riscos e garantia de estabilidade operacional.</p>
+                <p className="text-neutral-400 text-sm leading-relaxed">Diagnóstico rápido de falhas em sistemas de missão crítica, mitigação de riscos e garantia de estabilidade operacional diária.</p>
+              </div>
+            </div>
+
+            <div className="p-8 rounded-3xl bg-neutral-900 border border-neutral-800 shadow-xl flex items-start gap-4">
+              <div className="p-3 bg-[#FF7A00]/10 text-[#FF7A00] rounded-2xl border border-[#FF7A00]/30 shrink-0">
+                <Cpu className="w-6 h-6" />
+              </div>
+              <div>
+                <h3 className="text-lg font-bold text-white mb-1">Desenvolvimento Full-Stack & Dados</h3>
+                <p className="text-neutral-400 text-sm leading-relaxed">Atuação sólida no ciclo de desenvolvimento web moderno, unindo front-end responsivo, consultas SQL avançadas e IA como apoio.</p>
               </div>
             </div>
 
@@ -645,13 +524,23 @@ export default function Portfolio() {
               </div>
               <div>
                 <h3 className="text-lg font-bold text-white mb-1">Comunicação e Suporte Técnico</h3>
-                <p className="text-neutral-400 text-sm leading-relaxed">Atendimento a equipes e clientes com clareza, documentação técnica detalhada e foco em usabilidade.</p>
+                <p className="text-neutral-400 text-sm leading-relaxed">Atendimento a equipes e clientes com clareza, documentação técnica detalhada em SharePoint e foco total em usabilidade.</p>
+              </div>
+            </div>
+
+            <div className="p-8 rounded-3xl bg-neutral-900 border border-neutral-800 shadow-xl flex items-start gap-4">
+              <div className="p-3 bg-[#FF7A00]/10 text-[#FF7A00] rounded-2xl border border-[#FF7A00]/30 shrink-0">
+                <Briefcase className="w-6 h-6" />
+              </div>
+              <div>
+                <h3 className="text-lg font-bold text-white mb-1">Experiência no Setor de Saúde</h3>
+                <p className="text-neutral-400 text-sm leading-relaxed">Vivência prática em tecnologia aplicada à saúde (DMS Burnier / Cerba LCA), mantendo padrões rigorosos de conectividade e infraestrutura.</p>
               </div>
             </div>
           </div>
         </section>
 
-        {/* 8. SEÇÃO FORMATURA */}
+        {/* 7. SEÇÃO FORMATURA */}
         <section id="formatura" className="scroll-mt-28">
           <div className="mb-12">
             <div className="text-[#FF7A00] font-mono text-xs uppercase tracking-widest mb-2 font-bold">// Conquista Acadêmica</div>
@@ -685,7 +574,6 @@ export default function Portfolio() {
                 </div>
               </div>
 
-              {/* Botões do Carrossel */}
               <div className="flex justify-between items-center mt-4">
                 <button 
                   onClick={() => setCurrentSlide((prev) => (prev === 0 ? formaturaImages.length - 1 : prev - 1))}
